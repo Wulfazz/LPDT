@@ -1,0 +1,207 @@
+/* PARAMETRE PAGE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f5a48;
+    padding: 10px 0;
+}
+
+.navbar-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Positionnement du bouton burger */
+#burgerMenu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px;
+    z-index: 100; /* Au-dessus des autres éléments */
+}
+
+/* Affichage du menu mobile */
+.menu-hidden {
+    display: none;
+    position: fixed; /* Fixe par rapport à la fenêtre du navigateur */
+    top: 0;
+    left: 0; /* Aligné à gauche */
+    width: 250px; /* Largeur du menu déroulant */
+    height: 100%; /* Hauteur complète */
+    background-color: #2f5a48;
+    z-index: 99; /* Haut indice pour qu'il soit au-dessus des autres contenus */
+    overflow-y: auto;
+}
+
+.menu-hidden a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Lorsque le menu est ouvert, affichez-le */
+.menu-hidden.active {
+    display: block;
+    background-color: #203d31;
+}
+
+/* Logo centré */
+.logo-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-center img {
+    width: 50px;
+}
+
+/* Icônes à droite */
+.icons-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.icons-right a {
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+@media (min-width: 600px) {
+    /* Styles pour tablettes et desktops */
+    .navbar-mobile {
+        justify-content: center;
+    }
+
+    .icons-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        flex-grow: 0;
+    }
+
+    .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .menu-hidden {
+        display: flex;
+        position: relative;
+        background-color: transparent;
+        width: auto;
+        top: auto;
+        left: auto;
+        text-align: left;
+    }
+
+    .menu-hidden a {
+        display: inline;
+        padding: 10px 15px;
+        border-top: none;
+    }
+
+    #burgerMenu {
+        display: none;
+    }
+}
+
+.blurred {
+    filter: blur(4px);
+    opacity: 0,3;
+    pointer-events: none; /* Empêche les interactions avec les éléments floutés */
+}
+
+/* FOOTER */
+.footer {
+    background-color: #2f5a48;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+}
+
+/* Icon classes for example purposes */
+.icon-address:before { content: "📍"; }
+.icon-phone:before { content: "📞"; }
+.icon-email:before { content: "✉️"; }
+.icon-facebook:before { content: "📘"; }
+
+@media (min-width: 600px) {
+    .footer {
+        flex-wrap: nowrap;
+    }
+
+    .footer-section, .footer-logo {
+        flex: 1;
+        margin-bottom: 0;
+        order: 0;
+    }
+
+    .footer-logo {
+        flex: 0 1 auto;
+    }
+}
