@@ -30,6 +30,8 @@
             <img src="{{ asset('path/to/logo.png') }}" alt="Logo">
         </a>
     </div>
+    
+    <p id="copyrights">© 2024 Les pierres de la Terre. Tous droits réservés.</p>
 </footer>
 
 <!-- Vous pouvez ajouter vos propres icônes ou utiliser une bibliothèque comme FontAwesome pour les icônes d'adresse, de téléphone, d'e-mail et de Facebook. -->

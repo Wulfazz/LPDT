@@ -1,5 +1,3 @@
-{{-- resources/views/index.blade.php --}}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>

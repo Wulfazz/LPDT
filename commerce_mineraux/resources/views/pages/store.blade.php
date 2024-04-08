@@ -1,5 +1,3 @@
-{{-- resources/views/index.blade.php --}}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,7 +15,7 @@
             <header>@include('components.header')</header>
 
             <main>
-                Page d'Accueil
+                Page de Boutique
             </main>
         
             <footer>@include('components.footer')</footer>
