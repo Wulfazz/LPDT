@@ -14,11 +14,5 @@
             <a href="{{ url('/search') }}">🔍</a>
         </div>
     </div>
-    <div class="menu-hidden" id="mobileMenu">
-        <a href="{{ url('/') }}">Accueil</a>
-        <a href="{{ url('/about') }}">À propos</a>
-        <a href="{{ url('/store') }}">Boutique</a>
-        <a href="{{ url('/contact') }}">Contact</a>
-    </div>
 </nav>
 

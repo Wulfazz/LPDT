@@ -19,6 +19,7 @@ body {
     align-items: center;
     background-color: #2f5a48;
     padding: 10px 0;
+    position: relative;
 }
 
 .navbar-mobile {
@@ -40,15 +41,13 @@ body {
 
 /* Affichage du menu mobile */
 .menu-hidden {
-    display: none;
-    position: fixed; /* Fixe par rapport à la fenêtre du navigateur */
-    top: 0;
-    left: 0; /* Aligné à gauche */
-    width: 250px; /* Largeur du menu déroulant */
-    height: 100%; /* Hauteur complète */
-    background-color: #2f5a48;
-    z-index: 99; /* Haut indice pour qu'il soit au-dessus des autres contenus */
-    overflow-y: auto;
+    display: flex;
+    position: fixed;
+    background-color: transparent;
+    width: auto;
+    top: auto;
+    left: auto;
+    text-align: left;
 }
 
 .menu-hidden a {
@@ -62,7 +61,16 @@ body {
 /* Lorsque le menu est ouvert, affichez-le */
 .menu-hidden.active {
     display: block;
-    background-color: #203d31;
+    background-color: #2f4e41;
+}
+
+#closeMenu {
+    position: absolute;
+    top: 10px; /* Ajustez en fonction de l'espacement souhaité du haut */
+    right: 10px; /* Ajustez en fonction de l'espacement souhaité du bord droit */
+    font-size: 1.5em; /* Ajustez la taille de la croix */
+    color: rgb(0, 0, 0); /* Assurez-vous que la couleur se démarque sur le fond du menu */
+    cursor: pointer;
 }
 
 /* Logo centré */
