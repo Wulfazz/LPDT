@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer id="footer" class="footer">
     <div class="footer-section">
         <h4>Informations</h4>
         <ul>

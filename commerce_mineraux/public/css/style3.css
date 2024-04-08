@@ -12,6 +12,9 @@ body {
     line-height: 1.6;
 }
 
+
+
+
 /* HEADER */
 .navbar {
     display: flex;
@@ -20,6 +23,7 @@ body {
     background-color: #2f5a48;
     padding: 10px 0;
     position: relative;
+    z-index: 1;
 }
 
 .navbar-mobile {
@@ -39,15 +43,22 @@ body {
     z-index: 100; /* Au-dessus des autres éléments */
 }
 
+.menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 100; /* Assurez-vous que le conteneur est bien au-dessus des autres éléments */
+}
+
 /* Affichage du menu mobile */
 .menu-hidden {
-    display: flex;
-    position: fixed;
-    background-color: transparent;
-    width: auto;
-    top: auto;
-    left: auto;
-    text-align: left;
+    width: 250px; /* Ou toute autre largeur souhaitée pour votre menu */
+    height: 100%;
+    background-color: #2f5a48;
+    overflow-y: auto;
+    position: relative; /* Pour le positionnement du menu à l'intérieur du conteneur */
+    display: none; /* Commence caché */
 }
 
 .menu-hidden a {
@@ -65,12 +76,15 @@ body {
 }
 
 #closeMenu {
+    display: none; /* Cache la croix initialement */
     position: absolute;
-    top: 10px; /* Ajustez en fonction de l'espacement souhaité du haut */
-    right: 10px; /* Ajustez en fonction de l'espacement souhaité du bord droit */
-    font-size: 1.5em; /* Ajustez la taille de la croix */
-    color: rgb(0, 0, 0); /* Assurez-vous que la couleur se démarque sur le fond du menu */
+    top: 10px;
+    right: -40px; /* Ajustez selon le placement souhaité par rapport au menu */
+    font-size: 30px;
+    color: white;
     cursor: pointer;
+    /* Assurez-vous que z-index est suffisamment élevé pour être au-dessus du menu */
+    z-index: 101;
 }
 
 /* Logo centré */
@@ -147,6 +161,9 @@ body {
     opacity: 0,3;
     pointer-events: none; /* Empêche les interactions avec les éléments floutés */
 }
+
+
+
 
 /* FOOTER */
 .footer {
