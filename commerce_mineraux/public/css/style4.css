@@ -96,7 +96,9 @@ body {
 }
 
 .logo-center img {
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 180px;
 }
 
 /* Icônes à droite */
@@ -113,8 +115,6 @@ body {
     text-decoration: none;
     color: white;
 }
-
-
 
 @media (min-width: 600px) {
     /* Styles pour tablettes et desktops */
@@ -207,6 +207,7 @@ body {
 
 .footer-logo img {
     width: 100px;
+    border-radius: 180px;
 }
 
 /* Icon classes for example purposes */

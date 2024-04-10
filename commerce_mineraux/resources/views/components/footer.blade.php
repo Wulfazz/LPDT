@@ -27,10 +27,10 @@
 
     <div class="footer-logo">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('path/to/logo.png') }}" alt="Logo">
+            <img src="{{ asset('img/LPDT-footer.jpg') }}" alt="Logo">
         </a>
     </div>
-    
+
     <p id="copyrights">© 2024 Les pierres de la Terre. Tous droits réservés.</p>
 </footer>
 

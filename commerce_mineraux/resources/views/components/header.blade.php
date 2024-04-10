@@ -5,7 +5,7 @@
         </button>
         <div class="logo-center">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('path/to/your/logo.png') }}" alt="Logo">
+                <img src="{{ asset('img/LPDT-header.jpg') }}" alt="Logo">
             </a>
         </div>
         <div class="icons-right">
