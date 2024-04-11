@@ -1,28 +1,30 @@
 <footer id="footer" class="footer">
-    <div class="footer-section">
-        <h4>Informations</h4>
-        <ul>
-            <li><a href="{{ url('/shipping') }}">> Livraison</a></li>
-            <li><a href="{{ url('/legal-notice') }}">> Mentions Légales</a></li>
-            <li><a href="{{ url('/terms') }}">> Conditions générales de vente</a></li>
-            <li><a href="{{ url('/payments') }}">> Paiements sécurisés</a></li>
-        </ul>
-    </div>
+    <div class="infos">
+        <div class="footer-section">
+            <h4>Informations</h4>
+            <ul>
+                <li><a href="{{ url('/shipping') }}">> Livraison</a></li>
+                <li><a href="{{ url('/legal-notice') }}">> Mentions Légales</a></li>
+                <li><a href="{{ url('/terms') }}">> Conditions générales de vente</a></li>
+                <li><a href="{{ url('/payments') }}">> Paiements sécurisés</a></li>
+            </ul>
+        </div>
 
-    <div class="footer-section">
-        <h4>Contact</h4>
-        <ul>
-            <li><i class="icon-address"></i>Adresse</li>
-            <li><i class="icon-phone"></i>Téléphone</li>
-            <li><i class="icon-email"></i>Mail</li>
-        </ul>
-    </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <ul>
+                <li><img src="{{ asset('img/iconeLocalisation.png') }}" alt="Adresse" class="icon">Adresse</li>
+                <li><img src="{{ asset('img/iconePhone.png') }}" alt="Téléphone" class="icon">Téléphone</li>
+                <li><img src="{{ asset('img/iconeEmail.png') }}" alt="Email" class="icon">Mail</li>
+            </ul>
+        </div>
 
-    <div class="footer-section">
-        <h4>Réseaux</h4>
-        <ul>
-            <li><a href="{{ url('/facebook') }}"><i class="icon-facebook"></i>Facebook</a></li>
-        </ul>
+        <div class="footer-section">
+            <h4>Réseaux</h4>
+            <ul>
+                <li><a href="{{ url('https://www.facebook.com/profile.php?id=100064659552834') }}"><img src="{{ asset('img/iconeFacebook.png') }}" alt="Facebook" class="icon">Facebook</a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="footer-logo">

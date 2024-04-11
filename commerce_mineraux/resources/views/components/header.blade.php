@@ -9,9 +9,9 @@
             </a>
         </div>
         <div class="icons-right">
-            <a href="{{ url('/account') }}">👤</a>
-            <a href="{{ url('/cart') }}">🛒</a>
-            <a href="{{ url('/search') }}">🔍</a>
+            <a href="{{ url('/account') }}"><img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead"></a>
+            <a href="{{ url('/cart') }}"><img src="{{ asset('img/iconeCart.png') }}" alt="Panier" class="iconHead"></a>
+            <a href="{{ url('/search') }}"><img src="{{ asset('img/iconeSearch.png') }}" alt="Recherche" class="iconHead"></a>
         </div>
     </div>
 </nav>

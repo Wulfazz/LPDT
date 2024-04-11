@@ -89,10 +89,10 @@ body {
 
 /* Logo centré */
 .logo-center {
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: -15%;
 }
 
 .logo-center img {
@@ -106,7 +106,6 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    flex-grow: 1;
 }
 
 .icons-right a {
@@ -114,6 +113,11 @@ body {
     font-size: 1.5em;
     text-decoration: none;
     color: white;
+}
+
+.iconHead {
+    width: 20px;
+    height: 20px;
 }
 
 @media (min-width: 600px) {
@@ -126,7 +130,11 @@ body {
         position: absolute;
         right: 0;
         top: 0;
-        flex-grow: 0;
+    }
+
+    .iconHead {
+        width: 20px;
+        height: 20px;
     }
 
     .logo-center {
@@ -171,63 +179,66 @@ body {
     color: white;
     padding: 20px;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column; /* Organise le contenu en colonnes pour structurer d'abord les infos puis le logo */
+    align-items: flex-start; /* Alignement au début pour le contenu du footer */
+    font-family: Arial, sans-serif;
+}
+
+.infos {
+    display: flex;
+    justify-content: space-between; /* Espacement entre les colonnes */
+    width: 100%; /* Assure que le conteneur des infos prend toute la largeur */
+    box-sizing: border-box;
 }
 
 .footer-section {
-    margin-bottom: 20px;
-}
-
-.footer-section h4 {
-    margin-bottom: 15px;
-}
-
-.footer a {
-    text-decoration: none;
-    color: inherit;
+    flex: 1; /* Donne à chaque section la flexibilité de s'étendre uniformément */
+    text-align: center; /* Centre le texte à l'intérieur de chaque section */
+    padding: 0 10px; /* Un peu d'espacement à l'intérieur de chaque section */
 }
 
 .footer-section ul {
-    list-style-type: none;
+    list-style-type: none; /* Supprime les puces des listes */
     padding: 0;
+    margin: 0;
 }
 
-.footer-section ul li {
-    margin-bottom: 10px;
+.footer a {
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: inherit; /* Assure que les liens utilisent la couleur de texte héritée */
+}
+
+.footer-section h4, .footer-section ul, .footer-section ul li {
+    margin: 10px 0; /* Espacement vertical */
 }
 
 .footer-logo {
-    order: 1;
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+
+    justify-content: flex-end; /* Pousse le logo vers la droite */
+    margin-top: 20px; /* Espace au-dessus du logo par rapport aux colonnes d'infos */
 }
 
 .footer-logo img {
-    width: 100px;
     border-radius: 180px;
+    max-width: 100px; /* Taille fixe pour le logo */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
 }
 
-/* Icon classes for example purposes */
-.icon-address:before { content: "📍"; }
-.icon-phone:before { content: "📞"; }
-.icon-email:before { content: "✉️"; }
-.icon-facebook:before { content: "📘"; }
+/* Icônes */
+.footer .icon {
+    vertical-align: middle; /* Aligner les icônes avec le texte */
+    width: 15px; /* Taille des icônes */
+    height: 15px; /* Taille des icônes */
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}
 
-@media (min-width: 600px) {
-    .footer {
-        flex-wrap: nowrap;
-    }
-
-    .footer-section, .footer-logo {
-        flex: 1;
-        margin-bottom: 0;
-        order: 0;
-    }
-
-    .footer-logo {
-        flex: 0 1 auto;
-    }
+/* Styles pour le copyright */
+#copyrights {
+    width: 100%; /* Prend toute la largeur */
+    text-align: center; /* Centre le texte */
+    font-size: 0.75em; /* Réduit la taille du texte */
+    margin-top: 20px; /* Espace au-dessus du texte de copyright */
+    order: 3; /* S'assure qu'il reste en bas */
 }
