@@ -1,0 +1,430 @@
+/* PARAMETRE PAGE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+
+/* HEADER */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f5a48;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Positionnement du bouton burger */
+#burgerMenu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px;
+    z-index: 100; /* Au-dessus des autres éléments */
+}
+
+.menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 100; /* Assurez-vous que le conteneur est bien au-dessus des autres éléments */
+}
+
+/* Affichage du menu mobile */
+.menu-hidden {
+    width: 250px; /* Ou toute autre largeur souhaitée pour votre menu */
+    height: 100%;
+    background-color: #2f5a48;
+    overflow-y: auto;
+    position: relative; /* Pour le positionnement du menu à l'intérieur du conteneur */
+    display: none; /* Commence caché */
+}
+
+.menu-hidden a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Lorsque le menu est ouvert, affichez-le */
+.menu-hidden.active {
+    display: block;
+    background-color: #2f4e41;
+}
+
+#closeMenu {
+    display: none; /* Cache la croix initialement */
+    position: absolute;
+    top: 10px;
+    right: -40px; /* Ajustez selon le placement souhaité par rapport au menu */
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    /* Assurez-vous que z-index est suffisamment élevé pour être au-dessus du menu */
+    z-index: 101;
+}
+
+/* Logo centré */
+.logo-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -15%;
+}
+
+.logo-center img {
+    width: 40px;
+    height: 40px;
+    border-radius: 180px;
+}
+
+/* Icônes à droite */
+.icons-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.icons-right a {
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+
+.iconHead {
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 600px) {
+    /* Styles pour tablettes et desktops */
+    .navbar-mobile {
+        justify-content: center;
+    }
+
+    .icons-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .iconHead {
+        width: 20px;
+        height: 20px;
+    }
+
+    .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .menu-hidden {
+        display: flex;
+        position: relative;
+        background-color: transparent;
+        width: auto;
+        top: auto;
+        left: auto;
+        text-align: left;
+    }
+
+    .menu-hidden a {
+        display: inline;
+        padding: 10px 15px;
+        border-top: none;
+    }
+
+    #burgerMenu {
+        display: none;
+    }
+}
+
+.blurred {
+    filter: blur(4px);
+    opacity: 0,3;
+    pointer-events: none; /* Empêche les interactions avec les éléments floutés */
+}
+
+
+
+
+/* FOOTER */
+
+/* Format téléphone */
+.footer {
+    /* Fond vert */
+    background-color: #2f5a48;
+    /* Couleur du texte */
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infos {
+    display: flex;
+    /* Espacement des colonnes */
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-section {
+    /* Pour que les colonnes s'adaptent */
+    flex: 1;
+    /* Le texte est placé à gauche du conteneur pour meilleure lecture */
+    text-align: left; 
+    /* Espace entre sections */
+    padding: 0 15px;
+    /* Taille de texte */
+    font-size: 0.9rem;
+}
+
+.footer-section ul {
+    /* Supprime les puces des listes */
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.footer a {
+    /* Supprime le surlignage du texte */
+    text-decoration: none; 
+    /* Pour être sûr que les liens sont blancs */
+    color: inherit; 
+}
+
+.footer-section h4, .footer-section ul, .footer-section ul li {
+    /* Espacement entre les lignes de texte */
+    margin: 10px 0;
+}
+
+/* Logo */
+.footer-logo {
+    width: 100%;
+    margin-top: 50%;
+}
+
+.footer-logo img {
+    /* Angles du logo */
+    border-radius: 180px;
+    /* Taille fixe */
+    max-width: 100px;
+    /* Pour garder le ratio de base */
+    height: auto;
+}
+
+/* Icônes */
+.footer .icon {
+    /* Pour faire en sorte que les icones soient en face du texte */
+    vertical-align: middle; 
+    width: 15px; 
+    height: 15px; 
+    /* Petit espace pour que les icones ne soient pas collées au texte */
+    margin-right: 5px; 
+}
+
+/* Copyright */
+#copyrights {
+    width: 100%; 
+    /* Pour qu'il soit bien au centre de la page */
+    text-align: center; 
+    font-size: 0.75em; 
+    margin-top: 20px; 
+    /* Pour qu'il reste bien en bas de la page */
+    order: 3; 
+}
+
+/* Format tablette */
+@media (min-width: 600px) {
+    .footer {
+        flex-direction: row; 
+        /* Permet de passer à la ligne selon la place disponible */
+        flex-wrap: wrap; 
+        /* Tout est centré */
+        align-items: center;
+        /* Il faut rendre le tout lisible */
+        padding: 30px 50px; 
+    }
+
+
+
+    .footer-section {
+        flex: 1; /* Donne à chaque section la flexibilité de s'étendre uniformément */
+        text-align: left; /* Centre le texte à l'intérieur de chaque section */
+        padding: 0 30px; /* Un peu d'espacement à l'intérieur de chaque section */
+    }
+
+    .footer-logo {
+        flex: 30%; /* Attribue 30% de la largeur totale au logo pour assurer sa visibilité */
+        justify-content: right; /* Centre le logo dans son conteneur */
+        margin-top: 50%
+    }
+
+    .footer-logo img {
+        width: 110%; /* Ajuste la taille du logo pour qu'il soit plus grand sur de grands écrans */
+    }
+
+    .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
+        font-size: 1.2rem; /* Ajuste la taille du texte pour une meilleure lisibilité */
+    }
+
+    .footer-section h4 {
+        margin: 20px 0; /* Espacement vertical */
+    }
+
+    /* Icônes */
+    .footer .icon {
+        vertical-align: middle; /* Aligner les icônes avec le texte */
+        width: 17px; /* Taille des icônes */
+        height: 17px; /* Taille des icônes */
+        margin-right: 8px; /* Espacement entre l'icône et le texte */
+    }
+
+    #copyrights {
+        text-align: center; /* Maintient le texte de copyright au centre */
+        font-size: 0.875em; /* Ajuste légèrement la taille du texte pour l'harmoniser avec le reste */
+        width: 100%; /* S'étend sur toute la largeur */
+        order: 2; /* Assure qu'il s'affiche en bas du footer */
+        padding-top: 20px; /* Ajoute un peu d'espace au-dessus du texte de copyright */
+    }
+}
+
+/* Format ordinateur */
+@media (min-width: 1024px) {
+    .footer {
+        padding: 40px 60px; /* Encore plus d'espace pour les très grands écrans */
+    }
+
+    .footer-section {
+        flex: 1; /* Donne à chaque section la flexibilité de s'étendre uniformément */
+        text-align: left; /* Centre le texte à l'intérieur de chaque section */
+        padding: 0 6%; /* Un peu d'espacement à l'intérieur de chaque section */
+        font-size: 0.9rem;
+        margin-left: 2%;
+
+    }
+
+    .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
+        font-size: 1.3rem; /* Ajuste la taille du texte pour une meilleure lisibilité */
+    }
+
+    .footer-section h4 {
+        margin: 30px 0; /* Espacement vertical */
+    }
+
+    /* Icônes */
+    .footer .icon {
+        vertical-align: middle; /* Aligner les icônes avec le texte */
+        width: 19px; /* Taille des icônes */
+        height: 19px; /* Taille des icônes */
+        margin-right: 8px; /* Espacement entre l'icône et le texte */
+    }
+}
+
+
+
+
+/* SECTIONS PAGES/HOME */
+
+/* Section : Intro */
+
+.intro {
+    background-image: url('../img/imgGrotte.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.385);
+    z-index: 1;
+}
+
+.intro h2, .intro p {
+    position: relative;
+    z-index: 2;
+}
+
+.intro h2 {
+    font-size: 1.6rem;
+    margin-bottom: auto;
+    margin-top: 20%;
+}
+
+.intro p {
+    font-size: 1.25rem;
+    max-width: 350px;
+    margin-top: auto;
+    margin-bottom: 20%;
+}
+
+/* Requêtes média pour tablettes et ordinateurs */
+@media (min-width: 600px) {
+    .intro h2 {
+        font-size: 2.5rem; /* Augmente la taille pour une meilleure visibilité */
+        margin-top: 10%; /* Ajuste l'espace au-dessus pour les écrans plus grands */
+    }
+
+    .intro p {
+        font-size: 1.5rem; /* Légère augmentation de la taille du texte */
+        max-width: 600px; /* Permet au paragraphe d'occuper plus d'espace */
+        margin-bottom: 10%; /* Ajuste l'espace en dessous pour les écrans plus grands */
+    }
+
+    /* Ajustements optionnels pour la hauteur de la section sur les écrans plus grands */
+    .intro {
+        height: 100vh; /* Peut-être voudrez-vous occuper plus d'espace vertical sur de grands écrans */
+    }
+}
+
+/* Ajout d'une autre requête média pour les écrans d'ordinateurs larges */
+@media (min-width: 1024px) {
+    .intro h2 {
+        font-size: 3rem; /* Encore plus grand pour les grands écrans */
+    }
+
+    .intro p {
+        font-size: 1.75rem; /* Ajustement de la taille du texte pour une lisibilité accrue */
+        margin-bottom: 5%; /* Réduction de l'espace en dessous sur de très grands écrans */
+    }
+}

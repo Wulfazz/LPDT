@@ -23,14 +23,14 @@
             <h4>Réseaux</h4>
             <ul>
                 <li><a href="{{ url('https://www.facebook.com/profile.php?id=100064659552834') }}"><img src="{{ asset('img/iconeFacebook.png') }}" alt="Facebook" class="icon">Facebook</a></li>
+                <div class="footer-logo">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('img/LPDT-footer.jpg') }}" alt="Logo">
+                    </a>
+                </div>
             </ul>
         </div>
-    </div>
 
-    <div class="footer-logo">
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('img/LPDT-footer.jpg') }}" alt="Logo">
-        </a>
     </div>
 
     <p id="copyrights">© 2024 Les pierres de la Terre. Tous droits réservés.</p>
