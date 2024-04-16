@@ -6,16 +6,14 @@
                 <li><a href="{{ url('/shipping') }}">> Livraison</a></li>
                 <li><a href="{{ url('/legal-notice') }}">> Mentions Légales</a></li>
                 <li><a href="{{ url('/terms') }}">> Conditions générales de vente</a></li>
-                <li><a href="{{ url('/payments') }}">> Paiements sécurisés</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
             <h4>Contact</h4>
             <ul>
-                <li><img src="{{ asset('img/iconeLocalisation.png') }}" alt="Adresse" class="icon">Adresse</li>
-                <li><img src="{{ asset('img/iconePhone.png') }}" alt="Téléphone" class="icon">Téléphone</li>
-                <li><img src="{{ asset('img/iconeEmail.png') }}" alt="Email" class="icon">Mail</li>
+                <li><img src="{{ asset('img/iconePhone.png') }}" alt="Téléphone" class="icon">06.28.56.08.70</li>
+                <li>contact@lpdterre.fr</li>
             </ul>
         </div>
 

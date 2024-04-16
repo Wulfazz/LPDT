@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Libre Baskerville', serif;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2f5a48;
+    background-color: rgba(218, 188, 129, 0.7);
     padding: 10px 0;
     position: relative;
     z-index: 1;
@@ -37,7 +37,7 @@ body {
 #burgerMenu {
     background: none;
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 1.5em;
     padding: 10px;
     z-index: 100; /* Au-dessus des autres éléments */
@@ -55,24 +55,31 @@ body {
 .menu-hidden {
     width: 250px; /* Ou toute autre largeur souhaitée pour votre menu */
     height: 100%;
-    background-color: #2f5a48;
+    background-color: rgba(218, 188, 129, 0.7);
     overflow-y: auto;
     position: relative; /* Pour le positionnement du menu à l'intérieur du conteneur */
     display: none; /* Commence caché */
 }
 
 .menu-hidden a {
-    color: white;
+    color: rgb(0, 0, 0); /* Couleur du texte */
     padding: 15px;
     text-decoration: none;
     display: block;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: background-color 0.2s ease-in-out; /* Transition douce pour l'effet de survol */
+}
+
+.menu-hidden a:hover, .menu-hidden a:focus {
+    background-color: #ae9666; /* Une teinte plus foncée pour l'effet de survol */
+    color: #ffffff; /* Change la couleur du texte pour assurer un contraste */
+    cursor: pointer; /* Change le curseur pour indiquer un lien cliquable */
 }
 
 /* Lorsque le menu est ouvert, affichez-le */
 .menu-hidden.active {
     display: block;
-    background-color: #2f4e41;
+    background-color: #DABC81;
 }
 
 #closeMenu {
@@ -81,7 +88,7 @@ body {
     top: 10px;
     right: -40px; /* Ajustez selon le placement souhaité par rapport au menu */
     font-size: 30px;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     /* Assurez-vous que z-index est suffisamment élevé pour être au-dessus du menu */
     z-index: 101;
@@ -92,16 +99,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: -15%;
+    position: relative; /* Important pour positionner correctement le pseudo-élément */
+    margin-right: -15%; /* Ajustez selon votre mise en page */
+    margin-top: -5%;
 }
 
 .logo-center img {
-    width: 40px;
-    height: 40px;
-    border-radius: 180px;
+    width: 70px;
+    height: 50px;
+    border-radius: 50%; /* Rend l'image du logo circulaire */
+}
+
+.logo-center::after {
+    content: ""; /* Nécessaire pour que le pseudo-élément s'affiche */
+    position: absolute;
+    margin-top: -70%;
+    width: 110px; /* La largeur du demi-cercle */
+    height: 110px; /* La moitié de la hauteur totale souhaitée */
+    background-color: white; /* Couleur du demi-cercle */
+    border-bottom-left-radius: 50%; /* Arrondit le côté gauche du demi-cercle */
+    border-bottom-right-radius: 50%; /* Arrondit le côté droit du demi-cercle */
+    z-index: -1; /* S'assure que le demi-cercle ne passe pas au-dessus du logo */
 }
 
 /* Icônes à droite */
+
 .icons-right {
     display: flex;
     justify-content: flex-end;
@@ -118,6 +140,7 @@ body {
 .iconHead {
     width: 20px;
     height: 20px;
+    filter: invert(100%) saturate(2);
 }
 
 @media (min-width: 600px) {
@@ -177,10 +200,8 @@ body {
 
 /* Format téléphone */
 .footer {
-    /* Fond vert */
-    background-color: #2f5a48;
-    /* Couleur du texte */
-    color: white;
+    background-color: rgba(218, 188, 129, 0.7);
+    color: black;  /* Couleur du texte en noir */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -189,161 +210,112 @@ body {
 
 .infos {
     display: flex;
-    /* Espacement des colonnes */
     justify-content: space-between;
     width: 100%;
 }
 
 .footer-section {
-    /* Pour que les colonnes s'adaptent */
     flex: 1;
-    /* Le texte est placé à gauche du conteneur pour meilleure lecture */
-    text-align: left; 
-    /* Espace entre sections */
+    text-align: left;
     padding: 0 15px;
-    /* Taille de texte */
     font-size: 0.9rem;
 }
 
 .footer-section ul {
-    /* Supprime les puces des listes */
-    list-style-type: none; 
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 .footer a {
-    /* Supprime le surlignage du texte */
-    text-decoration: none; 
-    /* Pour être sûr que les liens sont blancs */
-    color: inherit; 
+    text-decoration: none;
+    color: black; /* Assure que les liens sont noirs */
 }
 
 .footer-section h4, .footer-section ul, .footer-section ul li {
-    /* Espacement entre les lignes de texte */
     margin: 10px 0;
 }
 
-/* Logo */
 .footer-logo {
     width: 100%;
     margin-top: 50%;
+    justify-content: center; /* Centrage du logo */
 }
 
 .footer-logo img {
-    /* Angles du logo */
-    border-radius: 180px;
-    /* Taille fixe */
+    border-radius: 50%;
     max-width: 100px;
-    /* Pour garder le ratio de base */
-    height: auto;
+    height: 95px;
 }
 
-/* Icônes */
 .footer .icon {
-    /* Pour faire en sorte que les icones soient en face du texte */
-    vertical-align: middle; 
-    width: 15px; 
-    height: 15px; 
-    /* Petit espace pour que les icones ne soient pas collées au texte */
-    margin-right: 5px; 
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    filter: invert(100%) saturate(7); /* Noir intense pour les icônes */
 }
 
-/* Copyright */
 #copyrights {
-    width: 100%; 
-    /* Pour qu'il soit bien au centre de la page */
-    text-align: center; 
-    font-size: 0.75em; 
-    margin-top: 20px; 
-    /* Pour qu'il reste bien en bas de la page */
-    order: 3; 
+    width: 100%;
+    text-align: center;
+    font-size: 0.75em;
+    margin-top: 20px;
+    order: 3;
 }
 
 /* Format tablette */
 @media (min-width: 600px) {
     .footer {
-        flex-direction: row; 
-        /* Permet de passer à la ligne selon la place disponible */
-        flex-wrap: wrap; 
-        /* Tout est centré */
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
-        /* Il faut rendre le tout lisible */
-        padding: 30px 50px; 
+        padding: 30px 50px;
     }
 
-
+    .infos {
+        width: 100%;
+        justify-content: space-between;
+    }
 
     .footer-section {
-        flex: 1; /* Donne à chaque section la flexibilité de s'étendre uniformément */
-        text-align: left; /* Centre le texte à l'intérieur de chaque section */
-        padding: 0 30px; /* Un peu d'espacement à l'intérieur de chaque section */
+        flex: 1;
+        text-align: left;
+        padding: 0 30px;
     }
 
     .footer-logo {
-        flex: 30%; /* Attribue 30% de la largeur totale au logo pour assurer sa visibilité */
-        justify-content: right; /* Centre le logo dans son conteneur */
-        margin-top: 50%
+        flex: 30%;
+        justify-content: right;
+        margin-top: 0; /* Ajustement de la marge */
     }
 
     .footer-logo img {
-        width: 110%; /* Ajuste la taille du logo pour qu'il soit plus grand sur de grands écrans */
+        width: 150%; /* Logo plus grand pour tablette et ordinateur */
     }
 
     .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
-        font-size: 1.2rem; /* Ajuste la taille du texte pour une meilleure lisibilité */
-    }
-
-    .footer-section h4 {
-        margin: 20px 0; /* Espacement vertical */
-    }
-
-    /* Icônes */
-    .footer .icon {
-        vertical-align: middle; /* Aligner les icônes avec le texte */
-        width: 17px; /* Taille des icônes */
-        height: 17px; /* Taille des icônes */
-        margin-right: 8px; /* Espacement entre l'icône et le texte */
-    }
-
-    #copyrights {
-        text-align: center; /* Maintient le texte de copyright au centre */
-        font-size: 0.875em; /* Ajuste légèrement la taille du texte pour l'harmoniser avec le reste */
-        width: 100%; /* S'étend sur toute la largeur */
-        order: 2; /* Assure qu'il s'affiche en bas du footer */
-        padding-top: 20px; /* Ajoute un peu d'espace au-dessus du texte de copyright */
+        font-size: 1.2rem;
     }
 }
 
 /* Format ordinateur */
 @media (min-width: 1024px) {
     .footer {
-        padding: 40px 60px; /* Encore plus d'espace pour les très grands écrans */
+        padding: 40px 60px;
+    }
+
+    .footer-logo img {
+        width: 200%; /* Encore plus grand pour les grands écrans */
     }
 
     .footer-section {
-        flex: 1; /* Donne à chaque section la flexibilité de s'étendre uniformément */
-        text-align: left; /* Centre le texte à l'intérieur de chaque section */
-        padding: 0 6%; /* Un peu d'espacement à l'intérieur de chaque section */
-        font-size: 0.9rem;
+        padding: 0 6%;
         margin-left: 2%;
-
     }
 
     .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
-        font-size: 1.3rem; /* Ajuste la taille du texte pour une meilleure lisibilité */
-    }
-
-    .footer-section h4 {
-        margin: 30px 0; /* Espacement vertical */
-    }
-
-    /* Icônes */
-    .footer .icon {
-        vertical-align: middle; /* Aligner les icônes avec le texte */
-        width: 19px; /* Taille des icônes */
-        height: 19px; /* Taille des icônes */
-        margin-right: 8px; /* Espacement entre l'icône et le texte */
+        font-size: 1.3rem;
     }
 }
 
