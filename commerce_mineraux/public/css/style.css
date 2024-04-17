@@ -93,7 +93,6 @@ body {
     font-size: 30px;
     color: rgb(0, 0, 0);
     cursor: pointer;
-    /* Assurez-vous que z-index est suffisamment élevé pour être au-dessus du menu */
     z-index: 101;
 }
 
@@ -148,51 +147,140 @@ body {
 
 @media (min-width: 600px) {
     /* Styles pour tablettes et desktops */
-    .navbar-mobile {
+
+    .navbar {
+        display: flex;
         justify-content: center;
+        align-items: center;
+        background-color: rgba(218, 188, 129, 0.7);
+        padding: 10px 0;
+        position: relative;
+        z-index: 1;
+        width: 100%;
     }
 
-    .icons-right {
-        position: absolute;
-        right: 0;
+    .navbar-mobile {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+    }
+
+    .menu-container {
+        position: fixed;
         top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 100; /* Assurez-vous que le conteneur est bien au-dessus des autres éléments */
     }
 
-    .iconHead {
-        width: 20px;
-        height: 20px;
+    #burgerMenu {
+        background: none;
+        border: none;
+        color: rgb(0, 0, 0);
+        font-size: 1.8em;
+        padding: 20px;
+        z-index: 100; /* Au-dessus des autres éléments */
     }
 
+    /* Affichage du menu mobile */
+    .menu-hidden {
+        width: 200px; /* Ou toute autre largeur souhaitée pour votre menu */
+        height: 100%;
+        background-color: rgba(198, 171, 117, 0.7);
+        overflow-y: auto;
+        position: relative; /* Pour le positionnement du menu à l'intérieur du conteneur */
+        display: none; /* Commence caché */
+    }
+    
+    .menu-hidden a {
+        color: rgb(0, 0, 0); /* Couleur du texte */
+        padding: 15px;
+        text-decoration: none;
+        display: block;
+        font-size: 1.3em;
+        transition: background-color 0.2s ease-in-out; /* Transition douce pour l'effet de survol */
+    }
+
+    .menu-hidden a:hover, .menu-hidden a:focus {
+        background-color: #c5a971; /* Une teinte plus foncée pour l'effet de survol */
+        color: #ffffff; /* Change la couleur du texte pour assurer un contraste */
+        cursor: pointer; /* Change le curseur pour indiquer un lien cliquable */
+    }
+
+    /* Lorsque le menu est ouvert, affichez-le */
+    .menu-hidden.active {
+        display: block;
+        background-color: #e5cb98;
+    }
+
+    /* Pour voir la croix du menuHidden */
+    #closeMenu {
+        display: none; /* Cache la croix initialement */
+        position: absolute;
+        top: 10px;
+        right: -40px; /* Ajustez selon le placement souhaité par rapport au menu */
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    /* Logo centré */
     .logo-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* Important pour positionner correctement le pseudo-élément */
+        margin-right: 0px; /* Ajustez selon votre mise en page */
+        margin-top: -1%;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
     }
-
-    .menu-hidden {
-        display: flex;
-        position: relative;
-        background-color: transparent;
-        width: auto;
-        top: auto;
-        left: auto;
-        text-align: left;
+    .logo-center img {
+        width: 75px;
+        height: 60px;
+        border-radius: 50%; /* Rend l'image du logo circulaire */
     }
 
-    .menu-hidden a {
-        display: inline;
-        padding: 10px 15px;
-        border-top: none;
+    .logo-center::after {
+        content: ""; /* Nécessaire pour que le pseudo-élément s'affiche */
+        position: absolute;
+        margin-top: -60%;
+        width: 130px; /* La largeur du demi-cercle */
+        height: 110px; /* La moitié de la hauteur totale souhaitée */
+        background-color: white; /* Couleur du demi-cercle */
+        border-bottom-left-radius: 50%; /* Arrondit le côté gauche du demi-cercle */
+        border-bottom-right-radius: 50%; /* Arrondit le côté droit du demi-cercle */
+        z-index: -1; /* S'assure que le demi-cercle ne passe pas au-dessus du logo */
     }
 
-    #burgerMenu {
-        display: none;
+    /* Icônes à droite */
+
+    .icons-right {
+        position: absolute;
+        right: 2%;
+        top: 0;
     }
+
+    .icons-right a {
+        margin: 0px 15px;
+        font-size: 1.5em;
+        text-decoration: none;
+        color: white;
+    }
+
+    .iconHead {
+        width: 25px;
+        height: 25px;
+        margin-top: 80%;
+    }
+
 }
 
 .blurred {
-    filter: blur(4px);
-    opacity: 0,3;
+    filter: blur(10px);
+    opacity: 0.8;
     pointer-events: none; /* Empêche les interactions avec les éléments floutés */
 }
 
@@ -228,7 +316,7 @@ body {
     flex: 1;
     text-align: left;
     padding: 0 14px;
-    font-size: 0.65rem;
+    font-size: 0.67rem;
 }
 
 .footer-section ul {
@@ -254,7 +342,7 @@ body {
 
 .footer-logo img {
     border-radius: 50%;
-    max-width: 55px;
+    width: 55px;
     height: 54px;
 }
 
@@ -299,11 +387,26 @@ body {
     }
 
     .footer-logo img {
-        width: 150%; /* Logo plus grand pour tablette et ordinateur */
+        width: 100px; /* Logo plus grand pour tablette et ordinateur */
+        height: 100px;
     }
 
     .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .footer .icon {
+        width: 30px;  /* Taille spécifique pour les icônes */
+        height: 30px; /* Assure que les icônes sont carrées */
+        margin-right: 5px; /* Espacement à droite pour séparer l'icône du texte */
+    }
+
+    #copyrights {
+        width: 100%;
+        text-align: center;
+        font-size: 0.8em;
+        margin-top: 20px;
+        order: 3;
     }
 }
 
@@ -314,7 +417,8 @@ body {
     }
 
     .footer-logo img {
-        width: 200%; /* Encore plus grand pour les grands écrans */
+        width: 130px; /* Logo plus grand pour tablette et ordinateur */
+        height: 130px;
     }
 
     .footer-section {
@@ -322,7 +426,14 @@ body {
         margin-left: 2%;
     }
 
-    .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
-        font-size: 1.3rem;
+    .footer .icon {
+        width: 40px;  /* Taille spécifique pour les icônes */
+        height: 40px; /* Assure que les icônes sont carrées */
+        margin-right: 5px; /* Espacement à droite pour séparer l'icône du texte */
     }
+
+    .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
+        font-size: 1.5rem;
+    }
+
 }
