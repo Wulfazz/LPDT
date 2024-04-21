@@ -214,7 +214,7 @@ body {
 
     .navbar-mobile {
         justify-content: space-between;
-        height: 110px;
+        height: 13vh;
     }
 
     .icons-right, .logo-center {
@@ -228,19 +228,21 @@ body {
     }
 
     .logo-center {
-        position: absolute;
-        left: 50%;
-        margin-top: -5%;
+        position: absolute; /* Position absolue permet un contrôle précis de la position */
+        left: 50%; /* Positionne le logo à 10% du bord gauche, ajustez selon les besoins */
+        top: 30%;
+        transform: translateY(-50%); /* Ajuste parfaitement le logo au milieu verticalement */
+        margin: 0; /* Annule toute marge externe appliquée précédemment */
     }
 
     .logo-center img {
         width: 90px;
-        height: 70px;
+        height: 80px;
     }
 
     .logo-center::after {
         width: 150px; /* La largeur du demi-cercle */
-        height: 150px; /* La moitié de la hauteur totale souhaitée */
+        height: 140px; /* La moitié de la hauteur totale souhaitée */
     }
 
     #burgerMenu {
@@ -248,9 +250,13 @@ body {
     }
 
     .menu-container {
-        top: 0; /* Positionne le conteneur du menu en haut */
-        height: 50px; /* Hauteur automatique selon le contenu */
-
+        position: fixed;
+        top: 10%;
+        left: 8%; /* Correction pour alignement horizontal */
+        right: 8%; /* Maintien d'un espacement symétrique des deux côtés */
+        height: 50px;
+        width: auto; /* Largeur automatique pour s'adapter au contenu */
+        z-index: 1000; /* S'assure de la supériorité dans la pile de contexte */
     }
 
     .menu-hidden {
@@ -264,9 +270,10 @@ body {
     /* Assure que chaque lien dans le menu a suffisamment d'espace et est facile à cliquer */
     .menu-hidden a {
         color: rgb(0, 0, 0); /* Couleur du texte */
-        padding: 10px 15px; /* Padding pour augmenter la zone cliquable */
+        padding: 0px 3%; /* Padding pour augmenter la zone cliquable */
         text-decoration: none; /* Supprime le soulignement des liens */
-        font-size: 1.2em; /* Augmente la taille du texte pour une meilleure lisibilité */
+        font-size: 1.5em; /* Augmente la taille du texte pour une meilleure lisibilité */
+
     }
 
     .menu-hidden a:hover, .menu-hidden a:focus {
