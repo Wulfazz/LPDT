@@ -214,7 +214,7 @@ body {
 
     .navbar-mobile {
         justify-content: space-between;
-        height: 13vh;
+        height: 15vh;
     }
 
     .icons-right, .logo-center {
@@ -249,12 +249,16 @@ body {
         display: none; /* Cache le menu burger sur les grands écrans */
     }
 
+    #closeMenu {
+        display: none; /* Le bouton de fermeture n'est pas nécessaire sur desktop */
+    }
+
     .menu-container {
         position: fixed;
         top: 10%;
         left: 8%; /* Correction pour alignement horizontal */
         right: 8%; /* Maintien d'un espacement symétrique des deux côtés */
-        height: 50px;
+        height: 40px;
         width: auto; /* Largeur automatique pour s'adapter au contenu */
         z-index: 1000; /* S'assure de la supériorité dans la pile de contexte */
     }
@@ -278,10 +282,6 @@ body {
 
     .menu-hidden a:hover, .menu-hidden a:focus {
         color: #ffffff; /* Couleur du texte au survol ou au focus */
-    }
-
-    #closeMenu {
-        display: none; /* Le bouton de fermeture n'est pas nécessaire sur desktop */
     }
 
 }
