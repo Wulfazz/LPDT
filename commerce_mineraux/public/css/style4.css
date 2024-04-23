@@ -7,12 +7,13 @@
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     color: #000000;
     line-height: 1.6;
     width: 100vw;
     height: 100vh;
 }
+
 
 
 
@@ -214,7 +215,7 @@ body {
 
     .navbar-mobile {
         justify-content: space-between;
-        height: 110px;
+        height: 15vh;
     }
 
     .icons-right, .logo-center {
@@ -228,29 +229,39 @@ body {
     }
 
     .logo-center {
-        position: absolute;
-        left: 50%;
-        margin-top: -5%;
+        position: absolute; /* Position absolue permet un contrôle précis de la position */
+        left: 50%; /* Positionne le logo à 10% du bord gauche, ajustez selon les besoins */
+        top: 30%;
+        transform: translateY(-50%); /* Ajuste parfaitement le logo au milieu verticalement */
+        margin: 0; /* Annule toute marge externe appliquée précédemment */
     }
 
     .logo-center img {
         width: 90px;
-        height: 70px;
+        height: 80px;
     }
 
     .logo-center::after {
         width: 150px; /* La largeur du demi-cercle */
-        height: 150px; /* La moitié de la hauteur totale souhaitée */
+        height: 140px; /* La moitié de la hauteur totale souhaitée */
     }
 
     #burgerMenu {
         display: none; /* Cache le menu burger sur les grands écrans */
     }
 
-    .menu-container {
-        top: 0; /* Positionne le conteneur du menu en haut */
-        height: 50px; /* Hauteur automatique selon le contenu */
+    #closeMenu {
+        display: none; /* Le bouton de fermeture n'est pas nécessaire sur desktop */
+    }
 
+    .menu-container {
+        position: fixed;
+        top: 12%;
+        left: 8%; /* Correction pour alignement horizontal */
+        right: 8%; /* Maintien d'un espacement symétrique des deux côtés */
+        height: 40px;
+        width: auto; /* Largeur automatique pour s'adapter au contenu */
+        z-index: 1000; /* S'assure de la supériorité dans la pile de contexte */
     }
 
     .menu-hidden {
@@ -264,17 +275,14 @@ body {
     /* Assure que chaque lien dans le menu a suffisamment d'espace et est facile à cliquer */
     .menu-hidden a {
         color: rgb(0, 0, 0); /* Couleur du texte */
-        padding: 10px 15px; /* Padding pour augmenter la zone cliquable */
+        padding: 0px 3%; /* Padding pour augmenter la zone cliquable */
         text-decoration: none; /* Supprime le soulignement des liens */
-        font-size: 1.2em; /* Augmente la taille du texte pour une meilleure lisibilité */
+        font-size: 1.5em; /* Augmente la taille du texte pour une meilleure lisibilité */
+
     }
 
     .menu-hidden a:hover, .menu-hidden a:focus {
         color: #ffffff; /* Couleur du texte au survol ou au focus */
-    }
-
-    #closeMenu {
-        display: none; /* Le bouton de fermeture n'est pas nécessaire sur desktop */
     }
 
 }
@@ -284,6 +292,7 @@ body {
     opacity: 0.8;
     pointer-events: none; /* Empêche les interactions avec les éléments flous */
 }
+
 
 
 
@@ -437,4 +446,116 @@ body {
         font-size: 1.5rem;
     }
 
+}
+
+
+
+
+/* HOME */
+
+/* Section intro */
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin: 20px;
+}
+
+.intro img {
+    max-width: 100%; /* Assure que l'image ne dépasse pas sa container */
+    height: auto; /* Garde le ratio de l'image */
+}
+
+.intro p {
+    font-size: 1.1em; /* Taille de texte adaptée */
+    padding: 5px; /* Espacement autour du texte */
+    max-width: 95%; /* Maximise la largeur du texte sans qu'il ne devienne trop large */
+    margin-top: 20px; /* Espacement entre l'image et le texte */
+}
+
+/* Responsive design pour les tablettes */
+@media (min-width: 600px) {
+    .intro {
+        justify-content: space-around; /* Distribue l'espace autour des éléments */
+        padding: 40px;
+    }
+
+    .intro p {
+        max-width: 95%; /* Augmente la largeur du texte pour utiliser plus d'espace disponible */
+        font-size: 1.8em;
+    }
+}
+
+/* Responsive design pour les écrans de bureau */
+@media (min-width: 1024px) {
+    .intro {
+        padding: 60px;
+    }
+
+    .intro img {
+        width: 50%; /* Taille fixe pour l'image sur grands écrans */
+    }
+}
+
+/* Section catalog */
+.catalog {
+    background-color: rgba(218, 188, 129, 0.7); /* Couleur de fond de la section */
+    padding: 20px;
+    text-align: center; /* Centre le texte et le contenu de manière horizontale */
+    display: flex; /* Utilise Flexbox pour le layout de la section */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
+    justify-content: center; /* Centre les éléments horizontalement */
+}
+
+.cat {
+    display: inline-flex; /* Utilise inline-flex pour garder la structure en ligne tout en profitant de flexbox */
+    flex-direction: column; /* Organise le contenu du bloc en colonne (vertical) */
+    align-items: center; /* Centre les éléments verticalement dans le conteneur .cat */
+    margin: 10px;
+    width: 20%; /* Largeur fixe pour chaque catégorie pour uniformité */
+}
+
+.cat img {
+    width: 100px; /* Taille fixe pour les images */
+    height: 100px; /* Hauteur égale à la largeur pour un aspect rond */
+    border-radius: 50%; /* Rend l'image ronde */
+    display: block; /* Block pour appliquer la marge automatique horizontale */
+    margin: 0 auto 10px; /* Centrage de l'image et espace en dessous */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
+}
+
+.cat button {
+    background-color: #708090; /* Couleur gris ardoise clair pour le fond du bouton */
+    border: none; /* Pas de bordure pour un look plus moderne */
+    color: white; /* Texte en blanc pour contraste élevé */
+    padding: 10px 20px;
+    cursor: pointer; /* Indique que le bouton est cliquable */
+    width: 100%; /* Utilise la largeur complète du conteneur .cat */
+    text-transform: uppercase; /* Texte en majuscules pour un aspect plus formel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
+    transition: all 0.3s ease; /* Transition douce pour les interactions */
+    border-radius: 6px;
+}
+
+.cat button:hover {
+    background-color: #56768C; /* Assombrir le bouton au survol pour un feedback visuel */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre portée plus prononcée au survol */
+}
+
+.cat p {
+    margin: 0; /* Enlève la marge par défaut du paragraphe */
+}
+
+@media (max-width: 600px) {
+    .cat {
+        width: 50%; /* Ajustement pour les petits écrans, deux éléments par ligne */
+    }
+}
+
+@media (max-width: 480px) {
+    .cat {
+        width: 100%; /* Un seul élément par ligne sur les très petits écrans */
+    }
 }
