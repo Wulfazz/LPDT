@@ -505,25 +505,32 @@ body {
     padding: 20px;
     text-align: center; /* Centre le texte et le contenu de manière horizontale */
     display: flex; /* Utilise Flexbox pour le layout de la section */
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    justify-content: center; /* Centre les éléments horizontalement */
+    flex-direction: column; /* Organise le contenu en colonne pour le titre et la grille */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+.catalog h2 {
+    margin-bottom: 20px; /* Espace entre le titre et la grille */
+}
+
+.cat-container {
+    display: flex; /* Utilise Flexbox pour la disposition des éléments */
+    flex-wrap: wrap; /* Permet le passage à la ligne des éléments .cat */
+    justify-content: space-around; /* Répartit uniformément avec de l'espace autour */
+    width: 100%; /* Utilise toute la largeur disponible */
 }
 
 .cat {
-    display: inline-flex; /* Utilise inline-flex pour garder la structure en ligne tout en profitant de flexbox */
-    flex-direction: column; /* Organise le contenu du bloc en colonne (vertical) */
-    align-items: center; /* Centre les éléments verticalement dans le conteneur .cat */
-    margin: 10px;
-    width: 20%; /* Largeur fixe pour chaque catégorie pour uniformité */
+    margin: 10px; /* Espace autour de chaque .cat */
+    flex-basis: 100%; /* Base pour le téléphone, un élément par ligne */
+    text-align: center; /* Centre le contenu de .cat */
 }
 
 .cat img {
-    width: 100px; /* Taille fixe pour les images */
-    height: 100px; /* Hauteur égale à la largeur pour un aspect rond */
+    width: 150px; /* Taille fixe pour les images */
+    height: 150px; /* Hauteur égale à la largeur pour un aspect rond */
     border-radius: 50%; /* Rend l'image ronde */
-    display: block; /* Block pour appliquer la marge automatique horizontale */
-    margin: 0 auto 10px; /* Centrage de l'image et espace en dessous */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
+    margin-bottom: 10px; /* Espace entre l'image et le bouton */
 }
 
 .cat button {
@@ -532,11 +539,12 @@ body {
     color: white; /* Texte en blanc pour contraste élevé */
     padding: 10px 20px;
     cursor: pointer; /* Indique que le bouton est cliquable */
-    width: 100%; /* Utilise la largeur complète du conteneur .cat */
+    width: 75%; /* Utilise la largeur complète du conteneur .cat */
     text-transform: uppercase; /* Texte en majuscules pour un aspect plus formel */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
     transition: all 0.3s ease; /* Transition douce pour les interactions */
     border-radius: 6px;
+    font-size: 0.9em;
 }
 
 .cat button:hover {
@@ -548,14 +556,76 @@ body {
     margin: 0; /* Enlève la marge par défaut du paragraphe */
 }
 
-@media (max-width: 600px) {
-    .cat {
-        width: 50%; /* Ajustement pour les petits écrans, deux éléments par ligne */
+@media (min-width: 600px) {
+
+    .cat-container {
+        justify-content: center; /* Centre les .cat dans le conteneur */
     }
+    
+    .cat {
+        flex-basis: calc(50% - 20px); /* Deux éléments par ligne, moins les marges */
+    }
+
 }
 
 @media (max-width: 480px) {
     .cat {
         width: 100%; /* Un seul élément par ligne sur les très petits écrans */
+    }
+}
+
+/* Section verifs et paiements */
+.icons {
+    padding: 20px;
+}
+
+.verifs, .payments {
+    display: flex;
+    justify-content: space-around; /* Répartit l'espace de manière égale entre les éléments */
+    align-items: center; /* Centre les éléments verticalement */
+    margin-bottom: 20px; /* Espacement entre 'verifs' et 'payments' */
+}
+
+.verifs div, .payments div {
+    flex: 1; /* Donne à chaque div une part égale de l'espace disponible */
+    text-align: center; /* Centre le texte à l'intérieur de chaque div */
+}
+
+.verifs img, .payments img {
+    width: 80px; /* Taille standardisée pour toutes les images */
+    height: 80px; /* Hauteur égale à la largeur pour maintenir l'aspect ratio */
+    margin-bottom: 10px; /* Espacement entre l'image et le texte en dessous */
+}
+
+.verifs p, .payments p {
+    font-size: 1.0em; /* Taille de police appropriée pour la lisibilité */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+/* Media Query pour les tablettes (au moins 600px) */
+@media (min-width: 600px) {
+    .verifs div, .payments div {
+        flex: 1 1 48%; /* Deux éléments par ligne sur tablettes */
+    }
+
+    .verifs img, .payments img {
+        width: 100px; /* Taille ajustée pour les images */
+        height: 100px;
+    }
+}
+
+/* Media Query pour les ordinateurs (au moins 1024px) */
+@media (min-width: 1024px) {
+    .verifs div, .payments div {
+        flex: 1 1 32%; /* Trois éléments par ligne sur les écrans larges */
+    }
+
+    .verifs img, .payments img {
+        width: 120px; /* Taille plus grande pour les images */
+        height: 120px;
+    }
+
+    .verifs p, .payments p {
+        font-size: 1.0em; /* Police plus grande pour une meilleure lisibilité */
     }
 }

@@ -23,33 +23,26 @@
                 <!-- Section catalogue -->
                 <section class="catalog">
                     <h2>NOTRE CATALOGUE DE MINERAUX</h2>
+                    <div class="cat-container"> <!-- Conteneur pour les éléments cat -->
+                        <div class="cat">
+                            <img src="{{ asset('img/home/brute.jpg') }}" alt="Minéraux brutes">
+                            <button>Minéraux brutes</button>
+                        </div>
 
-                    <div class="cat">
-                        <img src="{{ asset('img/home/brute.jpg') }}" alt="">
-                        <button>
-                            <p>Minéraux brutes</p>
-                        </button>
-                    </div>
+                        <div class="cat">
+                            <img src="{{ asset('img/home/pierres.jpg') }}" alt="Pierres taillées">
+                            <button>Pierres taillées</button>
+                        </div>
 
-                    <div class="cat">
-                        <img src="{{ asset('img/home/pierres.jpg') }}" alt="">
-                        <button>
-                            <p>Pierres taillées</p>
-                        </button>
-                    </div>
+                        <div class="cat">
+                            <img src="{{ asset('img/home/bracelets.jpg') }}" alt="Bracelets">
+                            <button>Bracelets</button>
+                        </div>
 
-                    <div class="cat">
-                        <img src="{{ asset('img/home/bracelets.jpg') }}" alt="">
-                        <button>
-                            <p>Bracelets</p>
-                        </button>
-                    </div>
-
-                    <div class="cat">
-                        <img src="{{ asset('img/home/pendentifs.jpg') }}" alt="">
-                        <button>
-                            <p>Pendentifs</p>
-                        </button>
+                        <div class="cat">
+                            <img src="{{ asset('img/home/pendentifs.jpg') }}" alt="Pendentifs">
+                            <button>Pendentifs</button>
+                        </div>
                     </div>
                 </section >
 
@@ -57,29 +50,29 @@
                 <section class="icons">
                     <div class="verifs">
                         <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('img/home/diamant.png') }}" alt="100% naturelles">
                             <p>100% naturelles</p>
                         </div>
                         <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('img/home/visa.png') }}" alt="Paiements sécurisés">
                             <p>Paiements sécurisés</p>
                         </div>
                         <div>
-                            <img src="" alt="">
-                            <p>Retours et livraison soignée</p>
+                            <img src="{{ asset('img/home/livraison.png') }}" alt="Retour et livraison">
+                            <p>Retour et livraison soignée</p>
                         </div>
                     </div>
                     <div class="payments">
                         <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('img/home/cheque.png') }}" alt="Chèque">
                             <p>Paiement par chèque</p>
                         </div>
                         <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('img/home/paypal.png') }}" alt="Paypal">
                             <p>Paiement Paypal</p>
                         </div>
                         <div>
-                            <img src="" alt="">
+                            <img src="{{ asset('img/home/virement.png') }}" alt="Virement">
                             <p>Paiement par virement</p>
                         </div>
                     </div>
