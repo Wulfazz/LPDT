@@ -10,8 +10,9 @@ body {
     background-color: #ffffff;
     color: #000000;
     line-height: 1.6;
-    width: 100vw;
+    width: 100%; /* Modifié de 100vw à 100% pour éviter les problèmes de débordement liés à la barre de défilement */
     height: 100vh;
+    overflow-x: hidden; /* Ajouté pour masquer les débordements horizontaux */
 }
 
 
@@ -499,31 +500,40 @@ body {
     }
 }
 
-/* Section catalog */
+
+
+/* Section catalogue */
 .catalog {
     background-color: rgba(218, 188, 129, 0.7); /* Couleur de fond de la section */
     padding: 20px;
     text-align: center; /* Centre le texte et le contenu de manière horizontale */
     display: flex; /* Utilise Flexbox pour le layout de la section */
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
-    justify-content: center; /* Centre les éléments horizontalement */
+    flex-direction: column; /* Organise le contenu en colonne pour le titre et la grille */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+.catalog h2 {
+    margin-bottom: 20px; /* Espace entre le titre et la grille */
+}
+
+.cat-container {
+    display: flex; /* Utilise Flexbox pour la disposition des éléments */
+    flex-wrap: wrap; /* Permet le passage à la ligne des éléments .cat */
+    justify-content: space-around; /* Répartit uniformément avec de l'espace autour */
+    width: 100%; /* Utilise toute la largeur disponible */
 }
 
 .cat {
-    display: inline-flex; /* Utilise inline-flex pour garder la structure en ligne tout en profitant de flexbox */
-    flex-direction: column; /* Organise le contenu du bloc en colonne (vertical) */
-    align-items: center; /* Centre les éléments verticalement dans le conteneur .cat */
-    margin: 10px;
-    width: 20%; /* Largeur fixe pour chaque catégorie pour uniformité */
+    margin: 10px; /* Espace autour de chaque .cat */
+    flex-basis: 100%; /* Base pour le téléphone, un élément par ligne */
+    text-align: center; /* Centre le contenu de .cat */
 }
 
 .cat img {
     width: 150px; /* Taille fixe pour les images */
     height: 150px; /* Hauteur égale à la largeur pour un aspect rond */
     border-radius: 50%; /* Rend l'image ronde */
-    display: block; /* Block pour appliquer la marge automatique horizontale */
-    margin: 0 auto 15px; /* Centrage de l'image et espace en dessous */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
+    margin-bottom: 10px; /* Espace entre l'image et le bouton */
 }
 
 .cat button {
@@ -532,11 +542,12 @@ body {
     color: white; /* Texte en blanc pour contraste élevé */
     padding: 10px 20px;
     cursor: pointer; /* Indique que le bouton est cliquable */
-    width: 100%; /* Utilise la largeur complète du conteneur .cat */
+    width: 65%; /* Utilise la largeur complète du conteneur .cat */
     text-transform: uppercase; /* Texte en majuscules pour un aspect plus formel */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
     transition: all 0.3s ease; /* Transition douce pour les interactions */
     border-radius: 6px;
+    font-size: 0.9em;
 }
 
 .cat button:hover {
@@ -549,16 +560,32 @@ body {
 }
 
 @media (min-width: 600px) {
+
+    .cat-container {
+        justify-content: center; /* Centre les .cat dans le conteneur */
+    }
+    
     .cat {
-        flex: 1 1 48%; /* Chaque élément prend 100% de la largeur, donc une seule colonne */
+        flex-basis: calc(48% - 20px); /* Deux éléments par ligne, moins les marges */
     }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 1024px) {
+
+    .catalog {
+        justify-content: space-evenly; /* Répartit l'espace de manière égale entre les éléments */
+    }
+
     .cat {
-        width: 100%; /* Un seul élément par ligne sur les très petits écrans */
+        flex-basis: calc(25% - 20px); /* Quatre éléments par ligne, moins la valeur du gap */
+    }
+
+    .catalog h2 {
+        font-size: 2em;
     }
 }
+
+
 
 /* Section verifs et paiements */
 .icons {

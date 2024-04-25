@@ -3,9 +3,9 @@
         <div class="footer-section">
             <h4>Informations</h4>
             <ul>
-                <li><a href="{{ url('/shipping') }}">> Livraison</a></li>
-                <li><a href="{{ url('/legal-notice') }}">> Mentions Légales</a></li>
-                <li><a href="{{ url('/terms') }}">> Conditions générales de vente</a></li>
+                <li><a href="{{ url('/info/shipping') }}">> Livraison</a></li>
+                <li><a href="{{ url('/info/legal-notice') }}">> Mentions Légales</a></li>
+                <li><a href="{{ url('/info/terms') }}">> Conditions générales de vente</a></li>
             </ul>
         </div>
 

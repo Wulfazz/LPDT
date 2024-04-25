@@ -2,16 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route dynamique pour les pages principales
-Route::get('/{page?}', function ($page = 'home') {
-    $validPages = ['home', 'store', 'contact', 'story'];
-    $viewPath = in_array($page, $validPages) ? 'pages.' . $page : 'pages.default';
-    return view()->exists($viewPath) ? view($viewPath) : view('pages.default');
-})->where('page', '^(?!info|terms|shipping|legal-notice|payments).*$'); // Exclut les routes d'information
+$validPages = ['home', 'store', 'contact', 'story'];
+$validInfoTypes = ['terms', 'legal-notice'];
 
-// Route dynamique pour les informations
-Route::get('/info/{type?}', function ($type = 'default') {
-    $validInfoTypes = ['terms', 'shipping', 'legal-notice', 'payments'];
-    $viewPath = in_array($type, $validInfoTypes) ? 'infos.' . $type : 'infos.default';
-    return view()->exists($viewPath) ? view($viewPath) : view('infos.default');
-});
+// Routes pour les pages principales
+Route::get('/{page?}', function ($page = 'home') use ($validPages) {
+    if (in_array($page, $validPages)) {
+        return view('pages.' . $page);
+    }
+    return view('pages.default');
+})->where('page', implode('|', $validPages));
+
+// Routes pour les pages d'information
+Route::get('/info/{type?}', function ($type = 'default') use ($validInfoTypes) {
+    if (in_array($type, $validInfoTypes)) {
+        return view('infos.' . $type);
+    }
+    return view('infos.default');
+})->where('type', implode('|', $validInfoTypes));
+
