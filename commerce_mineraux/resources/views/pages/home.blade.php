@@ -26,22 +26,22 @@
                     <div class="cat-container"> <!-- Conteneur pour les éléments cat -->
                         <div class="cat">
                             <img src="{{ asset('img/home/brute.jpg') }}" alt="Minéraux brutes">
-                            <button>Minéraux brutes</button>
+                            <button><a href="{{ url('/shop/minerals') }}">Minéraux brutes</a></button>
                         </div>
 
                         <div class="cat">
                             <img src="{{ asset('img/home/pierres.jpg') }}" alt="Pierres taillées">
-                            <button>Pierres taillées</button>
+                            <button><a href="{{ url('/shop/stone') }}">Pierres taillées</a></button>
                         </div>
 
                         <div class="cat">
                             <img src="{{ asset('img/home/bracelets.jpg') }}" alt="Bracelets">
-                            <button>Bracelets</button>
+                            <button><a href="{{ url('/shop/bracelet') }}">Bracelets</a></button>
                         </div>
 
                         <div class="cat">
                             <img src="{{ asset('img/home/pendentifs.jpg') }}" alt="Pendentifs">
-                            <button>Pendentifs</button>
+                            <button><a href="{{ url('/shop/pendant') }}">Pendentifs</a></button>
                         </div>
                     </div>
                 </section >

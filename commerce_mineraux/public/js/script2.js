@@ -52,3 +52,26 @@ $(document).ready(function(){
         });
     });
 });
+
+
+
+// Fonction pour envoyer un message pop-up en cas d'envoie dans contact
+document.addEventListener('DOMContentLoaded', function() {
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Email envoyé!',
+                text: 'Votre message a été envoyé. Nous vous répondrons dans les 48 heures.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = baseUrl;
+                }
+            });
+        });
+    }
+});
+
