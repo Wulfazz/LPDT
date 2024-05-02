@@ -55,6 +55,18 @@ $(document).ready(function(){
 
 
 
+// Fonction pour le menu déroulant
+document.addEventListener('DOMContentLoaded', function () {
+    var storeLink = document.querySelector('.menu-item a[href="{{ url("/store") }}"]');
+    storeLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        var submenu = this.nextElementSibling;
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+
+
 // Fonction pour envoyer un message pop-up en cas d'envoie dans contact
 document.addEventListener('DOMContentLoaded', function() {
     var contactForm = document.getElementById('contactForm');
@@ -75,3 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+// Fonction pour le déroulant
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdown = document.querySelector('.dropbtn');
+    dropdown.onclick = function(event) {
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+        }
+    }
+});

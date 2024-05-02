@@ -146,6 +146,59 @@ body {
     filter: invert(100%) saturate(2);
 }
 
+
+/* Menu déroulant */
+/* Style for dropdown button */
+.dropbtn {
+    background: none;
+    color: #444; /* Adjust the color to match your design */
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: 100%; /* Make the button expand the full width */
+    text-align: left;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9; /* Light grey background */
+    min-width: 160px; /* Set a min-width if necessary */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Show the dropdown menu on click */
+.dropdown .dropbtn:focus + .dropdown-content {
+    display: block;
+}
+
+
 @media (min-width: 600px) {
     /* Styles pour tablettes et desktops */
 
@@ -796,3 +849,9 @@ body {
 .submit-button:hover {
     background-color: #56768C;
 }
+
+
+
+
+
+/* BOUTIQUE */
