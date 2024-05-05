@@ -9,8 +9,8 @@
             </a>
         </div>
         <div class="icons-right">
-            <a href="{{ url('/account') }}"><img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead"></a>
-            <a href="{{ url('/cart') }}"><img src="{{ asset('img/iconeCart.png') }}" alt="Panier" class="iconHead"></a>
+            <a href="{{ url('/user/login') }}"><img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead"></a>
+            <a href="{{ url('/user/cart') }}"><img src="{{ asset('img/iconeCart.png') }}" alt="Panier" class="iconHead"></a>
             <a href="{{ url('/search') }}"><img src="{{ asset('img/iconeSearch.png') }}" alt="Recherche" class="iconHead"></a>
         </div>
     </div>

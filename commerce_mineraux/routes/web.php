@@ -39,6 +39,20 @@ Route::get('/user/{action?}', function ($action = 'profile') use ($validUser) {
     return view('user.default'); // Fournir une vue par défaut pour les actions non valides
 })->where('action', implode('|', $validUser));
 
+
+
+
 use App\Http\Controllers\ContactController;
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+
+
+
+use App\Http\Controllers\UserController;
+
+Route::get('login', [UserController::class, 'showLoginForm'])->name('login.form');
+Route::post('login', [UserController::class, 'login'])->name('login');
+Route::get('register', [UserController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('register', [UserController::class, 'register'])->name('register');

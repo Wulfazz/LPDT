@@ -855,3 +855,70 @@ body {
 
 
 /* BOUTIQUE */
+
+
+
+
+
+/* LOGIN */
+/* public/css/styles.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: row; /* Change to column on smaller screens if needed */
+    justify-content: space-around;
+    align-items: flex-start; /* Ensures that forms are aligned at the top */
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.form-container {
+    width: 45%; /* Adjust width for smaller screens in media query */
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #708090;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+    background-color: #56768C;
+}

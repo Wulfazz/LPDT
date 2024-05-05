@@ -101,3 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+// Fonction pour register
+$(document).ready(function() {
+    $('.signup-btn').on('click', function (e) {
+        e.preventDefault();
+        $('#signupModal').modal('show');
+    });
+});
