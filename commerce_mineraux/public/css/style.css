@@ -861,7 +861,7 @@ body {
 
 
 /* LOGIN */
-/* public/css/styles.css */
+/* Style de base pour les conteneurs */
 .container {
     display: flex;
     flex-direction: column;
@@ -874,14 +874,14 @@ body {
     display: flex;
     flex-direction: row; /* Change to column on smaller screens if needed */
     justify-content: space-around;
-    align-items: flex-start; /* Ensures that forms are aligned at the top */
+    align-items: flex-start; /* Assure que les formulaires sont alignés en haut */
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
 }
 
 .form-container {
-    width: 45%; /* Adjust width for smaller screens in media query */
+    width: 45%; /* Ajuste la largeur pour les écrans plus petits dans une requête média */
     padding: 20px;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

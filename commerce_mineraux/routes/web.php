@@ -52,7 +52,14 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 use App\Http\Controllers\UserController;
 
-Route::get('login', [UserController::class, 'showLoginForm'])->name('login.form');
-Route::post('login', [UserController::class, 'login'])->name('login');
-Route::get('register', [UserController::class, 'showRegistrationForm'])->name('register.form');
-Route::post('register', [UserController::class, 'register'])->name('register');
+// Route pour afficher le formulaire de connexion
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login.form');
+
+// Route pour traiter la connexion
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+// Route pour afficher le formulaire d'inscription
+Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
+
+// Route pour traiter l'inscription
+Route::post('/register', [UserController::class, 'register'])->name('register');
