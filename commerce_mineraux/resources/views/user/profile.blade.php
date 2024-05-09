@@ -7,7 +7,12 @@
             <header>@include('components.header')</header>
 
             <main>
-                Page de profil utilisateur
+                <div class="container">
+                    <h1>Profil de {{ $user->first_name }}</h1>
+                    <p>Email: {{ $user->email }}</p>
+                    <p>Adresse: {{ $user->address }}</p>
+                    <p>Téléphone: {{ $user->phone }}</p>
+                </div>
             </main>
         
             <footer>@include('components.footer')</footer>

@@ -9,40 +9,36 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Affiche le formulaire de connexion
     public function showLoginForm()
     {
-        return view('user.login'); // Assurez-vous que la vue existe dans resources/views/user/login.blade.php
+        return view('user.login');
     }
 
-    // Traite le formulaire de connexion
     public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+    
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // Redirige l'utilisateur vers la page d'accueil après connexion
+            return redirect()->route('profile', ['user_id' => Auth::user()->user_id]);
         }
-
+    
         return back()->withErrors([
             'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
         ]);
     }
 
-    // Affiche le formulaire d'inscription
     public function showRegisterForm()
     {
-        return view('user.register'); // Assurez-vous que la vue existe dans resources/views/user/register.blade.php
+        return view('user.register');
     }
 
-    // Traite les données du formulaire d'inscription
     public function register(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -50,17 +46,23 @@ class UserController extends Controller
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
         ]);
-
+    
         $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'phone' => $request->phone,
-            'address' => $request->address,
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'phone' => $validatedData['phone'],
+            'address' => $validatedData['address'],
         ]);
-
+    
         Auth::login($user);
-        return redirect('/')->with('success', 'Inscription réussie !'); // Message flash pour confirmer l'inscription
+        return redirect()->route('profile', ['user_id' => $user->id])->with('success', 'Inscription réussie ! Bienvenue sur votre page de profil.');
+    }
+
+    public function showProfile($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        return view('user.profile', ['user' => $user]);
     }
 }

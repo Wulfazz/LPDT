@@ -50,16 +50,20 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 
 
+
 use App\Http\Controllers\UserController;
 
-// Route pour afficher le formulaire de connexion
+// Affichage du formulaire de connexion
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login.form');
 
-// Route pour traiter la connexion
+// Traitement du formulaire de connexion
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
-// Route pour afficher le formulaire d'inscription
+// Affichage du formulaire d'inscription
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
 
-// Route pour traiter l'inscription
+// Traitement du formulaire d'inscription
 Route::post('/register', [UserController::class, 'register'])->name('register');
+
+// Affichage de la page de profil
+Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('profile');
