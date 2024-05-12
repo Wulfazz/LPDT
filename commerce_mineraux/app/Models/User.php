@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
-    protected $primaryKey = 'user_id';  // Spécifie 'user_id' comme clé primaire
-    public $timestamps = false;         // Désactive les timestamps si non utilisés
+    protected $primaryKey = 'user_id'; // Assurez-vous que c'est le bon nom de clé primaire utilisé dans votre base de données
+    public $timestamps = false;        // Si vous n'utilisez pas les timestamps, confirmez que cela est bien configuré
 
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'phone', 'address'

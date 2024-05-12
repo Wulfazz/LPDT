@@ -23,12 +23,15 @@ class UserController extends Controller
     
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('profile', ['user_id' => Auth::user()->user_id]);
+    
+            // Assurez-vous d'utiliser le nom correct de l'attribut d'identifiant
+            return redirect()->route('profile', ['user_id' => Auth::user()->user_id])
+                             ->with('success', 'Connexion réussie ! Bienvenue sur votre page de profil.');
         }
     
         return back()->withErrors([
             'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
-        ]);
+        ])->withInput($request->only('email'));
     }
 
     public function showRegisterForm()
@@ -57,12 +60,44 @@ class UserController extends Controller
         ]);
     
         Auth::login($user);
-        return redirect()->route('profile', ['user_id' => $user->id])->with('success', 'Inscription réussie ! Bienvenue sur votre page de profil.');
-    }
+        return redirect()->route('profile', ['user_id' => $user->user_id])
+                         ->with('success', 'Inscription réussie ! Bienvenue sur votre page de profil.');
+    }    
 
     public function showProfile($user_id)
     {
         $user = User::findOrFail($user_id);
         return view('user.profile', ['user' => $user]);
+    }
+
+    public function updateProfile(Request $request, $user_id)
+    {
+        $user = User::findOrFail($user_id); // Assurez-vous que l'utilisateur existe ou retournez une erreur 404
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+        ]);
+    
+        // Mise à jour de l'utilisateur
+        $user->update($validatedData);
+        
+        return redirect()->route('profile', ['user_id' => $user->id])
+                         ->with('success', 'Votre profil a été mis à jour avec succès.');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Invalidating the session.
+        $request->session()->invalidate();
+
+        // Regenerate the token for the session.
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('success', 'Vous avez été déconnecté.');
     }
 }

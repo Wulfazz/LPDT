@@ -34,6 +34,11 @@
                             <div class="form-group">
                                 <label>Email :</label>
                                 <input type="email" name="email" required>
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Mot de passe :</label>

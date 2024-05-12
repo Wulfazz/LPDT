@@ -55,15 +55,13 @@ use App\Http\Controllers\UserController;
 
 // Affichage du formulaire de connexion
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login.form');
-
 // Traitement du formulaire de connexion
 Route::post('/login', [UserController::class, 'login'])->name('login');
-
 // Affichage du formulaire d'inscription
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
-
 // Traitement du formulaire d'inscription
 Route::post('/register', [UserController::class, 'register'])->name('register');
-
 // Affichage de la page de profil
 Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('profile');
+Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');

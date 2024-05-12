@@ -18,6 +18,11 @@
                             <div class="form-group">
                                 <label>Email :</label>
                                 <input type="email" name="email" required>
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Mot de passe :</label>
@@ -28,19 +33,18 @@
 
                         @if ($errors->any())
                             <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                             </div>
                         @endif
+
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
-                        
+
                         <p class="register-link">
                             Pas encore membre? <a href="{{ route('register.form') }}">Inscrivez-vous ici</a>
                         </p>
