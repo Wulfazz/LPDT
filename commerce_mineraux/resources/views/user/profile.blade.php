@@ -1,4 +1,8 @@
-<head>@include('components.head')</head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    @include('components.head')
+</head>
 <body>
     @include('components.menuhidden')
 
@@ -27,11 +31,6 @@
                     <div class="form-group">
                         <label for="email">Email :</label>
                         <input type="email" id="email" name="email" required value="{{ $user->email }}">
-                        @if ($errors->has('email'))
-                            <div class="alert alert-danger">
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
                     </div>
                     <div class="form-group">
                         <label for="phone">Téléphone :</label>
@@ -42,14 +41,12 @@
                         <input type="text" id="address" name="address" required value="{{ $user->address }}">
                     </div>
                     <button type="submit" class="btn btn-primary">Mettre à jour</button>
-                    <button type="submit" class="btn btn-danger">Déconnexion</button>
                 </form>
 
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Déconnexion</button>
+                </form>
             </div>
         </main>
 
