@@ -6,3 +6,5 @@
     <script> var baseUrl = "{{ url('/') }}"; </script>
 
     <script src="{{ asset('js/script2.js') }}"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>

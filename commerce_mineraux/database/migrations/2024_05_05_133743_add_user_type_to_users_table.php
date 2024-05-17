@@ -9,14 +9,14 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->bigIncrements('user_id');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone');
-            $table->string('address');
-            $table->timestamps(); // Ajoute created_at et updated_at
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->timestamps();  // Crée automatiquement les colonnes created_at et updated_at
         });
     }
 

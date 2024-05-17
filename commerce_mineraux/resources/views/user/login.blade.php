@@ -29,6 +29,7 @@
                             <label>Mot de passe :</label>
                             <input type="password" name="password" required>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="votre_clé_publique"></div>
                         <button type="submit" class="submit-button">Se connecter</button>
                     </form>
                     <p class="register-link">
