@@ -1,5 +1,6 @@
 <head>
     @include('components.head')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     @include('components.menuhidden')
@@ -19,7 +20,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <form action="{{ route('login') }}" method="POST">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
                             <label>Email :</label>
@@ -29,7 +30,10 @@
                             <label>Mot de passe :</label>
                             <input type="password" name="password" required>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="votre_clé_publique"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcO1d8pAAAAAIjQyroNckP1dbwf16dvLO1cNt8U"></div>
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                        @endif
                         <button type="submit" class="submit-button">Se connecter</button>
                     </form>
                     <p class="register-link">

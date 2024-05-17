@@ -6,10 +6,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    // Clé secrète reCAPTCHA (à remplacer par votre propre clé)
+    private $recaptchaSecret = '6LcO1d8pAAAAADJ2ssRQIsmrVej3pKajGUzEmxKo';
+
     // Affiche le formulaire de connexion
     public function showLoginForm()
     {
@@ -52,11 +56,29 @@ class UserController extends Controller
     // Gère la tentative de connexion de l'utilisateur
     public function login(Request $request)
     {
+        // Valider les entrées du formulaire
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'g-recaptcha-response' => 'required'  // Ajouter la validation reCAPTCHA
         ]);
 
+        // Valider reCAPTCHA
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $this->recaptchaSecret,
+            'response' => $request->input('g-recaptcha-response'),
+        ]);
+
+        $responseBody = json_decode($response->body(), true);
+
+        if (!$responseBody['success']) {
+            return back()->withErrors(['g-recaptcha-response' => 'Erreur de reCAPTCHA. Veuillez réessayer.']);
+        }
+
+        // Supprimer la clé 'g-recaptcha-response' des credentials
+        $credentials = $request->only('email', 'password');
+
+        // Vérifier les informations d'identification utilisateur
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('profile', ['user_id' => Auth::id()])
