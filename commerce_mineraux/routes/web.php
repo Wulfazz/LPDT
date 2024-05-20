@@ -58,6 +58,5 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('profile')->middleware('auth');
-Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('profile');
-Route::post('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');

@@ -11,22 +11,21 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    // Clé secrète reCAPTCHA (à remplacer par votre propre clé)
     private $recaptchaSecret = '6LcO1d8pAAAAADJ2ssRQIsmrVej3pKajGUzEmxKo';
 
-    // Affiche le formulaire de connexion
     public function showLoginForm()
     {
+        if (Auth::check()) {
+            return redirect()->route('profile', ['user_id' => Auth::id()]);
+        }
         return view('user.login');
     }
 
-    // Affiche le formulaire d'inscription
     public function showRegisterForm()
     {
         return view('user.register');
     }
 
-    // Traite l'inscription d'un nouvel utilisateur
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -38,32 +37,36 @@ class UserController extends Controller
             'address' => 'required|string|max:255',
         ]);
 
-        User::create([
+        // Vérifier si l'utilisateur existe déjà
+        $existingUser = User::where('email', $validatedData['email'])->first();
+        if ($existingUser) {
+            Log::warning('Tentative d\'inscription avec un email déjà utilisé : ' . $validatedData['email']);
+            return back()->withErrors(['email' => 'Cet email est déjà utilisé.'])->withInput();
+        }
+
+        $user = User::create([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'password' => $validatedData['password'], // Utilise automatiquement le mutateur pour hasher le mot de passe
             'phone' => $validatedData['phone'],
             'address' => $validatedData['address'],
         ]);
 
-        Log::info('User registered successfully: ' . $validatedData['email']);
+        Log::info('Utilisateur enregistré avec succès : ' . $user->email);
 
         return redirect()->route('login.form')
                          ->with('success', 'Inscription réussie ! Veuillez vous connecter avec votre nouvel identifiant.');
     }
 
-    // Gère la tentative de connexion de l'utilisateur
     public function login(Request $request)
     {
-        // Valider les entrées du formulaire
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'g-recaptcha-response' => 'required'  // Ajouter la validation reCAPTCHA
+            'g-recaptcha-response' => 'required'
         ]);
 
-        // Valider reCAPTCHA
         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->recaptchaSecret,
             'response' => $request->input('g-recaptcha-response'),
@@ -75,23 +78,31 @@ class UserController extends Controller
             return back()->withErrors(['g-recaptcha-response' => 'Erreur de reCAPTCHA. Veuillez réessayer.']);
         }
 
-        // Supprimer la clé 'g-recaptcha-response' des credentials
         $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
 
-        // Vérifier les informations d'identification utilisateur
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('profile', ['user_id' => Auth::id()])
-                             ->with('success', 'Connexion réussie ! Bienvenue sur votre page de profil.');
+        $user = User::where('email', $credentials['email'])->first();
+        if (!$user) {
+            Log::warning('Tentative de connexion avec un email inexistant : ' . $credentials['email']);
+            return back()->withErrors(['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'])->withInput();
         }
 
-        Log::warning('Failed login attempt for ' . $credentials['email']);
-        return back()->withErrors([
-            'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
-        ])->withInput($request->only('email'));
+        if (!Hash::check($credentials['password'], $user->password)) {
+            Log::warning('Mot de passe incorrect pour l\'email : ' . $credentials['email']);
+            return back()->withErrors(['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'])->withInput();
+        }
+
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            Log::info('Utilisateur connecté avec succès : ' . $user->email);
+            return redirect()->route('profile', ['user_id' => Auth::id()])
+                            ->with('success', 'Connexion réussie ! Bienvenue sur votre page de profil.');
+        }
+
+        Log::warning('Échec de la tentative de connexion pour l\'email : ' . $credentials['email']);
+        return back()->withErrors(['email' => 'Les informations fournies ne correspondent pas à nos enregistrements.'])->withInput();
     }
 
-    // Affiche le profil de l'utilisateur
     public function showProfile($user_id)
     {
         if (Auth::id() == $user_id) {
@@ -100,27 +111,40 @@ class UserController extends Controller
         return redirect('/login')->withErrors('Vous n\'êtes pas autorisé à voir ce profil.');
     }
 
-    // Met à jour les informations de profil de l'utilisateur
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request, $user_id)
     {
-        $user = Auth::user();  // Obtenez l'utilisateur actuellement connecté
-    
+        $user = Auth::user();
+
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->user_id . ',user_id',
             'phone' => 'required|string|max:255',
             'address' => 'required|string|max:255',
+            'current_password' => 'required|string',
+            'new_password' => 'nullable|string|min:8|confirmed',
         ]);
-    
-        $user->update($validatedData);
-    
-        // Assurez-vous de passer 'user_id' lors de la redirection
+
+        if (!Hash::check($validatedData['current_password'], $user->password)) {
+            return back()->withErrors(['current_password' => 'Le mot de passe actuel est incorrect.']);
+        }
+
+        $user->first_name = $validatedData['first_name'];
+        $user->last_name = $validatedData['last_name'];
+        $user->email = $validatedData['email'];
+        $user->phone = $validatedData['phone'];
+        $user->address = $validatedData['address'];
+
+        if (!empty($validatedData['new_password'])) {
+            $user->password = Hash::make($validatedData['new_password']);
+        }
+
+        $user->save();
+
         return redirect()->route('profile', ['user_id' => $user->user_id])
                          ->with('success', 'Votre profil a été mis à jour avec succès.');
     }
 
-    // Déconnecte l'utilisateur
     public function logout(Request $request)
     {
         Auth::logout();

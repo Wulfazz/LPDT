@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
 <head>
     @include('components.head')
 </head>
@@ -17,8 +15,17 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                <form method="POST" action="{{ route('profile.update', ['user_id' => $user->id]) }}">
+                <form method="POST" action="{{ route('profile.update', ['user_id' => $user->user_id]) }}">
                     @csrf
                     <div class="form-group">
                         <label for="first_name">Prénom :</label>
@@ -39,6 +46,20 @@
                     <div class="form-group">
                         <label for="address">Adresse :</label>
                         <input type="text" id="address" name="address" required value="{{ $user->address }}">
+                    </div>
+                    <div class="form-group">
+                    <p>Pour modifier vos informations, veuillez vérifier votre mot de passe.</p>
+                        <label for="current_password">Mot de passe actuel :</label>
+                        <input type="password" id="current_password" name="current_password" required>
+                    </div>
+                    <div class="form-group">
+                        <p>Si vous souhaitez changer de mot de passe : </p>
+                        <label for="new_password">Nouveau mot de passe :</label>
+                        <input type="password" id="new_password" name="new_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password_confirmation">Confirmer le nouveau mot de passe :</label>
+                        <input type="password" id="new_password_confirmation" name="new_password_confirmation">
                     </div>
                     <button type="submit" class="btn btn-primary">Mettre à jour</button>
                 </form>

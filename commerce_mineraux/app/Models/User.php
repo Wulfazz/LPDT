@@ -10,10 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $primaryKey = 'user_id'; // Assurez-vous que ceci est correct et sauvegardé
+    protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'phone', 'address'
+        'first_name', 'last_name', 'email', 'password', 'phone', 'address',
     ];
 
     protected $hidden = [

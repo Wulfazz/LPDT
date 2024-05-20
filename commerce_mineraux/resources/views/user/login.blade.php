@@ -23,12 +23,16 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label>Email :</label>
-                            <input type="email" name="email" required>
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label>Mot de passe :</label>
-                            <input type="password" name="password" required>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Se souvenir de moi</label>
                         </div>
                         <div class="g-recaptcha" data-sitekey="6LcO1d8pAAAAAIjQyroNckP1dbwf16dvLO1cNt8U"></div>
                         @if ($errors->has('g-recaptcha-response'))
