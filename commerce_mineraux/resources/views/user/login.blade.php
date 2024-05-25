@@ -1,3 +1,4 @@
+<!-- /resources/views/user/login.blade.php -->
 <head>
     @include('components.head')
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -10,15 +11,17 @@
             <div class="login-container">
                 <div class="login-form">
                     <h2>CONNEXION</h2>
-                    @if ($errors->has('email'))
-                    <div class="alert alert-danger">
-                        {{ $errors->first('email') }}
-                    </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
                     @endif
                     @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -29,10 +32,6 @@
                         <div class="form-group">
                             <label for="password">Mot de passe :</label>
                             <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="form-group remember-me">
-                            <input type="checkbox" id="remember" name="remember">
-                            <label for="remember">Se souvenir de moi</label>
                         </div>
                         <div class="g-recaptcha" data-sitekey="6LcO1d8pAAAAAIjQyroNckP1dbwf16dvLO1cNt8U"></div>
                         @if ($errors->has('g-recaptcha-response'))

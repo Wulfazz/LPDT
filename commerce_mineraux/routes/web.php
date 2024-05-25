@@ -1,11 +1,20 @@
 <?php
 
+// /routes/web.php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
+// Définir les pages valides pour les différentes sections
 $validPages = ['home', 'store', 'contact', 'story'];
 $validInfoTypes = ['terms', 'legal-notice'];
 $validShop = ['bracelet', 'minerals', 'pendant', 'stone'];
-$validUser = ['cart', 'login', 'profile']; // Utilisation de noms plus clairs pour les routes utilisateur
+$validUser = ['cart', 'login', 'profile'];
+
+// Routes pour les pages principales
+Route::get('/', function () {
+    return view('pages.home');
+})->name('home');
 
 // Routes pour les pages principales
 Route::get('/{page?}', function ($page = 'home') use ($validPages) {
@@ -13,7 +22,7 @@ Route::get('/{page?}', function ($page = 'home') use ($validPages) {
         return view('pages.' . $page);
     }
     return view('pages.default');
-})->where('page', implode('|', $validPages));
+})->where('page', implode('|', $validPages))->name('home');
 
 // Routes pour les pages d'information
 Route::get('/info/{type?}', function ($type = 'terms') use ($validInfoTypes) {
@@ -34,25 +43,15 @@ Route::get('/shop/{item?}', function ($item = 'default') use ($validShop) {
 // Routes pour les pages utilisateur
 Route::get('/user/{action?}', function ($action = 'profile') use ($validUser) {
     if (in_array($action, $validUser)) {
-        return view('user.' . $action); // Assurez-vous que les vues existent pour 'cart', 'login', 'profile'
+        return view('user.' . $action);
     }
-    return view('user.default'); // Fournir une vue par défaut pour les actions non valides
+    return view('user.default');
 })->where('action', implode('|', $validUser));
 
-
-
-
-use App\Http\Controllers\ContactController;
-
+// Route pour le formulaire de contact
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-
-
-
-
-
-use App\Http\Controllers\UserController;
-
+// Routes pour l'authentification et la gestion des utilisateurs
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register.form');
