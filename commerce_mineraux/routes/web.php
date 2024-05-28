@@ -1,9 +1,12 @@
 <?php
 
-// /routes/web.php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+
+// routes administration
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // Définir les pages valides pour les différentes sections
 $validPages = ['home', 'store', 'contact', 'story'];
@@ -59,3 +62,16 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('profile')->middleware('auth');
 Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Routes pour le panneau d'administration
+Route::group(['middleware' => ['auth', 'checkSeller']], function() {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+
+    Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+});

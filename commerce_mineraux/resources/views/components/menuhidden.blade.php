@@ -1,4 +1,3 @@
-<!-- /resources/views/components/menuhidden.blade.php -->
 <div class="menu-container">
     <div class="menu-hidden" id="mobileMenu">
         <a href="{{ route('home') }}">Accueil</a>
@@ -19,7 +18,12 @@
             <a href="{{ route('login.form') }}">Connexion</a>
             <a href="{{ route('register.form') }}">Inscription</a>
         @else
-            <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">Profil</a>
+            @if(Auth::check() && Auth::user()->user_id)
+                <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">Profil</a>
+                @if(Auth::user()->user_type === 'seller')
+                    <a href="{{ route('admin.dashboard') }}">Panneau Admin</a>
+                @endif
+            @endif
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Déconnexion
