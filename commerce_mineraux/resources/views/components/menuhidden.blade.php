@@ -18,11 +18,9 @@
             <a href="{{ route('login.form') }}">Connexion</a>
             <a href="{{ route('register.form') }}">Inscription</a>
         @else
-            @if(Auth::check() && Auth::user()->user_id)
-                <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">Profil</a>
-                @if(Auth::user()->user_type === 'seller')
-                    <a href="{{ route('admin.dashboard') }}">Panneau Admin</a>
-                @endif
+            <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">Profil</a>
+            @if(Auth::user()->user_type === 'seller')
+                <a href="{{ route('admin.dashboard') }}">Panneau Admin</a>
             @endif
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

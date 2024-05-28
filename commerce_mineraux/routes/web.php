@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
-
-// routes administration
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 // Définir les pages valides pour les différentes sections
 $validPages = ['home', 'store', 'contact', 'story'];
@@ -63,15 +61,14 @@ Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('
 Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Routes pour le panneau d'administration
-Route::group(['middleware' => ['auth', 'checkSeller']], function() {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard')->middleware('auth');
 
-    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-    Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+// Routes pour les produits
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index')->middleware('auth');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware('auth');
+Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store')->middleware('auth');
 
-    Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
-});
+// Routes pour les utilisateurs (Admin)
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index')->middleware('auth');
