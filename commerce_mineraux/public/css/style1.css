@@ -98,6 +98,7 @@ body {
     z-index: 101;
 }
 
+
 /* Logo centre */
 .logo-center {
     display: flex;
@@ -126,6 +127,7 @@ body {
     z-index: -1; /* S'assure que le demi-cercle ne passe pas au-dessus du logo */
 }
 
+
 /* Icônes à droite */
 .icons-right {
     display: flex;
@@ -145,6 +147,7 @@ body {
     height: 20px;
     filter: invert(100%) saturate(2);
 }
+
 
 
 /* Menu déroulant */
@@ -351,7 +354,6 @@ body {
 
 
 /* FOOTER */
-
 /* Format téléphone */
 .footer {
     background-image: url(../img/fougere.png); /* Ajoutez votre image de fond */
@@ -368,7 +370,6 @@ body {
     font-family: Arial, sans-serif;
     width: 100%;
 }
-
 
 .infos {
     display: flex;
@@ -498,7 +499,6 @@ body {
     .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
         font-size: 1.5rem;
     }
-
 }
 
 
@@ -506,7 +506,6 @@ body {
 
 
 /* HOME */
-
 /* Section intro */
 .intro {
     display: flex;
@@ -552,7 +551,6 @@ body {
         width: 50%; /* Taille fixe pour l'image sur grands écrans */
     }
 }
-
 
 
 /* Section catalogue */
@@ -623,7 +621,6 @@ body {
 }
 
 @media (min-width: 600px) {
-
     .cat-container {
         justify-content: center; /* Centre les .cat dans le conteneur */
     }
@@ -634,7 +631,6 @@ body {
 }
 
 @media (min-width: 1024px) {
-
     .catalog {
         justify-content: space-evenly; /* Répartit l'espace de manière égale entre les éléments */
     }
@@ -647,7 +643,6 @@ body {
         font-size: 2em;
     }
 }
-
 
 
 /* Section verifs et paiements */
@@ -872,7 +867,8 @@ body {
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    width: 70%;
+    width: 100%;
+    max-width: 500px; /* Default max-width for mobile */
 }
 
 /* Styling for the form within the container */
@@ -894,12 +890,116 @@ body {
     font-size: 0.8em;
 }
 
+/* Style for the form group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the checkbox and label */
+.form-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.form-group .remember-me {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Style for the reCAPTCHA */
+.g-recaptcha {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style for the alert messages */
+.alert {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+/* Style for the register link */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #002989;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media queries for tablet (600px) */
+@media (min-width: 600px) {
+    .login-container {
+        max-width: 80%; /* Adjust width for tablet */
+        padding: 50px;
+    }
+    
+    .login-form h2 {
+        font-size: 26px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        font-size: 16px;
+    }
+}
+
+/* Media queries for desktop (1024px) */
+@media (min-width: 1024px) {
+    .login-container {
+        max-width: 60%; /* Adjust width for desktop */
+        padding: 60px;
+    }
+    
+    .login-form h2 {
+        font-size: 28px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        font-size: 18px;
+    }
+}
+
 
 
 
 
 /* REGISTER */
-.signup-container {
+.register-container {
     display: flex;
     justify-content: center;
     margin: 50px auto;
@@ -907,24 +1007,520 @@ body {
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    width: 70%;
+    width: 100%;
+    max-width: 500px; /* Default max-width for mobile */
 }
 
 /* Styling for the form within the container */
-.signup-form {
+.register-form {
     width: 100%;
     padding: 10px;
     background-color: #ffffff;
     margin-top: 5px;
 }
 
-.signup-form h2 {
+.register-form h2 {
     text-align: center;
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-.signup-container p {
+.register-container p {
     font-size: 0.8em;
 }
+
+/* Style for the form group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the alert messages */
+.alert {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+/* Style for the login link */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #002989;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media queries for tablet (600px) */
+@media (min-width: 600px) {
+    .register-container {
+        max-width: 80%; /* Adjust width for tablet */
+        padding: 50px;
+    }
+    
+    .register-form h2 {
+        font-size: 26px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+/* Media queries for desktop (1024px) */
+@media (min-width: 1024px) {
+    .register-container {
+        max-width: 60%; /* Adjust width for desktop */
+        padding: 60px;
+    }
+    
+    .register-form h2 {
+        font-size: 28px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* PROFILE */
+/* Main container for the profile form, centered */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px; /* Default max-width for mobile */
+}
+
+/* Styling for the form within the container */
+.profile-form {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-top: 5px;
+}
+
+.profile-form h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.profile-container p {
+    font-size: 0.8em;
+}
+
+/* Style for the form group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the alert messages */
+.alert {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+/* Media queries for tablet (600px) */
+@media (min-width: 600px) {
+    .profile-container {
+        max-width: 80%; /* Adjust width for tablet */
+        padding: 50px;
+    }
+    
+    .profile-form h2 {
+        font-size: 26px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+/* Media queries for desktop (1024px) */
+@media (min-width: 1024px) {
+    .profile-container {
+        max-width: 60%; /* Adjust width for desktop */
+        padding: 60px;
+    }
+    
+    .profile-form h2 {
+        font-size: 28px;
+    }
+    
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* STORY PAGE */
+/* Container for the story section */
+.story-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Styling for the content within the container */
+.story-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.story-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.story-text h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.story-text p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Media queries for tablet (600px) */
+@media (min-width: 600px) {
+    .story-container {
+        max-width: 80%; /* Adjust width for tablet */
+        padding: 50px;
+    }
+
+    .story-text h2 {
+        font-size: 32px; /* Increase font size for tablet */
+    }
+
+    .story-text p {
+        font-size: 18px; /* Increase font size for tablet */
+    }
+}
+
+/* Media queries for desktop (1024px) */
+@media (min-width: 1024px) {
+    .story-container {
+        max-width: 60%; /* Adjust width for desktop */
+        padding: 60px;
+    }
+
+    .story-content {
+        flex-direction: row; /* Align content in row for desktop */
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .story-image {
+        max-width: 400px; /* Adjust image size for desktop */
+        margin-right: 40px; /* Add margin to the right of the image */
+        margin-bottom: 0;
+    }
+
+    .story-text h2 {
+        font-size: 36px; /* Increase font size for desktop */
+    }
+
+    .story-text p {
+        font-size: 20px; /* Increase font size for desktop */
+    }
+}
+
+
+
+
+
+/* ADMIN DASHBOARD */
+
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 800px; /* Adjusted width for desktop */
+}
+
+.admin-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.admin-option {
+    display: block;
+    width: 100%;
+    max-width: 600px; /* Adjusted width for desktop */
+    background-color: rgba(218, 188, 129, 0.7);; /* Light blue-grey background */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgba(218, 168, 69, 0.7);; /* Slightly darker blue-grey on hover */
+}
+
+.admin-option h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Dark blue text */
+}
+
+.admin-option p {
+    font-size: 16px;
+    color: #333; /* Grey text */
+}
+
+/* Responsive design for tablet */
+@media (min-width: 600px) {
+    .admin-dashboard-container {
+        max-width: 90%; /* Adjusted width for tablet */
+        padding: 50px;
+    }
+    
+    .admin-option h2 {
+        font-size: 26px;
+    }
+    
+    .admin-option p {
+        font-size: 18px;
+    }
+}
+
+/* Responsive design for desktop */
+@media (min-width: 1024px) {
+    .admin-dashboard-container {
+        max-width: 70%; /* Adjusted width for desktop */
+        padding: 60px;
+    }
+    
+    .admin-options {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .admin-option {
+        flex: 1;
+        margin: 20px;
+        max-width: 45%; /* Adjusted width for desktop */
+    }
+    
+    .admin-option h2 {
+        font-size: 28px;
+    }
+    
+    .admin-option p {
+        font-size: 20px;
+    }
+}
+
+
+
+
+
+/* USERS ADMIN */
+
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 800px;
+}
+
+.admin-dashboard-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.admin-options {
+    width: 100%;
+}
+
+.admin-options table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-options th, .admin-options td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-options th {
+    background-color: rgba(218, 188, 129, 0.7);
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-options tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.admin-options tr:hover {
+    background-color: #ddd;
+}
+
+.admin-options .btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-options .btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+/* Style for success message */
+.alert-success {
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Responsive design for tablet */
+@media (min-width: 600px) {
+    .admin-dashboard-container {
+        max-width: 90%; /* Adjusted width for tablet */
+        padding: 50px;
+    }
+    
+    .admin-options th, .admin-options td {
+        font-size: 16px;
+    }
+}
+
+/* Responsive design for desktop */
+@media (min-width: 1024px) {
+    .admin-dashboard-container {
+        max-width: 70%; /* Adjusted width for desktop */
+        padding: 60px;
+    }
+    
+    .admin-options th, .admin-options td {
+        font-size: 18px;
+    }
+}
+
+
+
+
+

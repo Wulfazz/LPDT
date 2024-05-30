@@ -152,4 +152,11 @@ class UserController extends Controller
 
         return redirect('/login')->with('success', 'Vous avez été déconnecté.');
     }
+
+    // Liste des utilisateurs
+    public function index()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
 }

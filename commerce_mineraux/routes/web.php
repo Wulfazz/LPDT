@@ -61,14 +61,15 @@ Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('
 Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
+// Routes pour le tableau de bord admin
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->name('admin.dashboard')->middleware('auth');
+})->name('admin.dashboard');
 
-// Routes pour les produits
-Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index')->middleware('auth');
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware('auth');
-Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store')->middleware('auth');
+// Routes pour la gestion des utilisateurs
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+Route::delete('/admin/users/{user_id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 
-// Routes pour les utilisateurs (Admin)
-Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index')->middleware('auth');
+// Routes pour la gestion des produits (même si vous ne les utilisez pas encore, définissez-les pour éviter les erreurs)
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
+Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');

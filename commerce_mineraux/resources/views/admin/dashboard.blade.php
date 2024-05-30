@@ -26,3 +26,4 @@
     @include('components.scripts')
 </body>
 </html>
+

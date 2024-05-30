@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,21 +14,11 @@ class ProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
-    public function create()
+    public function destroy($id)
     {
-        return view('admin.products.create');
-    }
+        $product = Product::findOrFail($id);
+        $product->delete();
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-        ]);
-
-        Product::create($validatedData);
-
-        return redirect()->route('admin.products.index')->with('success', 'Produit ajouté avec succès');
+        return redirect()->route('admin.products.index')->with('success', 'Produit supprimé avec succès.');
     }
 }
