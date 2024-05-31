@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\CategoryController;
 
 // Définir les pages valides pour les différentes sections
 $validPages = ['home', 'store', 'contact', 'story'];
@@ -70,6 +71,12 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
 Route::delete('/admin/users/{user_id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 
-// Routes pour la gestion des produits (même si vous ne les utilisez pas encore, définissez-les pour éviter les erreurs)
+// Routes pour les produits
 Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+
+// Routes pour les catégories
+Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');

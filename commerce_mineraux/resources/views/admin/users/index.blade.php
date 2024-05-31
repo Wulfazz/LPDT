@@ -1,6 +1,7 @@
 <head>
     @include('components.head')
     <title>Gérer les utilisateurs</title>
+    <link rel="stylesheet" href="{{ asset('css/admin-users.css') }}">
 </head>
 <body>
     @include('components.menuhidden')
@@ -14,32 +15,34 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($users as $user)
+                <div class="admin-options">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $user->user_id }}</td>
-                                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    <form method="POST" action="{{ route('admin.users.destroy', $user->user_id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn-delete">Supprimer</button>
-                                    </form>
-                                </td>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->user_id }}</td>
+                                    <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        <form method="POST" action="{{ route('admin.users.destroy', $user->user_id) }}" class="inline-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-delete">Supprimer</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
         <footer>@include('components.footer')</footer>
