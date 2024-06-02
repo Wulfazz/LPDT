@@ -1,7 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     @include('components.head')
     <title>Ajouter un produit</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-products.css') }}">
 </head>
 <body>
     @include('components.menuhidden')
@@ -40,7 +41,15 @@
                         <input type="number" id="quantity_available" name="quantity_available" required>
                     </div>
                     <div class="form-group">
-                        <label for="categories">Catégories :</label>
+                        <label for="main_category_id">Catégorie principale :</label>
+                        <select id="main_category_id" name="main_category_id" required>
+                            @foreach($main_categories as $category)
+                                <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="categories">Autres catégories :</label>
                         <select id="categories" name="categories[]" multiple required>
                             @foreach($categories as $category)
                                 <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
@@ -58,8 +67,9 @@
                     <form method="POST" action="{{ route('admin.categories.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="new_category">Nouvelle catégorie :</label>
-                            <input type="text" id="new_category" name="new_category" required>
+                            <label for="category_name">Nouvelle catégorie :</label>
+                            <input type="text" id="category_name" name="category_name" required>
+                            <input type="hidden" id="type" name="type" value="other">
                         </div>
                         <div class="button-container">
                             <button type="submit" class="btn-submit">Ajouter catégorie</button>
@@ -74,6 +84,12 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn-delete">Supprimer</button>
+                                </form>
+                                <form method="POST" action="{{ route('admin.categories.update', $category->category_id) }}" style="display:inline;">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="text" name="category_name" value="{{ $category->category_name }}" required>
+                                    <button type="submit" class="btn-submit">Modifier</button>
                                 </form>
                             </li>
                         @endforeach

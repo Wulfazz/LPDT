@@ -1,7 +1,6 @@
 <head>
     @include('components.head')
     <title>Gérer les produits</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-products.css') }}">
 </head>
 <body>
     @include('components.menuhidden')
@@ -16,7 +15,7 @@
                     </div>
                 @endif
                 <div class="admin-options">
-                    <a href="{{ route('admin.products.create') }}" class="btn-add">Ajouter un produit</a>
+                    <a href="{{ route('admin.products.create') }}" class="btn btn-add">Ajouter un produit</a>
                     <table>
                         <thead>
                             <tr>
@@ -26,6 +25,7 @@
                                 <th>Détails</th>
                                 <th>Image</th>
                                 <th>Quantité</th>
+                                <th>Catégorie principale</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,14 +36,15 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->details }}</td>
-                                    <td><img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image"></td>
+                                    <td><img src="{{ $product->image_url }}" class="product-image" alt="{{ $product->name }}"></td>
                                     <td>{{ $product->quantity_available }}</td>
+                                    <td>{{ $product->mainCategory->category_name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.products.edit', $product->product_id) }}" class="btn-edit">Modifier</a>
+                                        <a href="{{ route('admin.products.edit', $product->product_id) }}" class="btn btn-edit">Modifier</a>
                                         <form method="POST" action="{{ route('admin.products.destroy', $product->product_id) }}" class="inline-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn-delete">Supprimer</button>
+                                            <button type="submit" class="btn btn-delete">Supprimer</button>
                                         </form>
                                     </td>
                                 </tr>

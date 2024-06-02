@@ -12,12 +12,18 @@ class Product extends Model
     protected $primaryKey = 'product_id';
 
     protected $fillable = [
-        'name', 'price', 'details', 'image_url', 'quantity_available'
+        'name',
+        'price',
+        'details',
+        'image_url',
+        'quantity_available',
+        'main_category_id',
     ];
 
-    protected $casts = [
-        'details' => 'array',
-    ];
+    public function mainCategory()
+    {
+        return $this->belongsTo(Category::class, 'main_category_id', 'category_id');
+    }
 
     public function categories()
     {

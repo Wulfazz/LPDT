@@ -1,4 +1,5 @@
 /* PARAMETRE PAGE */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +8,12 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-image: url(../img/Background_image_with_0.3_opacity.png);
     color: #444;
     line-height: 1.6;
-    width: 100%; /* Modifié de 100vw à 100% pour éviter les problèmes de débordement liés à la barre de défilement */
+    width: 100%; 
     height: 100vh;
-    overflow-x: hidden; /* Ajouté pour masquer les débordements horizontaux */
+    overflow-x: hidden; 
 }
 
 
@@ -20,6 +21,7 @@ body {
 
 
 /* HEADER */
+
 .navbar {
     display: flex;
     justify-content: center;
@@ -38,14 +40,16 @@ body {
     width: 100%;
 }
 
+
 /* Positionnement du bouton burger */
+
 #burgerMenu {
     background: none;
     border: none;
     color: #444;
     font-size: 1.5em;
     padding: 10px;
-    z-index: 100; /* Au-dessus des autres éléments */
+    z-index: 100; 
 }
 
 .menu-container {
@@ -53,31 +57,33 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 100; /* Assurez-vous que le conteneur est bien au-dessus des autres éléments */
+    z-index: 100; 
 }
 
+
 /* Affichage du menu mobile */
+
 .menu-hidden {
-    width: 200px; /* Ou toute autre largeur souhaitée pour votre menu */
+    width: 200px;
     height: 100%;
     background-color: rgba(218, 188, 129, 0.7);
     overflow-y: auto;
-    position: relative; /* Pour le positionnement du menu à l'intérieur du conteneur */
-    display: none; /* Commence caché */
+    position: relative;
+    display: none;
 }
 
 .menu-hidden a {
-    color: rgb(0, 0, 0); /* Couleur du texte */
+    color: rgb(0, 0, 0); 
     padding: 15px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.2s ease-in-out; /* Transition douce pour l'effet de survol */
+    transition: background-color 0.2s ease-in-out; 
 }
 
 .menu-hidden a:hover, .menu-hidden a:focus {
-    background-color: #c5a971; /* Une teinte plus foncée pour l'effet de survol */
-    color: #ffffff; /* Change la couleur du texte pour assurer un contraste */
-    cursor: pointer; /* Change le curseur pour indiquer un lien cliquable */
+    background-color: #c5a971; 
+    color: #ffffff; 
+    cursor: pointer; 
 }
 
 /* Lorsque le menu est ouvert, affichez-le */
@@ -86,12 +92,15 @@ body {
     background-color: #e5cb98;
 }
 
-/* Pour voir la croix du menuHidden */
+
+/* Croix du menuHidden */
+
 #closeMenu {
-    display: none; /* Cache la croix initialement */
+    /* Cache la croix */
+    display: none; 
     position: absolute;
     top: 10px;
-    right: -40px; /* Ajustez selon le placement souhaité par rapport au menu */
+    right: -40px; 
     font-size: 30px;
     color: rgb(0, 0, 0);
     cursor: pointer;
@@ -100,35 +109,38 @@ body {
 
 
 /* Logo centre */
+
 .logo-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Important pour positionner correctement le pseudo-élément */
-    margin-right: -15%; /* Ajustez selon votre mise en page */
+    position: relative; 
+    margin-right: -15%; 
     margin-top: -5%;
 }
 
 .logo-center img {
     width: 70px;
     height: 50px;
-    border-radius: 50%; /* Rend l'image du logo circulaire */
+    /* Rend l'image du logo circulaire */
+    border-radius: 50%; 
 }
 
 .logo-center::after {
-    content: ""; /* Nécessaire pour que le pseudo-élément s'affiche */
+    content: ""; 
     position: absolute;
     margin-top: -70%;
-    width: 110px; /* La largeur du demi-cercle */
-    height: 110px; /* La moitié de la hauteur totale souhaitée */
-    background-color: white; /* Couleur du demi-cercle */
-    border-bottom-left-radius: 50%; /* Arrondit le côté gauche du demi-cercle */
-    border-bottom-right-radius: 50%; /* Arrondit le côté droit du demi-cercle */
-    z-index: -1; /* S'assure que le demi-cercle ne passe pas au-dessus du logo */
+    width: 110px; 
+    height: 110px; 
+    background-color: white; 
+    border-bottom-left-radius: 50%; 
+    border-bottom-right-radius: 50%; 
+    z-index: -1; 
 }
 
 
 /* Icônes à droite */
+
 .icons-right {
     display: flex;
     justify-content: flex-end;
@@ -151,16 +163,17 @@ body {
 
 
 /* Menu déroulant */
-/* Style for dropdown button */
+
+/* Dropdown button */
 .dropbtn {
     background: none;
-    color: #444; /* Adjust the color to match your design */
+    color: #444; 
     padding: 15px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     outline: none;
-    width: 100%; /* Make the button expand the full width */
+    width: 100%; 
     text-align: left;
 }
 
@@ -170,17 +183,17 @@ body {
     display: block;
 }
 
-/* Dropdown content (hidden by default) */
+/* Elements du dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9; /* Light grey background */
-    min-width: 160px; /* Set a min-width if necessary */
+    background-color: #f9f9f9; 
+    min-width: 160px; 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-/* Links inside the dropdown */
+/* liens du dropdown */
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -188,22 +201,15 @@ body {
     display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Show the dropdown menu on click */
+/* dropdown au clique */
 .dropdown .dropbtn:focus + .dropdown-content {
     display: block;
 }
 
 
 @media (min-width: 600px) {
-    /* Styles pour tablettes et desktops */
 
     .navbar-mobile {
         height: 50px;
@@ -215,8 +221,9 @@ body {
     }
 
     /* Affichage du menu mobile */
+
     .menu-hidden {
-        width: 300px; /* Ou toute autre largeur souhaitée pour votre menu */
+        width: 300px; 
         height: 100%;
     }
     
@@ -225,8 +232,9 @@ body {
     }
 
     /* Logo centré */
+
     .logo-center {
-        margin-right: 0px; /* Ajustez selon votre mise en page */
+        margin-right: 0px; 
         margin-top: -1%;
         position: absolute;
         left: 50%;
@@ -240,7 +248,8 @@ body {
 
     .logo-center::after {
         margin-top: -60%;
-        width: 130px; /* La largeur du demi-cercle */
+        /* La largeur du demi-cercle */
+        width: 130px; 
     }
 
     /* Icônes à droite */
@@ -275,7 +284,7 @@ body {
     }
 
     .icons-right, .logo-center {
-        position: static; /* Positionne les éléments sans contraintes absolues */
+        position: static; 
     }
 
     .icons-right {
@@ -285,11 +294,11 @@ body {
     }
 
     .logo-center {
-        position: absolute; /* Position absolue permet un contrôle précis de la position */
-        left: 50%; /* Positionne le logo à 10% du bord gauche, ajustez selon les besoins */
+        position: absolute; 
+        left: 50%; 
         top: 30%;
-        transform: translateY(-50%); /* Ajuste parfaitement le logo au milieu verticalement */
-        margin: 0; /* Annule toute marge externe appliquée précédemment */
+        transform: translateY(-50%); 
+        margin: 0; 
     }
 
     .logo-center img {
@@ -298,47 +307,46 @@ body {
     }
 
     .logo-center::after {
-        width: 150px; /* La largeur du demi-cercle */
-        height: 140px; /* La moitié de la hauteur totale souhaitée */
+        width: 150px; 
+        height: 140px; 
     }
 
     #burgerMenu {
-        display: none; /* Cache le menu burger sur les grands écrans */
+        display: none; 
     }
 
     #closeMenu {
-        display: none; /* Le bouton de fermeture n'est pas nécessaire sur desktop */
+        display: none; 
     }
 
     .menu-container {
         position: fixed;
         top: 12%;
-        left: 8%; /* Correction pour alignement horizontal */
-        right: 8%; /* Maintien d'un espacement symétrique des deux côtés */
+        left: 8%;
+        right: 8%; 
         height: 40px;
-        width: auto; /* Largeur automatique pour s'adapter au contenu */
-        z-index: 1000; /* S'assure de la supériorité dans la pile de contexte */
+        width: auto; 
+        z-index: 1000; 
     }
 
     .menu-hidden {
-        display: flex; /* Utilise Flexbox pour la mise en page */
-        justify-content: center; /* Centre les éléments horizontalement dans le conteneur */
-        width: 100%; /* Utilise toute la largeur disponible */ 
-        z-index: 1000; /* S'assure que le menu reste au-dessus des autres contenus */
+        display: flex;
+        justify-content: center;
+        width: 100%; 
+        z-index: 1000; 
         background-color: #00000000;
     }
 
-    /* Assure que chaque lien dans le menu a suffisamment d'espace et est facile à cliquer */
     .menu-hidden a {
-        color: #444(0, 0, 0); /* Couleur du texte */
-        padding: 0px 3%; /* Padding pour augmenter la zone cliquable */
-        text-decoration: none; /* Supprime le soulignement des liens */
-        font-size: 1.5em; /* Augmente la taille du texte pour une meilleure lisibilité */
+        color: #444(0, 0, 0); 
+        padding: 0px 3%;
+        text-decoration: none; 
+        font-size: 1.5em;
 
     }
 
     .menu-hidden a:hover, .menu-hidden a:focus {
-        color: #ffffff; /* Couleur du texte au survol ou au focus */
+        color: #ffffff; 
     }
 
 }
@@ -346,7 +354,8 @@ body {
 .blurred {
     filter: blur(10px);
     opacity: 0.8;
-    pointer-events: none; /* Empêche les interactions avec les éléments flous */
+    /* Empêche les interactions avec les éléments flous */
+    pointer-events: none; 
 }
 
 
@@ -354,15 +363,15 @@ body {
 
 
 /* FOOTER */
-/* Format téléphone */
+
 .footer {
-    background-image: url(../img/fougere.png); /* Ajoutez votre image de fond */
-    background-size: cover; /* Assure que l'image de fond couvre entièrement le footer */
-    background-position: center; /* Centre l'image de fond */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
-    background-color: rgba(218, 188, 129, 0.7); /* Couleur de fond semi-transparente */
-    background-blend-mode: overlay; /* Mode de fusion pour combiner l'image et la couleur */
-    color: rgb(0, 0, 0); /* Couleur du texte pour une bonne visibilité sur fond foncé */
+    background-image: url(../img/fougere.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(218, 188, 129, 0.7);
+    background-blend-mode: overlay;
+    color: rgb(0, 0, 0);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -391,7 +400,7 @@ body {
 
 .footer a {
     text-decoration: none;
-    color: #444; /* Assure que les liens sont noirs */
+    color: #444;
 }
 
 .footer-section h4, .footer-section ul, .footer-section ul li {
@@ -401,7 +410,7 @@ body {
 .footer-logo {
     width: 100%;
     margin-top: 50%;
-    justify-content: center; /* Centrage du logo */
+    justify-content: center;
 }
 
 .footer-logo img {
@@ -411,9 +420,9 @@ body {
 }
 
 .footer .icon {
-    width: 20px;  /* Taille spécifique pour les icônes */
-    height: 20px; /* Assure que les icônes sont carrées */
-    margin-right: 5px; /* Espacement à droite pour séparer l'icône du texte */
+    width: 20px;
+    height: 20px;
+    margin-right: 5px; 
 }
 
 #copyrights {
@@ -424,7 +433,6 @@ body {
     order: 3;
 }
 
-/* Format tablette */
 @media (min-width: 600px) {
     .footer {
         flex-direction: row;
@@ -447,11 +455,11 @@ body {
     .footer-logo {
         flex: 30%;
         justify-content: right;
-        margin-top: 0; /* Ajustement de la marge */
+        margin-top: 0; 
     }
 
     .footer-logo img {
-        width: 100px; /* Logo plus grand pour tablette et ordinateur */
+        width: 100px;
         height: 100px;
     }
 
@@ -460,9 +468,9 @@ body {
     }
 
     .footer .icon {
-        width: 30px;  /* Taille spécifique pour les icônes */
-        height: 30px; /* Assure que les icônes sont carrées */
-        margin-right: 5px; /* Espacement à droite pour séparer l'icône du texte */
+        width: 30px;  
+        height: 30px; 
+        margin-right: 5px; 
     }
 
     #copyrights {
@@ -474,14 +482,13 @@ body {
     }
 }
 
-/* Format ordinateur */
 @media (min-width: 1024px) {
     .footer {
         padding: 40px 60px;
     }
 
     .footer-logo img {
-        width: 130px; /* Logo plus grand pour tablette et ordinateur */
+        width: 130px;
         height: 130px;
     }
 
@@ -491,9 +498,9 @@ body {
     }
 
     .footer .icon {
-        width: 40px;  /* Taille spécifique pour les icônes */
-        height: 40px; /* Assure que les icônes sont carrées */
-        margin-right: 5px; /* Espacement à droite pour séparer l'icône du texte */
+        width: 40px;
+        height: 40px; 
+        margin-right: 5px;
     }
 
     .footer a, .footer-section h4, .footer-section ul, .footer-section ul li {
@@ -506,7 +513,9 @@ body {
 
 
 /* HOME */
+
 /* Section intro */
+
 .intro {
     display: flex;
     flex-direction: column;
@@ -517,126 +526,125 @@ body {
 }
 
 .intro img {
-    max-width: 100%; /* Assure que l'image ne dépasse pas sa container */
-    height: auto; /* Garde le ratio de l'image */
+    max-width: 100%;
+    height: auto; 
 }
 
 .intro p {
-    font-size: 1.1em; /* Taille de texte adaptée */
-    padding: 5px; /* Espacement autour du texte */
-    max-width: 95%; /* Maximise la largeur du texte sans qu'il ne devienne trop large */
-    margin-top: 20px; /* Espacement entre l'image et le texte */
+    font-size: 1.1em;
+    padding: 5px; 
+    max-width: 95%; 
+    margin-top: 20px; 
 }
 
-/* Responsive design pour les tablettes */
 @media (min-width: 600px) {
     .intro {
-        justify-content: space-around; /* Distribue l'espace autour des éléments */
+        justify-content: space-around; 
         padding: 40px;
     }
 
     .intro p {
-        max-width: 95%; /* Augmente la largeur du texte pour utiliser plus d'espace disponible */
+        max-width: 95%; 
         font-size: 1.8em;
     }
 }
 
-/* Responsive design pour les écrans de bureau */
 @media (min-width: 1024px) {
     .intro {
         padding: 60px;
     }
 
     .intro img {
-        width: 50%; /* Taille fixe pour l'image sur grands écrans */
+        width: 50%; 
     }
 }
 
 
 /* Section catalogue */
+
 .catalog {
-    background-color: rgba(218, 188, 129, 0.7); /* Couleur de fond de la section */
+    background-color: rgba(218, 188, 129, 0.7);
     padding: 20px;
-    text-align: center; /* Centre le texte et le contenu de manière horizontale */
-    display: flex; /* Utilise Flexbox pour le layout de la section */
-    flex-direction: column; /* Organise le contenu en colonne pour le titre et la grille */
-    align-items: center; /* Centre les éléments verticalement */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .catalog h2 {
-    margin-bottom: 20px; /* Espace entre le titre et la grille */
+    margin-bottom: 20px; 
 }
 
 .cat-container {
-    display: flex; /* Utilise Flexbox pour la disposition des éléments */
-    flex-wrap: wrap; /* Permet le passage à la ligne des éléments .cat */
-    justify-content: space-around; /* Répartit uniformément avec de l'espace autour */
-    width: 100%; /* Utilise toute la largeur disponible */
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    width: 100%; 
 }
 
 .cat {
-    margin: 10px; /* Espace autour de chaque .cat */
-    flex-basis: 100%; /* Base pour le téléphone, un élément par ligne */
-    text-align: center; /* Centre le contenu de .cat */
+    margin: 10px;
+    flex-basis: 100%; 
+    text-align: center; 
 }
 
 .cat img {
-    width: 150px; /* Taille fixe pour les images */
-    height: 150px; /* Hauteur égale à la largeur pour un aspect rond */
-    border-radius: 50%; /* Rend l'image ronde */
-    margin-bottom: 10px; /* Espace entre l'image et le bouton */
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    margin-bottom: 10px; 
 }
 
 .cat button {
-    background-color: #708090; /* Couleur gris ardoise clair pour le fond du bouton */
-    border: none; /* Pas de bordure pour un look plus moderne */
-    color: white; /* Texte en blanc pour contraste élevé */
+    background-color: #708090;
+    border: none; 
+    color: white; 
     padding: 10px 20px;
-    cursor: pointer; /* Indique que le bouton est cliquable */
-    width: 65%; /* Utilise la largeur complète du conteneur .cat */
-    text-transform: uppercase; /* Texte en majuscules pour un aspect plus formel */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre portée pour un effet de profondeur */
-    transition: all 0.3s ease; /* Transition douce pour les interactions */
+    cursor: pointer; 
+    width: 65%; 
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transition: all 0.3s ease; 
     border-radius: 6px;
     font-size: 0.9em;
 }
 
 .cat button:hover {
-    background-color: #56768C; /* Assombrir le bouton au survol pour un feedback visuel */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre portée plus prononcée au survol */
+    background-color: #56768C; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .cat p {
-    margin: 0; /* Enlève la marge par défaut du paragraphe */
+    margin: 0; 
 }
 
 .catalog a:link, .catalog a:visited {
     text-decoration: none;
-    color: #ffffff; /* Exemple de couleur : gris ardoise clair */
+    color: #ffffff; 
 }
 
 .catalog a:hover, .catalog a:active {
     text-decoration: none;
-    color: #ffffff; /* Exemple de couleur plus foncée au survol */
+    color: #ffffff; 
 }
 
 @media (min-width: 600px) {
     .cat-container {
-        justify-content: center; /* Centre les .cat dans le conteneur */
+        justify-content: center; 
     }
     
     .cat {
-        flex-basis: calc(48% - 20px); /* Deux éléments par ligne, moins les marges */
+        flex-basis: calc(48% - 20px); 
     }
 }
 
 @media (min-width: 1024px) {
     .catalog {
-        justify-content: space-evenly; /* Répartit l'espace de manière égale entre les éléments */
+        justify-content: space-evenly; 
     }
 
     .cat {
-        flex-basis: calc(25% - 20px); /* Quatre éléments par ligne, moins la valeur du gap */
+        flex-basis: calc(25% - 20px); 
     }
 
     .catalog h2 {
@@ -646,63 +654,62 @@ body {
 
 
 /* Section verifs et paiements */
+
 .icons {
     padding: 20px;
 }
 
 .verifs, .payments {
     display: flex;
-    justify-content: space-around; /* Répartit l'espace de manière égale entre les éléments */
-    align-items: center; /* Centre les éléments verticalement */
-    margin-Top: 10%; /* Espacement entre 'verifs' et 'payments' */
+    justify-content: space-around;
+    align-items: center; 
+    margin-Top: 10%; 
     margin-bottom: 10%;
 }
 
 .verifs div, .payments div {
-    flex: 1; /* Donne à chaque div une part égale de l'espace disponible */
-    text-align: center; /* Centre le texte à l'intérieur de chaque div */
+    flex: 1; 
+    text-align: center; 
 }
 
 .verifs img, .payments img {
-    width: 80px; /* Taille standardisée pour toutes les images */
-    height: 80px; /* Hauteur égale à la largeur pour maintenir l'aspect ratio */
-    margin-bottom: 10px; /* Espacement entre l'image et le texte en dessous */
+    width: 80px; 
+    height: 80px; 
+    margin-bottom: 10px; 
 }
 
 .verifs p, .payments p {
-    font-size: 0.8em; /* Taille de police appropriée pour la lisibilité */
-    margin: 0px; /* Supprime les marges par défaut */
+    font-size: 0.8em; 
+    margin: 0px; 
 }
 
-/* Media Query pour les tablettes (au moins 600px) */
 @media (min-width: 600px) {
     .verifs div, .payments div {
-        flex: 1 1 48%; /* Deux éléments par ligne sur tablettes */
+        flex: 1 1 48%; 
     }
 
     .verifs img, .payments img {
-        width: 100px; /* Taille ajustée pour les images */
+        width: 100px; 
         height: 100px;
     }
 
     .verifs p, .payments p {
-        font-size: 1em; /* Taille de police appropriée pour la lisibilité */
+        font-size: 1em; 
     }
 }
 
-/* Media Query pour les ordinateurs (au moins 1024px) */
 @media (min-width: 1024px) {
     .verifs div, .payments div {
-        flex: 1 1 32%; /* Trois éléments par ligne sur les écrans larges */
+        flex: 1 1 32%; 
     }
 
     .verifs img, .payments img {
-        width: 120px; /* Taille plus grande pour les images */
+        width: 120px; 
         height: 120px;
     }
 
     .verifs p, .payments p {
-        font-size: 1.3em; /* Police plus grande pour une meilleure lisibilité */
+        font-size: 1.3em;
     }
 }
 
@@ -711,6 +718,7 @@ body {
 
 
 /* TERMS */
+
 .article {
     background-color: #ffffff;
     padding: 10%;
@@ -721,25 +729,25 @@ body {
 }
 
 .article h2 {
-    color: #0056b3; /* Bleu plus foncé pour le titre h2 */
-    text-align: center; /* Centrage du titre h2 */
-    margin-bottom: 20px; /* Plus de marge en dessous du titre h2 */
+    color: #0056b3; 
+    text-align: center; 
+    margin-bottom: 20px; 
 }
 
 .article h3 {
-    color: #007acc; /* Bleu légèrement différent pour le titre h3 */
+    color: #007acc; 
 }
 
 .article p {
     font-size: 16px;
-    color: #444; /* Teinte plus foncée de gris pour le paragraphe */
-    margin-bottom: 20px; /* Plus de marge en dessous des paragraphes */
+    color: #444; 
+    margin-bottom: 20px; 
 }
 
 .article h3, .article h4 {
-    color: #007acc; /* Bleu légèrement différent pour le titre h3 et h4 */
-    margin-top: 15px; /* Ajout d'espace au-dessus des titres h3 et h4 */
-    margin-bottom: 10px; /* Ajout d'espace en dessous des titres h3 et h4 */
+    color: #007acc;
+    margin-top: 15px; 
+    margin-bottom: 10px; 
 }
 
 @media (min-width: 600px) {
@@ -766,15 +774,15 @@ body {
 }
 
 .legal h2 {
-    color: #0056b3; /* Bleu plus foncé pour le titre h2 */
-    text-align: center; /* Centrage du titre h2 */
-    margin-bottom: 20px; /* Plus de marge en dessous du titre h2 */
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .legal p {
     font-size: 16px;
-    color: #444; /* Teinte plus foncée de gris pour le paragraphe */
-    margin-bottom: 20px; /* Plus de marge en dessous des paragraphes */
+    color: #444;
+    margin-bottom: 20px; 
 }
 
 @media (min-width: 600px) {
@@ -794,6 +802,7 @@ body {
 
 
 /* CONTACT */
+
 .contact-container {
     background-color: #ffffff;
     padding: 40px;
@@ -851,14 +860,8 @@ body {
 
 
 
-/* BOUTIQUE */
-
-
-
-
-
 /* LOGIN */
-/* Main container for the login form, centered */
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -868,10 +871,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 500px; /* Default max-width for mobile */
+    max-width: 500px; 
 }
 
-/* Styling for the form within the container */
 .login-form {
     width: 100%;
     padding: 10px;
@@ -890,7 +892,6 @@ body {
     font-size: 0.8em;
 }
 
-/* Style for the form group */
 .form-group {
     margin-bottom: 15px;
 }
@@ -912,7 +913,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Style for the checkbox and label */
 .form-group input[type="checkbox"] {
     margin-right: 5px;
 }
@@ -924,14 +924,12 @@ body {
     color: #333;
 }
 
-/* Style for the reCAPTCHA */
 .g-recaptcha {
     margin: 20px 0;
     display: flex;
     justify-content: center;
 }
 
-/* Style for the alert messages */
 .alert {
     padding: 10px;
     background-color: #f44336;
@@ -944,7 +942,6 @@ body {
     background-color: #4CAF50;
 }
 
-/* Style for the register link */
 .register-link {
     text-align: center;
     margin-top: 20px;
@@ -960,10 +957,9 @@ body {
     text-decoration: underline;
 }
 
-/* Media queries for tablet (600px) */
 @media (min-width: 600px) {
     .login-container {
-        max-width: 80%; /* Adjust width for tablet */
+        max-width: 80%; 
         padding: 50px;
     }
     
@@ -977,10 +973,9 @@ body {
     }
 }
 
-/* Media queries for desktop (1024px) */
 @media (min-width: 1024px) {
     .login-container {
-        max-width: 60%; /* Adjust width for desktop */
+        max-width: 60%; 
         padding: 60px;
     }
     
@@ -999,6 +994,7 @@ body {
 
 
 /* REGISTER */
+
 .register-container {
     display: flex;
     justify-content: center;
@@ -1008,10 +1004,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 500px; /* Default max-width for mobile */
+    max-width: 500px; 
 }
 
-/* Styling for the form within the container */
 .register-form {
     width: 100%;
     padding: 10px;
@@ -1030,7 +1025,6 @@ body {
     font-size: 0.8em;
 }
 
-/* Style for the form group */
 .form-group {
     margin-bottom: 15px;
 }
@@ -1053,7 +1047,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Style for the alert messages */
 .alert {
     padding: 10px;
     background-color: #f44336;
@@ -1066,7 +1059,6 @@ body {
     background-color: #4CAF50;
 }
 
-/* Style for the login link */
 .login-link {
     text-align: center;
     margin-top: 20px;
@@ -1082,10 +1074,9 @@ body {
     text-decoration: underline;
 }
 
-/* Media queries for tablet (600px) */
 @media (min-width: 600px) {
     .register-container {
-        max-width: 80%; /* Adjust width for tablet */
+        max-width: 80%; 
         padding: 50px;
     }
     
@@ -1100,10 +1091,9 @@ body {
     }
 }
 
-/* Media queries for desktop (1024px) */
 @media (min-width: 1024px) {
     .register-container {
-        max-width: 60%; /* Adjust width for desktop */
+        max-width: 60%; 
         padding: 60px;
     }
     
@@ -1123,7 +1113,7 @@ body {
 
 
 /* PROFILE */
-/* Main container for the profile form, centered */
+
 .profile-container {
     display: flex;
     justify-content: center;
@@ -1133,10 +1123,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 500px; /* Default max-width for mobile */
+    max-width: 500px; 
 }
 
-/* Styling for the form within the container */
 .profile-form {
     width: 100%;
     padding: 10px;
@@ -1155,7 +1144,6 @@ body {
     font-size: 0.8em;
 }
 
-/* Style for the form group */
 .form-group {
     margin-bottom: 15px;
 }
@@ -1178,7 +1166,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Style for the alert messages */
 .alert {
     padding: 10px;
     background-color: #f44336;
@@ -1191,10 +1178,9 @@ body {
     background-color: #4CAF50;
 }
 
-/* Media queries for tablet (600px) */
 @media (min-width: 600px) {
     .profile-container {
-        max-width: 80%; /* Adjust width for tablet */
+        max-width: 80%; 
         padding: 50px;
     }
     
@@ -1209,10 +1195,9 @@ body {
     }
 }
 
-/* Media queries for desktop (1024px) */
 @media (min-width: 1024px) {
     .profile-container {
-        max-width: 60%; /* Adjust width for desktop */
+        max-width: 60%; 
         padding: 60px;
     }
     
@@ -1232,7 +1217,7 @@ body {
 
 
 /* STORY PAGE */
-/* Container for the story section */
+
 .story-container {
     display: flex;
     justify-content: center;
@@ -1245,7 +1230,6 @@ body {
     max-width: 800px;
 }
 
-/* Styling for the content within the container */
 .story-content {
     display: flex;
     flex-direction: column;
@@ -1273,47 +1257,45 @@ body {
     margin-bottom: 15px;
 }
 
-/* Media queries for tablet (600px) */
 @media (min-width: 600px) {
     .story-container {
-        max-width: 80%; /* Adjust width for tablet */
+        max-width: 80%; 
         padding: 50px;
     }
 
     .story-text h2 {
-        font-size: 32px; /* Increase font size for tablet */
+        font-size: 32px;
     }
 
     .story-text p {
-        font-size: 18px; /* Increase font size for tablet */
+        font-size: 18px; 
     }
 }
 
-/* Media queries for desktop (1024px) */
 @media (min-width: 1024px) {
     .story-container {
-        max-width: 60%; /* Adjust width for desktop */
+        max-width: 60%; 
         padding: 60px;
     }
 
     .story-content {
-        flex-direction: row; /* Align content in row for desktop */
+        flex-direction: row; 
         align-items: flex-start;
         text-align: left;
     }
 
     .story-image {
-        max-width: 400px; /* Adjust image size for desktop */
-        margin-right: 40px; /* Add margin to the right of the image */
+        max-width: 400px; 
+        margin-right: 40px; 
         margin-bottom: 0;
     }
 
     .story-text h2 {
-        font-size: 36px; /* Increase font size for desktop */
+        font-size: 36px; 
     }
 
     .story-text p {
-        font-size: 20px; /* Increase font size for desktop */
+        font-size: 20px; 
     }
 }
 
@@ -1322,7 +1304,7 @@ body {
 
 
 /* ADMIN DASHBOARD */
-/* Main container for the admin dashboard */
+
 .admin-dashboard-container {
     display: flex;
     flex-direction: column;
@@ -1333,10 +1315,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 800px; /* Adjusted width for desktop */
+    max-width: 800px; 
 }
 
-/* Styling for the admin options */
 .admin-options {
     display: flex;
     flex-direction: column;
@@ -1347,8 +1328,8 @@ body {
 .admin-option {
     display: block;
     width: 100%;
-    max-width: 600px; /* Adjusted width for desktop */
-    background-color: rgba(218, 188, 129, 0.7);; /* Light blue-grey background */
+    max-width: 600px; 
+    background-color: rgba(218, 188, 129, 0.7);; 
     margin: 20px 0;
     padding: 20px;
     border-radius: 8px;
@@ -1362,24 +1343,23 @@ body {
 .admin-option:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: rgba(218, 168, 69, 0.7);; /* Slightly darker blue-grey on hover */
+    background-color: rgba(218, 168, 69, 0.7);; 
 }
 
 .admin-option h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333; /* Dark blue text */
+    color: #333;
 }
 
 .admin-option p {
     font-size: 16px;
-    color: #333; /* Grey text */
+    color: #333; 
 }
 
-/* Responsive design for tablet */
 @media (min-width: 600px) {
     .admin-dashboard-container {
-        max-width: 90%; /* Adjusted width for tablet */
+        max-width: 90%; 
         padding: 50px;
     }
     
@@ -1392,10 +1372,9 @@ body {
     }
 }
 
-/* Responsive design for desktop */
 @media (min-width: 1024px) {
     .admin-dashboard-container {
-        max-width: 70%; /* Adjusted width for desktop */
+        max-width: 70%; 
         padding: 60px;
     }
     
@@ -1407,7 +1386,7 @@ body {
     .admin-option {
         flex: 1;
         margin: 20px;
-        max-width: 45%; /* Adjusted width for desktop */
+        max-width: 45%; 
     }
     
     .admin-option h2 {
@@ -1425,7 +1404,7 @@ body {
 
 /* USERS ADMIN */
 
-.admin-dashboard-container {
+.admin-users-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1435,10 +1414,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
 }
 
-.admin-dashboard-container h1 {
+.admin-users-container h1 {
     color: #333;
     margin-bottom: 20px;
 }
@@ -1463,17 +1442,28 @@ body {
     background-color: rgba(218, 188, 129, 0.7);
     color: #333;
     font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding: 15px;
+}
+
+.admin-options td {
+    background-color: #fff;
+    padding: 15px;
+}
+
+.admin-options tr {
+    transition: background-color 0.3s;
 }
 
 .admin-options tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-options tr:hover td {
     background-color: #f2f2f2;
 }
 
-.admin-options tr:hover {
-    background-color: #ddd;
-}
-
-.admin-options .btn-delete {
+.btn-delete {
     background-color: #f44336;
     color: white;
     border: none;
@@ -1483,11 +1473,14 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.admin-options .btn-delete:hover {
+.btn-delete:hover {
     background-color: #d32f2f;
 }
 
-/* Style for success message */
+.inline-form {
+    display: inline;
+}
+
 .alert-success {
     color: white;
     background-color: #4CAF50;
@@ -1499,7 +1492,7 @@ body {
 
 /* Responsive design for tablet */
 @media (min-width: 600px) {
-    .admin-dashboard-container {
+    .admin-users-container {
         max-width: 90%; /* Adjusted width for tablet */
         padding: 50px;
     }
@@ -1511,12 +1504,385 @@ body {
 
 /* Responsive design for desktop */
 @media (min-width: 1024px) {
-    .admin-dashboard-container {
+    .admin-users-container {
         max-width: 70%; /* Adjusted width for desktop */
         padding: 60px;
     }
     
     .admin-options th, .admin-options td {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* PRODUCTS ADMIN */
+
+.admin-products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.admin-products-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.admin-options {
+    width: 100%;
+}
+
+.admin-options table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-options th, .admin-options td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-options th {
+    background-color: rgba(218, 188, 129, 0.7);
+    color: #333;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding: 15px;
+}
+
+.admin-options td {
+    background-color: #fff;
+    padding: 15px;
+}
+
+.admin-options tr {
+    transition: background-color 0.3s;
+}
+
+.admin-options tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-options tr:hover td {
+    background-color: #f2f2f2;
+}
+
+.btn-add {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #45a049;
+}
+
+.btn-edit {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-edit:hover {
+    background-color: #007B9A;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.alert-success {
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .admin-products-container {
+        max-width: 90%; 
+        padding: 50px;
+    }
+    
+    .admin-options th, .admin-options td {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-products-container {
+        max-width: 70%; 
+        padding: 60px;
+    }
+    
+    .admin-options th, .admin-options td {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* PRODUCTS ADMIN */
+
+.admin-products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1000px;
+}
+
+.admin-products-container h1,
+.admin-products-container h2,
+.admin-products-container h3 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group label {
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Add space between buttons */
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.alert-danger,
+.alert-success {
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.alert-danger {
+    background-color: #f44336;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+.admin-categories-container {
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.admin-categories-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.admin-categories-container li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.admin-categories-container li form {
+    margin: 0 5px;
+}
+
+.admin-categories-container li button {
+    margin-left: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-submit, .btn-delete {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.btn-submit:hover, .btn-delete:hover {
+    background-color: #45a049;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 80%;  /* Adjust input field width */
+    padding: 10px;
+    margin: 5px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.product-image {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+@media (min-width: 600px) {
+    .admin-products-container {
+        max-width: 90%; /* Adjusted width for tablet */
+        padding: 50px;
+    }
+
+    .form-group {
+        width: 500px;
+    }
+    
+    .form-group label {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .form-group label,
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-products-container {
+        max-width: 70%; /* Adjusted width for desktop */
+        padding: 60px;
+    }
+
+    .form-group {
+        width: 650px;
+    }
+    
+    .form-group label {
+        width: 100%;
+        max-width: 650px;
+    }
+    
+    .form-group label,
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea,
+    .form-group select {
         font-size: 18px;
     }
 }

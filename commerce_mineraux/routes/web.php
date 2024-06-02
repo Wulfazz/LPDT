@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-// Routes pour les pages principales
 Route::get('/{page?}', function ($page = 'home') use ($validPages) {
     if (in_array($page, $validPages)) {
         return view('pages.' . $page);
@@ -62,7 +61,7 @@ Route::get('/profile/{user_id}', [UserController::class, 'showProfile'])->name('
 Route::post('/profile/update/{user_id}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Routes pour le tableau de bord admin
+// Route pour le tableau de bord admin
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
@@ -75,8 +74,11 @@ Route::delete('/admin/users/{user_id}', [AdminUserController::class, 'destroy'])
 Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index');
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+Route::get('/admin/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+Route::post('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
 Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 
 // Routes pour les catégories
 Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+Route::post('/admin/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
 Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
