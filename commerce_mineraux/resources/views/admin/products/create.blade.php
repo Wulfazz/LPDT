@@ -1,104 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     @include('components.head')
-    <title>Ajouter un produit</title>
+    <link rel="stylesheet" href="{{ asset('css/admin-products.css') }}">
 </head>
 <body>
-    @include('components.menuhidden')
-    <div class="content" id="app">
-        <header>@include('components.header')</header>
-        <main>
-            <div class="admin-products-container">
-                <h1>Ajouter un produit</h1>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                @endif
-                <form method="POST" action="{{ route('admin.products.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Prix :</label>
-                        <input type="number" id="price" name="price" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="details">Détails :</label>
-                        <textarea id="details" name="details" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="image_url">URL de l'image :</label>
-                        <input type="text" id="image_url" name="image_url" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity_available">Quantité disponible :</label>
-                        <input type="number" id="quantity_available" name="quantity_available" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="main_category_id">Catégorie principale :</label>
-                        <select id="main_category_id" name="main_category_id" required>
-                            @foreach($main_categories as $category)
-                                <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="categories">Autres catégories :</label>
-                        <select id="categories" name="categories[]" multiple required>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="button-container">
-                        <button type="submit" class="btn-submit">Ajouter</button>
-                    </div>
-                </form>
 
-                <!-- Section de gestion des catégories -->
-                <div class="admin-categories-container">
-                    <h2>Gérer les catégories</h2>
-                    <form method="POST" action="{{ route('admin.categories.store') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label for="category_name">Nouvelle catégorie :</label>
-                            <input type="text" id="category_name" name="category_name" required>
-                            <input type="hidden" id="type" name="type" value="other">
-                        </div>
-                        <div class="button-container">
-                            <button type="submit" class="btn-submit">Ajouter catégorie</button>
-                        </div>
-                    </form>
-                    <h3>Catégories existantes</h3>
-                    <ul>
-                        @foreach($categories as $category)
-                            <li>
-                                {{ $category->category_name }}
-                                <form method="POST" action="{{ route('admin.categories.destroy', $category->category_id) }}" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn-delete">Supprimer</button>
-                                </form>
-                                <form method="POST" action="{{ route('admin.categories.update', $category->category_id) }}" style="display:inline;">
-                                    @csrf
-                                    @method('POST')
-                                    <input type="text" name="category_name" value="{{ $category->category_name }}" required>
-                                    <button type="submit" class="btn-submit">Modifier</button>
-                                </form>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
+@include('components.menuhidden')
+
+<div class="content" id="app">
+    <header>@include('components.header')</header>
+    <main class="admin-products-container">
+        <h1>Ajouter un Nouveau Produit et Catégorie</h1>
+        
+        <h2>Ajouter Produit</h2>
+        <form action="{{ route('admin.products.store') }}" method="POST" class="admin-options">
+            @csrf
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Nom du Produit" required>
             </div>
-        </main>
-        <footer>@include('components.footer')</footer>
-    </div>
-    @include('components.scripts')
+            <div class="form-group">
+                <input type="number" name="price" placeholder="Prix du Produit (€)" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+                <textarea name="details" placeholder="Détails du Produit" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" name="image_url" placeholder="URL de l'Image du Produit" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="quantity_available" placeholder="Quantité Disponible" min="0" step="1" required>
+            </div>
+            
+            <h3>Choisir Catégorie Principale</h3>
+            <div class="form-group">
+                <select name="main_category_id" required>
+                    @foreach($categories as $category)
+                        @if($category->type == 'main')
+                            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            
+            <h3>Choisir Autre Catégorie</h3>
+            <div class="form-group">
+                <select name="other_category_id" required>
+                    @foreach($categories as $category)
+                        @if($category->type == 'other')
+                            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-submit">Ajouter Produit</button>
+        </form>
+
+        <h2>Ajouter Catégorie</h2>
+        <form action="{{ route('admin.categories.store') }}" method="POST" class="admin-options">
+            @csrf
+            <div class="form-group">
+                <input type="text" name="category_name" placeholder="Nom de la Catégorie" required>
+            </div>
+            <button type="submit" class="btn-submit">Ajouter Catégorie</button>
+        </form>
+    </main>
+    <footer>@include('components.footer')</footer>
+</div>
+
+@include('components.scripts')
+
 </body>
 </html>

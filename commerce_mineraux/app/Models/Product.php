@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
-
     protected $primaryKey = 'product_id';
 
     protected $fillable = [
@@ -18,6 +15,7 @@ class Product extends Model
         'image_url',
         'quantity_available',
         'main_category_id',
+        'other_category_id',
     ];
 
     public function mainCategory()
@@ -25,8 +23,8 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'main_category_id', 'category_id');
     }
 
-    public function categories()
+    public function otherCategory()
     {
-        return $this->belongsToMany(Category::class, 'productcategories', 'product_id', 'category_id');
+        return $this->belongsTo(Category::class, 'other_category_id', 'category_id');
     }
 }

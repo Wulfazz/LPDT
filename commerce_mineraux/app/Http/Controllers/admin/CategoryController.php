@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,42 +8,27 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
-    }
-
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'category_name' => 'required|string|max:255',
+        $category = new Category([
+            'category_name' => $request->input('category_name'),
+            'type' => $request->input('type', 'other')
         ]);
-
-        $validatedData['type'] = 'other'; // Set the default type to 'other'
-
-        Category::create($validatedData);
-
-        return redirect()->route('admin.products.create')->with('success', 'Catégorie ajoutée avec succès.');
+        $category->save();
+        return redirect()->route('admin.products.index')->with('success', 'Catégorie créée avec succès.');
     }
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'category_name' => 'required|string|max:255',
-        ]);
-
-        $category = Category::findOrFail($id);
-        $category->update($validatedData);
-
-        return redirect()->route('admin.products.create')->with('success', 'Catégorie modifiée avec succès.');
+        $category = Category::find($id);
+        $category->update($request->only(['category_name', 'type']));
+        return redirect()->route('admin.products.index')->with('success', 'Catégorie mise à jour avec succès.');
     }
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::find($id);
         $category->delete();
-
-        return redirect()->route('admin.products.create')->with('success', 'Catégorie supprimée avec succès.');
+        return redirect()->route('admin.products.index')->with('success', 'Catégorie supprimée avec succès.');
     }
 }

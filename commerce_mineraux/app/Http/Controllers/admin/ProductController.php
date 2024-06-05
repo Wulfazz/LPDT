@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,70 +11,63 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('mainCategory', 'categories')->get();
-        return view('admin.products.index', compact('products'));
+        $products = Product::with('mainCategory', 'otherCategory')->get();
+        $categories = Category::all();
+    
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     public function create()
     {
-        $main_categories = Category::where('type', 'main')->get();
-        $categories = Category::where('type', '!=', 'main')->get();
-        return view('admin.products.create', compact('main_categories', 'categories'));
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
             'details' => 'required|string',
             'image_url' => 'required|url',
-            'quantity_available' => 'required|integer',
+            'quantity_available' => 'required|integer|min:0',
             'main_category_id' => 'required|exists:categories,category_id',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,category_id'
+            'other_category_id' => 'required|exists:categories,category_id',
         ]);
-
-        $product = Product::create($validatedData);
-        $product->categories()->attach($request->categories);
-
+    
+        Product::create([
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'details' => $request->input('details'),
+            'image_url' => $request->input('image_url'),
+            'quantity_available' => $request->input('quantity_available'),
+            'main_category_id' => $request->input('main_category_id'),
+            'other_category_id' => $request->input('other_category_id'),
+        ]);
+    
         return redirect()->route('admin.products.index')->with('success', 'Produit ajouté avec succès.');
     }
+    
 
     public function edit($id)
     {
-        $product = Product::with('categories')->findOrFail($id);
-        $main_categories = Category::where('type', 'main')->get();
-        $categories = Category::where('type', '!=', 'main')->get();
-        return view('admin.products.edit', compact('product', 'main_categories', 'categories'));
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'details' => 'required|string',
-            'image_url' => 'required|url',
-            'quantity_available' => 'required|integer',
-            'main_category_id' => 'required|exists:categories,category_id',
-            'categories' => 'required|array',
-            'categories.*' => 'exists:categories,category_id'
-        ]);
+        $product = Product::find($id);
+        $product->update($request->all());
 
-        $product = Product::findOrFail($id);
-        $product->update($validatedData);
-        $product->categories()->sync($request->categories);
-
-        return redirect()->route('admin.products.index')->with('success', 'Produit modifié avec succès.');
+        return redirect()->route('admin.products.index')->with('success', 'Produit mis à jour avec succès.');
     }
 
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        $product->categories()->detach();
+        $product = Product::find($id);
         $product->delete();
-
         return redirect()->route('admin.products.index')->with('success', 'Produit supprimé avec succès.');
     }
 }
