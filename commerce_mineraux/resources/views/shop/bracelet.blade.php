@@ -1,4 +1,7 @@
-<head>@include('components.head')</head>
+<head>
+    @include('components.head')
+    <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
+</head>
 <body>
     @include('components.menuhidden')
 
@@ -6,7 +9,21 @@
         <header>@include('components.header')</header>
         <main>
             <h1 class="shop-title">Bracelets</h1>
-            <div class="products-grid">
+
+            <!-- Form for filtering by other category -->
+            <form method="GET" action="{{ route('shop.bracelet') }}" class="filter-form">
+                <label for="other_category_id">Filtrer par catégorie secondaire:</label>
+                <select name="other_category_id" id="other_category_id" onchange="this.form.submit()">
+                    <option value="">Toutes les catégories</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->category_id }}" {{ request('other_category_id') == $category->category_id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
+
+           <div class="products-grid">
                 @forelse ($products as $product)
                     <div class="product-item" onclick="showProductDetails('{{ $product->name }}', '{{ $product->details }}', '{{ $product->price }}', '{{ $product->image_url }}')">
                         <img class="product-image" src="{{ $product->image_url }}" alt="{{ $product->name }}">

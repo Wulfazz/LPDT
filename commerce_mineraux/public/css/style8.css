@@ -1763,6 +1763,10 @@ body {
     color: #333;
 }
 
+.filter-form select option {
+    color: #333;
+}
+
 .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
