@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
     @include('components.head')
     <link rel="stylesheet" href="{{ asset('css/admin-products.css') }}">

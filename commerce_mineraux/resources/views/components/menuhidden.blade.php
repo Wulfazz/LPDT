@@ -8,8 +8,8 @@
             <div class="dropdown-content">
                 <a href="{{ url('/shop/minerals') }}">Minéraux bruts</a>
                 <a href="{{ url('/shop/stone') }}">Pierres taillées</a>
-                <a href="{{ url('/shop/bracelet') }}">Pendentifs</a>
-                <a href="{{ url('/shop/pendant') }}">Bracelets</a>
+                <a href="{{ url('/shop/bracelet') }}">Bracelets</a>
+                <a href="{{ url('/shop/pendant') }}">Pendentifs</a>
             </div>
         </div>
         <a href="{{ url('/contact') }}">Contact</a>

@@ -1,4 +1,3 @@
-<!-- /resources/views/user/login.blade.php -->
 <head>
     @include('components.head')
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

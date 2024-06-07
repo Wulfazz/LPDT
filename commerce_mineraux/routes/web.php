@@ -6,11 +6,11 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\ShopController;
 
 // Define valid pages for different sections
 $validPages = ['home', 'store', 'contact', 'story'];
 $validInfoTypes = ['terms', 'legal-notice'];
-$validShop = ['bracelet', 'minerals', 'pendant', 'stone'];
 $validUser = ['cart', 'login', 'profile'];
 
 // Routes for main pages
@@ -34,12 +34,10 @@ Route::get('/info/{type?}', function ($type = 'terms') use ($validInfoTypes) {
 })->where('type', implode('|', $validInfoTypes));
 
 // Routes for shop pages
-Route::get('/shop/{item?}', function ($item = 'default') use ($validShop) {
-    if (in_array($item, $validShop)) {
-        return view('shop.' . $item);
-    }
-    return view('shop.default');
-})->where('item', implode('|', $validShop));
+Route::get('/shop/bracelet', [ShopController::class, 'bracelets'])->name('shop.bracelet');
+Route::get('/shop/minerals', [ShopController::class, 'minerals'])->name('shop.minerals');
+Route::get('/shop/pendant', [ShopController::class, 'pendants'])->name('shop.pendant');
+Route::get('/shop/stone', [ShopController::class, 'stones'])->name('shop.stone');
 
 // Routes for user pages
 Route::get('/user/{action?}', function ($action = 'profile') use ($validUser) {
