@@ -1,6 +1,6 @@
 <div class="menu-container">
     <div class="menu-hidden" id="mobileMenu">
-        <a href="{{ route('home') }}">Accueil</a>
+        <a href="{{ url('/') }}">Accueil</a>
         <a href="{{ url('/story') }}">Mon histoire</a>
         <a href="#footer" id="linkToFooter">À propos</a>
         <div class="dropdown">
@@ -15,18 +15,25 @@
         <a href="{{ url('/contact') }}">Contact</a>
 
         @guest
-            <a href="{{ route('login.form') }}">Connexion</a>
-            <a href="{{ route('register.form') }}">Inscription</a>
+            <a href="{{ url('/login') }}">Connexion</a>
+            <a href="{{ url('/register') }}">Inscription</a>
         @else
-            <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">Profil</a>
+            <a href="{{ url('/profile/' . Auth::user()->user_id) }}">Profil</a>
             @if(Auth::user()->user_type === 'seller')
-                <a href="{{ route('admin.dashboard') }}">Panneau Admin</a>
+                <div class="dropdown">
+                    <a href="javascript:void(0);" class="dropbtn">Admin</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url('/admin/users') }}">Gérer Utilisateurs</a>
+                        <a href="{{ url('/admin/products') }}">Gérer Produits</a>
+                        <a href="{{ url('/admin/products/create') }}">Ajouter Produit / Gérer Catégories</a>
+                    </div>
+                </div>
             @endif
-            <a href="{{ route('logout') }}"
+            <a href="{{ url('/logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Déconnexion
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         @endguest

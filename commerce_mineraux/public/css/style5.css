@@ -16,59 +16,6 @@ body {
     overflow-x: hidden; 
 }
 
-/* General Button Styles */
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s ease;
-    text-decoration: none; /* Ensure no underline for links */
-    display: inline-block;
-    text-align: center;
-}
-
-/* Green Button Styles */
-.btn-add, .btn-submit, .btn-edit {
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-}
-
-.btn-add:hover, .btn-submit:hover, .btn-edit:hover {
-    background-color: #45a049;
-}
-
-/* Red Button Styles */
-.btn-delete {
-    background-color: #f44336;
-    color: white;
-    display: inline-block;
-}
-
-.btn-delete:hover {
-    background-color: #d32f2f;
-}
-
-.btn-add {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    text-align: center; /* Centrer le texte */
-}
-
-.btn-add:hover {
-    background-color: #45a049;
-}
-
-
 
 
 
@@ -112,7 +59,6 @@ body {
     z-index: 100; 
 }
 
-
 /* Affichage du menu mobile */
 
 .menu-hidden {
@@ -144,9 +90,7 @@ body {
     background-color: #e5cb98;
 }
 
-
 /* Croix du menuHidden */
-
 #closeMenu {
     /* Cache la croix */
     display: none; 
@@ -157,6 +101,39 @@ body {
     color: rgb(0, 0, 0);
     cursor: pointer;
     z-index: 101;
+}
+
+/* Styles pour les éléments du menu */
+.menu-container .dropdown {
+    position: relative;
+}
+
+.menu-container .dropdown .dropbtn {
+    cursor: pointer;
+}
+
+.menu-container .dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.menu-container .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menu-container .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-container .dropdown:hover .dropdown-content {
+    display: block; /* Afficher le contenu du menu au survol */
 }
 
 
@@ -820,6 +797,7 @@ body {
 
 
 /* LEGAL NOTICE */
+
 .legal {
     background-color: #ffffff;
     padding: 10%;
@@ -863,6 +841,8 @@ body {
     width: 70%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    width: 100%;
+    max-width: 500px; 
 }
 
 .contact-container h2 {
@@ -877,10 +857,12 @@ body {
 
 .form-group label {
     display: block;
-    color: #444;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-.form-group input, .form-group textarea {
+.form-group input {
     width: 100%;
     padding: 10px;
     background-color: #ffffff;
@@ -945,19 +927,12 @@ body {
     font-size: 0.8em;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
 .form-group input[type="email"],
-.form-group input[type="password"] {
+.form-group input[type="password"],
+.form-group input[type="text"] 
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 10px;
     font-size: 14px;
@@ -992,7 +967,12 @@ body {
 }
 
 .alert-success {
+    color: white;
     background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .register-link {
@@ -1020,8 +1000,13 @@ body {
         font-size: 26px;
     }
     
+    .form-group label,
     .form-group input[type="email"],
-    .form-group input[type="password"] {
+    .form-group input[type="password"],
+    .form-group input[type="number"],
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group select {
         font-size: 16px;
     }
 }
@@ -1036,8 +1021,13 @@ body {
         font-size: 28px;
     }
     
+    .form-group label,
+    .form-group input[type="number"],
     .form-group input[type="email"],
-    .form-group input[type="password"] {
+    .form-group input[type="password"],
+    .form-group input[type="text"] 
+    .form-group textarea,
+    .form-group select {
         font-size: 18px;
     }
 }
@@ -1078,40 +1068,6 @@ body {
     font-size: 0.8em;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.alert {
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    margin-bottom: 15px;
-    border-radius: 4px;
-}
-
-.alert-success {
-    background-color: #4CAF50;
-}
-
 .login-link {
     text-align: center;
     margin-top: 20px;
@@ -1136,12 +1092,7 @@ body {
     .register-form h2 {
         font-size: 26px;
     }
-    
-    .form-group input[type="email"],
-    .form-group input[type="password"],
-    .form-group input[type="text"] {
-        font-size: 16px;
-    }
+
 }
 
 @media (min-width: 1024px) {
@@ -1154,11 +1105,6 @@ body {
         font-size: 28px;
     }
     
-    .form-group input[type="email"],
-    .form-group input[type="password"],
-    .form-group input[type="text"] {
-        font-size: 18px;
-    }
 }
 
 
@@ -1197,40 +1143,6 @@ body {
     font-size: 0.8em;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.alert {
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    margin-bottom: 15px;
-    border-radius: 4px;
-}
-
-.alert-success {
-    background-color: #4CAF50;
-}
-
 @media (min-width: 600px) {
     .profile-container {
         max-width: 80%; 
@@ -1241,11 +1153,6 @@ body {
         font-size: 26px;
     }
     
-    .form-group input[type="email"],
-    .form-group input[type="password"],
-    .form-group input[type="text"] {
-        font-size: 16px;
-    }
 }
 
 @media (min-width: 1024px) {
@@ -1258,11 +1165,6 @@ body {
         font-size: 28px;
     }
     
-    .form-group input[type="email"],
-    .form-group input[type="password"],
-    .form-group input[type="text"] {
-        font-size: 18px;
-    }
 }
 
 
@@ -1280,7 +1182,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 800px;
+    max-width: 500px; 
 }
 
 .story-content {
@@ -1362,13 +1264,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px auto;
+    margin: 20px auto;
     background-color: #ffffff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 800px; 
+    max-width: 800px;
+    text-align: center;
 }
 
 .admin-options {
@@ -1376,13 +1279,14 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    overflow-x: auto;
 }
 
 .admin-option {
     display: block;
     width: 100%;
     max-width: 600px; 
-    background-color: rgba(218, 188, 129, 0.7); 
+    background-color: rgba(218, 188, 129, 0.7);; 
     margin: 20px 0;
     padding: 20px;
     border-radius: 8px;
@@ -1396,7 +1300,7 @@ body {
 .admin-option:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: rgba(218, 168, 69, 0.7); 
+    background-color: rgba(218, 168, 69, 0.7);; 
 }
 
 .admin-option h2 {
@@ -1461,26 +1365,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px auto;
+    margin: 20px auto;
     background-color: #ffffff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
     max-width: 1000px;
+    text-align: center;
 }
 
 .admin-users-container h1 {
     color: #333;
     margin-bottom: 20px;
-    text-align: center; /* Centre le titre */
-}
-
-.admin-options {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .admin-options table {
@@ -1489,10 +1386,13 @@ body {
     margin-top: 20px;
 }
 
-.admin-options th, .admin-options td {
+.admin-options th,
+.admin-options td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 8px;
     text-align: left;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .admin-options th {
@@ -1506,10 +1406,8 @@ body {
 .admin-options td {
     background-color: #fff;
     padding: 15px;
-}
-
-.admin-options tr {
-    transition: background-color 0.3s;
+    word-wrap: break-word; 
+    white-space: normal; 
 }
 
 .admin-options tr:nth-child(even) {
@@ -1520,6 +1418,12 @@ body {
     background-color: #f2f2f2;
 }
 
+.center-email {
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 20px;
+}
+
 .btn-delete {
     background-color: #f44336;
     color: white;
@@ -1527,6 +1431,7 @@ body {
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
+    margin: 2px;
     transition: background-color 0.3s ease;
 }
 
@@ -1534,53 +1439,26 @@ body {
     background-color: #d32f2f;
 }
 
-.btn-submit, .btn-edit {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover, .btn-edit:hover {
-    background-color: #45a049;
-}
-
-.inline-form {
-    display: inline;
-}
-
-.alert-success {
-    color: white;
-    background-color: #4CAF50;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Responsive design for tablet */
 @media (min-width: 600px) {
     .admin-users-container {
         max-width: 90%; 
         padding: 50px;
     }
     
-    .admin-options th, .admin-options td {
+    .admin-options th, 
+    .admin-options td {
         font-size: 16px;
     }
 }
 
-/* Responsive design for desktop */
 @media (min-width: 1024px) {
     .admin-users-container {
         max-width: 70%; 
         padding: 60px;
     }
     
-    .admin-options th, .admin-options td {
+    .admin-options th, 
+    .admin-options td {
         font-size: 18px;
     }
 }
@@ -1591,63 +1469,61 @@ body {
 
 /* PRODUCTS ADMIN */
 
-.admin-products-container {
+.admin-products-container, .admin-edit-product-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px auto;
+    margin: 20px auto;
     background-color: #ffffff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     width: 100%;
     max-width: 1000px;
+    text-align: center;
 }
 
 .admin-products-container h1,
 .admin-products-container h2,
 .admin-products-container h3 {
     color: #333;
-    margin-top: 20px;
     margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    width: 80%; /* Ajuste la largeur pour centrer */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-group label {
-    width: 100%;
-    max-width: 300px;
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #333;
-    text-align: center; /* Centre le label */
-}
-
-.form-group input[type="text"],
-.form-group input[type="number"],
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    max-width: 1000px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
     margin-top: 20px;
+}
+
+.admin-edit-product-container h1 {
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.admin-edit-product-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.admin-edit-product-container button {
+    margin-bottom: 20px;
+}
+
+.admin-products-container a {
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+
+.admin-options tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-options tr:hover td {
+    background-color: #f2f2f2;
+}
+
+.product-image {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
 }
 
 .btn-submit {
@@ -1657,75 +1533,58 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease;
-    margin-right: 10px; /* Add space between buttons */
+    margin-top: 20px;
 }
 
 .btn-submit:hover {
     background-color: #45a049;
 }
 
-.btn-delete {
-    background-color: #f44336;
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.btn-edit {
+    background-color: #008CBA;
     color: white;
     border: none;
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    margin-left: 10px;
+    margin: 2px; 
 }
 
-.btn-delete:hover {
-    background-color: #d32f2f;
+.btn-edit:hover {
+    background-color: #007B9A;
 }
 
-.alert-danger,
-.alert-success {
-    color: white;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.alert-danger {
-    background-color: #f44336;
-}
-
-.alert-success {
-    background-color: #4CAF50;
-}
-
-.admin-categories-container {
-    margin-top: 40px;
-    width: 100%;
-    text-align: center;
-}
-
-.admin-categories-container ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.admin-categories-container li {
+.inline-form {
+    margin-top: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    gap: 10px;
 }
 
-.admin-categories-container li form {
-    margin: 0 5px;
+.inline-form button {
+    flex: none; 
 }
 
-.admin-categories-container li button {
-    margin-left: 10px;
+.inline-form input[type="text"] {
+    width: 60%;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.admin-edit-product-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.admin-form {
+    width: 100%;
+    max-width: 800px;
 }
 
 .button-container {
@@ -1734,55 +1593,110 @@ body {
     margin-top: 20px;
 }
 
-.btn-submit, .btn-edit, .btn-delete {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s ease;
-    margin: 5px;
+@media (max-width: 600px) {
+    .admin-options table, 
+    .admin-options thead, 
+    .admin-options tbody, 
+    .admin-options th, 
+    .admin-options td, 
+    .admin-options tr {
+        display: block;
+    }
+
+    .admin-options thead tr {
+        display: none;
+    }
+
+    .admin-options tr {
+        margin-bottom: 20px;
+    }
+
+    .admin-options td {
+        position: relative;
+        padding-left: 30%;
+        text-align: right;
+    }
+
+    .admin-options td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .admin-options td .btn-edit, .admin-options td .btn-delete {
+        margin: 2px 0; 
+        padding: 5px 10px; 
+        font-size: 10px; 
+    }
+
+    .admin-options td form {
+        display: inline-block;
+    }
+
 }
 
-.form-group input, .form-group textarea, .form-group select {
-    width: 80%;  /* Adjust input field width */
-    padding: 10px;
-    margin: 5px 0;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+@media (min-width: 600px) and (max-width: 1024px) {
+    .admin-options table, 
+    .admin-options thead, 
+    .admin-options tbody, 
+    .admin-options th, 
+    .admin-options td, 
+    .admin-options tr {
+        display: block;
+    }
 
-.product-image {
-    width: 50px;
-    height: auto;
-    border-radius: 4px;
-}
+    .admin-options thead tr {
+        display: none;
+    }
 
-@media (min-width: 600px) {
+    .admin-options tr {
+        margin-bottom: 10px;
+    }
+
+    .admin-options td {
+        position: relative;
+        padding-left: 70%;
+        text-align: right;
+    }
+
+    .admin-options td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .admin-options td .btn-edit, .admin-options td .btn-delete {
+        margin: 2px 0; 
+        padding: 5px 10px; 
+        font-size: 12px; 
+    }
+
+    .admin-options td form {
+        display: inline-block;
+    }
+
     .admin-products-container {
-        max-width: 90%; /* Adjusted width for tablet */
+        max-width: 90%; 
         padding: 50px;
     }
 
-    .form-group {
-        width: 500px;
+    .product-image {
+        width: 40px;
     }
-    
-    .form-group label {
-        width: 100%;
-        max-width: 500px;
+
+    .admin-edit-product-container {
+        max-width: 90%;
+        padding: 50px;
     }
-    
-    .form-group label,
-    .form-group input[type="text"],
-    .form-group input[type="number"],
-    .form-group textarea,
-    .form-group select {
-        font-size: 16px;
-    }
+
 }
 
 @media (min-width: 1024px) {
@@ -1791,20 +1705,13 @@ body {
         padding: 60px;
     }
 
-    .form-group {
-        width: 650px;
+    .product-image {
+        width: 50px; /* Ajuster la taille des images pour les ordinateurs de bureau */
     }
-    
-    .form-group label {
-        width: 100%;
-        max-width: 650px;
+
+    .admin-edit-product-container {
+        max-width: 70%; /* Adjusted width for desktop */
+        padding: 60px;
     }
-    
-    .form-group label,
-    .form-group input[type="text"],
-    .form-group input[type="number"],
-    .form-group textarea,
-    .form-group select {
-        font-size: 18px;
-    }
+
 }

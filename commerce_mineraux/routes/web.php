@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 
 // Define valid pages for different sections
 $validPages = ['home', 'store', 'contact', 'story'];
@@ -67,19 +67,18 @@ Route::get('/admin/dashboard', function () {
 })->name('admin.dashboard')->middleware('auth');
 
 // Routes for user management in admin
-Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
-Route::delete('/admin/users/{user_id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index')->middleware('auth');
+Route::delete('/admin/users/{user_id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy')->middleware('auth');
 
+// Product management
+Route::get('/admin/products', [ProductController::class, 'index'])->name('admin.products.index')->middleware('auth');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware('auth');
+Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store')->middleware('auth');
+Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit')->middleware('auth');
+Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update')->middleware('auth');
+Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy')->middleware('auth');
 
-// Product routes
-Route::get('admin/products', [ProductController::class, 'index'])->name('admin.products.index');
-Route::get('admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-Route::post('admin/products', [ProductController::class, 'store'])->name('admin.products.store');
-Route::get('admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
-Route::put('admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
-Route::delete('admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-
-// Category routes
-Route::post('admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
-Route::put('admin/categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
-Route::delete('admin/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+// Category management
+Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store')->middleware('auth');
+Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('admin.categories.update')->middleware('auth');
+Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy')->middleware('auth');

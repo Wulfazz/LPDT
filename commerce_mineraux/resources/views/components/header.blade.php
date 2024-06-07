@@ -9,7 +9,15 @@
             </a>
         </div>
         <div class="icons-right">
-            <a href="{{ url('/user/login') }}"><img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead"></a>
+        @guest
+            <a href="{{ url('/user/login') }}">
+                <img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead">
+            </a>
+        @else
+            <a href="{{ route('profile', ['user_id' => Auth::user()->user_id]) }}">
+                <img src="{{ asset('img/iconeUser.png') }}" alt="Utilisateur" class="iconHead">
+            </a>
+        @endguest
             <a href="{{ url('/user/cart') }}"><img src="{{ asset('img/iconeCart.png') }}" alt="Panier" class="iconHead"></a>
         </div>
     </div>

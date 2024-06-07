@@ -1,7 +1,6 @@
 <head>
     @include('components.head')
     <title>Gérer les utilisateurs</title>
-    <link rel="stylesheet" href="{{ asset('css/admin-users.css') }}">
 </head>
 <body>
     @include('components.menuhidden')
@@ -28,10 +27,10 @@
                         <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $user->user_id }}</td>
-                                    <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
+                                    <td data-label="ID">{{ $user->user_id }}</td>
+                                    <td data-label="Nom">{{ $user->first_name }} {{ $user->last_name }}</td>
+                                    <td class="center-email" style="padding-right: 30px; padding-left: 0px;">{{ $user->email }}</td>
+                                    <td data-label="Action">
                                         <form method="POST" action="{{ route('admin.users.destroy', $user->user_id) }}" class="inline-form">
                                             @csrf
                                             @method('DELETE')

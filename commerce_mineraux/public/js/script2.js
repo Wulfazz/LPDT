@@ -33,11 +33,44 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // Utilise la fonction toggleMenu avec "false" pour fermer le menu quand le lien "À propos" est cliqué
     document.getElementById('linkToFooter').addEventListener('click', function() { toggleMenu(false); });
+
+    var dropdownButtons = document.querySelectorAll('.dropbtn');
+
+    dropdownButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            } else {
+                document.querySelectorAll('.dropdown-content').forEach(function (content) {
+                    content.style.display = 'none';
+                });
+                dropdownContent.style.display = 'block';
+            }
+        });
+    });
+
+    window.addEventListener('click', function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            document.querySelectorAll('.dropdown-content').forEach(function (content) {
+                content.style.display = 'none';
+            });
+        }
+    });
+
+    document.querySelectorAll('.dropdown-content').forEach(function (content) {
+        content.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    document.getElementById('closeMenu').addEventListener('click', function () {
+        document.getElementById('mobileMenu').style.display = 'none';
+    });
 });
 
-
-
-//defilement pour liens dans page
+// Défilement pour liens dans page
 $(document).ready(function(){
     $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
@@ -52,20 +85,6 @@ $(document).ready(function(){
         });
     });
 });
-
-
-
-// Fonction pour le menu déroulant
-document.addEventListener('DOMContentLoaded', function () {
-    var storeLink = document.querySelector('.menu-item a[href="{{ url("/store") }}"]');
-    storeLink.addEventListener('click', function (event) {
-        event.preventDefault();
-        var submenu = this.nextElementSibling;
-        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    });
-});
-
-
 
 // Fonction pour envoyer un message pop-up en cas d'envoie dans contact
 document.addEventListener('DOMContentLoaded', function() {
@@ -86,22 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-
-
-// Fonction pour le déroulant
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.querySelector('.dropbtn');
-    dropdown.onclick = function(event) {
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === 'block') {
-            dropdownContent.style.display = 'none';
-        } else {
-            dropdownContent.style.display = 'block';
-        }
-    }
-});
-
 
 // Fonction pour register
 $(document).ready(function() {
