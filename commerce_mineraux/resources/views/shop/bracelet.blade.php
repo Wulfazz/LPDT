@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     @include('components.head')
     <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
@@ -17,13 +19,13 @@
                     <option value="">Toutes les catégories</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->category_id }}" {{ request('other_category_id') == $category->category_id ? 'selected' : '' }}>
-                            {{ $category->name }}
+                            {{ $category->category_name }}
                         </option>
                     @endforeach
                 </select>
             </form>
 
-           <div class="products-grid">
+            <div class="products-grid">
                 @forelse ($products as $product)
                     <div class="product-item" onclick="showProductDetails('{{ $product->name }}', '{{ $product->details }}', '{{ $product->price }}', '{{ $product->image_url }}')">
                         <img class="product-image" src="{{ $product->image_url }}" alt="{{ $product->name }}">
@@ -73,68 +75,5 @@
             }
         }
     </script>
-
-    <!-- Add CSS for Modal -->
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #modalImage {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        #modalName {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        #modalPrice {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        #modalDetails {
-            font-size: 1em;
-        }
-    </style>
 </body>
 </html>

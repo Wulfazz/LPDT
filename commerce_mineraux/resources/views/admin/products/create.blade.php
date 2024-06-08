@@ -80,19 +80,21 @@
                     @foreach($otherCategories as $category)
                         <tr>
                             <td data-label="Nom">
-                            <form action="{{ route('admin.categories.update', $category->category_id) }}" method="POST" class="inline-form">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="category_name" value="{{ $category->category_name }}" class="category-input">
-                            </form>
+                                <form action="{{ route('admin.categories.update', $category->category_id) }}" method="POST" class="inline-form">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="text" name="category_name" value="{{ $category->category_name }}" class="category-input">
                             </td>
-                            <td data-label="Action" style="padding-left: 100px;">
-                            <form action="{{ route('admin.categories.destroy', $category->category_id) }}" method="POST" class="inline-form">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-edit">Modifier</button>
-                                <button type="submit" class="btn-delete">Supprimer</button>
-                            </form>
+                            <td data-label="Action" style="padding-right: 15px; padding-left: 400px;">
+                                <div style="display: flex; align-items: center;">
+                                        <button type="submit" class="btn-edit">Modifier</button>
+                                </form>
+                                    <form action="{{ route('admin.categories.destroy', $category->category_id) }}" method="POST" class="inline-form" style="margin-left: 10px;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-delete">Supprimer</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
