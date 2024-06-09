@@ -1,7 +1,7 @@
-<head>@include('components.head')</head>
+<head>
+    @include('components.head')
+</head>
 <body>
-
-    @include('components.menuhidden')
 
     <div class="content" id="app">
             <header>@include('components.header')</header>
@@ -76,6 +76,7 @@
                             <p>Paiement par virement</p>
                         </div>
                     </div>
+                    <p class="salonPlace">Paiements sur place ou prise de contact via le formulaire de contact ou le mail directement</p>
                 </section>
             </main>
         

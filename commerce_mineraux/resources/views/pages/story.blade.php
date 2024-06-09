@@ -1,7 +1,7 @@
-<head>@include('components.head')</head>
+<head>
+    @include('components.head')
+</head>
 <body>
-
-    @include('components.menuhidden')
 
     <div class="content" id="app">
             <header>@include('components.header')</header>

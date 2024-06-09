@@ -3,7 +3,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    @include('components.menuhidden')
+
     <div class="content" id="app">
         <header>@include('components.header')</header>
         <main>

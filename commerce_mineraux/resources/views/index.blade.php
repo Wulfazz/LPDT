@@ -11,8 +11,6 @@
 </head>
 <body>
 
-    <div>@include('components.menuhidden')</div>
-
     <div class="content" id="app">
             <header>@include('components.header')</header>
 

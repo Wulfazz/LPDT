@@ -57,7 +57,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 100; 
+    z-index: 2000;
 }
 
 /* Affichage du menu mobile */
@@ -69,6 +69,7 @@ body {
     overflow-y: auto;
     position: relative;
     display: none;
+    filter: none;
 }
 
 .menu-hidden a {
@@ -351,42 +352,68 @@ body {
 
     .menu-container {
         position: fixed;
-        top: 12%;
-        left: 8%;
-        right: 8%; 
-        height: 40px;
-        width: auto; 
-        z-index: 1000; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(218, 188, 129, 0.7); /* Couleur de fond de la barre de navigation */
+        z-index: 1000; /* Assurer que la barre de navigation reste au-dessus des autres éléments */
     }
 
     .menu-hidden {
         display: flex;
-        justify-content: center;
-        width: 100%; 
-        z-index: 1000; 
-        background-color: #00000000;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px; /* Ajuster la hauteur de la barre de navigation */
     }
 
     .menu-hidden a {
-        color: #444(0, 0, 0); 
-        padding: 0px 3%;
-        text-decoration: none; 
-        font-size: 1.5em;
-
+        padding: 15px 20px; /* Ajouter des espacements autour des liens de navigation */
+        color: #444; /* Couleur des liens */
+        text-decoration: none; /* Enlever la décoration de texte */
+        font-size: 1em; /* Ajuster la taille de la police */
     }
 
-    .menu-hidden a:hover, .menu-hidden a:focus {
-        color: #ffffff; 
+    .menu-hidden .dropdown {
+        position: relative;
+        display: inline-block;
     }
 
+    .menu-hidden .dropdown .dropbtn {
+        background: none;
+        color: #444;
+        padding: 15px 20px;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu-hidden .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .menu-hidden .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .menu-hidden .dropdown-content a:hover {background-color: #ddd;}
+
+    .menu-hidden .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    #closeMenu {
+        display: none; /* Masquer le bouton de fermeture sur les écrans larges */
+    }
 }
 
-.blurred {
-    filter: blur(10px);
-    opacity: 0.8;
-    /* Empêche les interactions avec les éléments flous */
-    pointer-events: none; 
-}
 
 
 
@@ -690,6 +717,14 @@ body {
     padding: 20px;
 }
 
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Hauteur de la fenêtre pour centrer verticalement */
+}
+
 .verifs, .payments {
     display: flex;
     justify-content: space-around;
@@ -714,6 +749,11 @@ body {
     margin: 0px; 
 }
 
+.salonPlace {
+    font-size: 0.8em; 
+    text-align: center;
+}
+
 @media (min-width: 600px) {
     .verifs div, .payments div {
         flex: 1 1 48%; 
@@ -725,6 +765,10 @@ body {
     }
 
     .verifs p, .payments p {
+        font-size: 1em; 
+    }
+
+    .salonPlace {
         font-size: 1em; 
     }
 }
@@ -741,6 +785,10 @@ body {
 
     .verifs p, .payments p {
         font-size: 1.3em;
+    }
+
+    .salonPlace {
+        font-size: 1.3em; 
     }
 }
 
@@ -1741,26 +1789,45 @@ body {
     color: #333;
 }
 
-.filter-form {
+/* Conteneur parent pour centrer le formulaire */
+.center-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Hauteur de la page entière */
+}
+
+/* Conteneur parent pour centrer le formulaire */
+.center-container {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Hauteur de la page entière */
+}
+
+.filter-form {
+    display: block; /* Changer de flex à block */
+    text-align: center; /* Centrer le texte des éléments enfants */
     margin-bottom: 20px;
 }
 
-.filter-form label {
-    margin-right: 10px;
-    font-size: 1em;
+.filter-form label, .filter-form select {
+    display: block; /* Assurer que chaque élément est un bloc */
+    margin-bottom: 10px; /* Ajouter un espace entre chaque élément */
+    font-size: 0.8em;
     color: #333;
+    width: 100%; /* S'assurer que les éléments prennent toute la largeur disponible */
 }
 
 .filter-form select {
     padding: 10px;
-    font-size: 1em;
+    font-size: 0.7em;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #fff;
     color: #333;
+    max-width: 200px; /* Limiter la largeur maximale du select */
+    margin: 0 auto; /* Centrer horizontalement */
 }
 
 .filter-form select option {
@@ -1857,6 +1924,17 @@ body {
         color: #666;
         margin: 10px 0;
     }
+
+    .filter-form label, .filter-form select {
+        font-size: 0.9em; 
+        width: 80%; 
+        margin: 0 auto;
+    }
+
+    .filter-form select {
+        max-width: 300px; 
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -1891,31 +1969,6 @@ body {
         padding: 8px 15px;
     }
 
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-        padding-top: 60px;
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        text-align: center;
-        border-radius: 10px;
-    }
-
     .close {
         color: #aaa;
         float: right;
@@ -1930,25 +1983,9 @@ body {
         cursor: pointer;
     }
 
-    #modalImage {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 20px;
+    .filter-form select {
+        max-width: 400px; 
+        margin-top: 10px;
     }
 
-    #modalName {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-    }
-
-    #modalPrice {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-
-    #modalDetails {
-        font-size: 1em;
-    }
-    
 }

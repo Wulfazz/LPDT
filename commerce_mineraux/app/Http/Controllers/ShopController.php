@@ -17,7 +17,8 @@ class ShopController extends Controller
         }
 
         $products = $query->get();
-        $categories = Category::all(); // Récupérer toutes les catégories
+        // Récupérer uniquement les catégories secondaires
+        $categories = Category::whereHas('otherProducts')->get();
 
         return view('shop.bracelet', compact('products', 'categories'));
     }
@@ -31,7 +32,7 @@ class ShopController extends Controller
         }
 
         $products = $query->get();
-        $categories = Category::all();
+        $categories = Category::whereHas('otherProducts')->get();
 
         return view('shop.pendant', compact('products', 'categories'));
     }
@@ -45,7 +46,7 @@ class ShopController extends Controller
         }
 
         $products = $query->get();
-        $categories = Category::all();
+        $categories = Category::whereHas('otherProducts')->get();
 
         return view('shop.stone', compact('products', 'categories'));
     }
@@ -59,7 +60,7 @@ class ShopController extends Controller
         }
 
         $products = $query->get();
-        $categories = Category::all();
+        $categories = Category::whereHas('otherProducts')->get();
 
         return view('shop.minerals', compact('products', 'categories'));
     }

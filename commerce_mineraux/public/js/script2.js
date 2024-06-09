@@ -1,17 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     function toggleMenu(open) {
         var menu = document.getElementById("mobileMenu");
-        var body = document.body; // Sélectionne l'élément body
         var closeIcon = document.getElementById("closeMenu");
 
         if (open === false) {
             menu.classList.remove('active');
-            body.classList.remove('blurred');
             closeIcon.style.display = 'none';
             menu.style.display = 'none';
         } else {
             menu.classList.toggle('active');
-            body.classList.toggle('blurred');
             if (menu.classList.contains('active')) {
                 closeIcon.style.display = 'block';
                 menu.style.display = 'block';
@@ -24,7 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('burgerMenu').addEventListener('click', function() { toggleMenu(); });
     document.getElementById('closeMenu').addEventListener('click', function() { toggleMenu(false); });
-    document.getElementById('linkToFooter').addEventListener('click', function() { toggleMenu(false); });
+    document.getElementById('linkToFooter').addEventListener('click', function(event) {
+        if (window.innerWidth >= 1024) {
+            event.stopPropagation();
+        } else {
+            toggleMenu(false);
+        }
+    });
 
     var dropdownButtons = document.querySelectorAll('.dropbtn');
     dropdownButtons.forEach(function (button) {
@@ -59,22 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('closeMenu').addEventListener('click', function () {
         document.getElementById('mobileMenu').style.display = 'none';
     });
-});
 
-$(document).ready(function(){
-    $('a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        var target = this.hash;
-        var $target = $(target);
-        $('html, body').stop().animate({
-            'scrollTop': $target.offset().top
-        }, 900, 'swing', function () {
-            window.location.hash = target;
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     var contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -91,11 +79,68 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    document.querySelectorAll('.buy-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            addToCart(productId);
+        });
+    });
 });
 
-$(document).ready(function() {
+$(document).ready(function(){
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    });
+
     $('.signup-btn').on('click', function (e) {
         e.preventDefault();
         $('#signupModal').modal('show');
     });
 });
+
+function showProductDetails(name, details, price, imageUrl) {
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalDetails').textContent = details;
+    document.getElementById('modalPrice').textContent = 'Prix: ' + price + ' €';
+    document.getElementById('modalImage').src = imageUrl;
+    document.getElementById('productModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('productModal')) {
+        closeModal();
+    }
+}
+
+function addToCart(productId) {
+    fetch(`/cart/add/${productId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    }).then(response => {
+        if (response.ok) {
+            alert('Produit ajouté au panier');
+        } else {
+            response.json().then(data => {
+                alert(data.message || 'Erreur lors de l\'ajout du produit au panier');
+            });
+        }
+    }).catch(error => {
+        console.error('Erreur:', error);
+        alert('Erreur lors de l\'ajout du produit au panier');
+    });
+}
