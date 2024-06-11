@@ -1,11 +1,10 @@
 <head>
     @include('components.head')
     <style>
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 5000; /* Increased z-index to ensure it's on top */
             left: 0;
             top: 0;
             width: 100%;
@@ -25,6 +24,7 @@
             max-width: 500px;
             text-align: center;
             border-radius: 10px;
+            z-index: 5001; /* Slightly higher to ensure content is above the overlay */
         }
 
         .close {
@@ -74,7 +74,7 @@
             <form method="GET" action="{{ route('shop.pendant') }}" class="filter-form">
                 <label for="other_category_id">Type de minéral :</label>
                 <select name="other_category_id" id="other_category_id" onchange="this.form.submit()">
-                    <option value="">Sélection minéral :</option>
+                    <option value="">Toutes les catégories</option>
                     @foreach($categories as $category)
                         @if ($category->mainProducts->isEmpty())
                             <option value="{{ $category->category_id }}" {{ request('other_category_id') == $category->category_id ? 'selected' : '' }}>

@@ -17,6 +17,10 @@ body {
 }
 
 
+
+
+
+
 /* HEADER */
 .navbar {
     display: flex;
@@ -51,16 +55,18 @@ body {
     left: 0;
     height: 100%;
     z-index: 2000;
+    font-size: 0.8em;
 }
 
 .menu-hidden {
-    width: 200px;
+    width: 150px;
     height: 100%;
     background-color: rgba(218, 188, 129, 0.7);
     overflow-y: auto;
     position: relative;
     display: none;
     filter: none;
+    z-index: 2000; /* Ensure this is lower than products */
 }
 
 .menu-hidden a {
@@ -69,7 +75,7 @@ body {
     text-decoration: none;
     display: block;
     transition: background-color 0.2s ease-in-out;
-    font-size: 1.5em; /* Increased font size */
+    font-size: 1em;
 }
 
 .menu-hidden a:hover, .menu-hidden a:focus {
@@ -85,14 +91,14 @@ body {
 
 /* Croix du menuHidden */
 #closeMenu {
-    display: block; /* Display the cross */
+    display: block;
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: -30px; /* Position to the right outside the menu-hidden */
     font-size: 30px;
     color: rgb(0, 0, 0);
     cursor: pointer;
-    z-index: 101;
+    z-index: 2100; /* Higher than the menu-hidden */
 }
 
 /* Styles pour les éléments du menu */
@@ -118,7 +124,7 @@ body {
     text-decoration: none;
     display: block;
     text-align: left;
-    font-size: 1em; /* Reduced font size */
+    font-size: 1em;
 }
 
 .menu-container .dropdown-content a:hover {
@@ -126,7 +132,7 @@ body {
 }
 
 .menu-container .dropdown:hover .dropdown-content {
-    display: block; /* Afficher le contenu du menu au survol */
+    display: block;
 }
 
 /* Add styles for mobile and tablet */
@@ -157,13 +163,12 @@ body {
     align-items: center;
     position: relative;
     margin-top: -5%;
-    z-index: 3000; /* Ensuring it is above everything else */
+    z-index: 0;
 }
 
 .logo-center img {
     width: 70px;
     height: 50px;
-    /* Rend l'image du logo circulaire */
     border-radius: 50%;
 }
 
@@ -184,7 +189,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    z-index: 3000; /* Ensuring it is above everything else */
+    z-index: 3000;
 }
 
 .icons-right a {
@@ -201,7 +206,6 @@ body {
 }
 
 /* Menu déroulant */
-/* Dropdown button */
 .dropbtn {
     background: none;
     color: #444;
@@ -214,13 +218,11 @@ body {
     text-align: left;
 }
 
-/* Dropdown container */
 .dropdown {
     position: relative;
     display: block;
 }
 
-/* Elements du dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -230,18 +232,18 @@ body {
     z-index: 1;
 }
 
-/* liens du dropdown */
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-size: 1em; /* Reduced font size */
+    font-size: 1em;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
-/* dropdown au clique */
 .dropdown .dropbtn:focus + .dropdown-content {
     display: block;
 }
@@ -249,11 +251,11 @@ body {
 /* Responsive adjustments */
 @media (max-width: 600px) {
     .menu-hidden a {
-        font-size: 1.2em; /* Reduce font size for mobile */
+        font-size: 1.2em;
     }
 
     #closeMenu {
-        font-size: 20px; /* Reduce size of the cross for mobile */
+        font-size: 20px;
     }
 }
 
@@ -267,7 +269,6 @@ body {
         padding: 20px;
     }
 
-    /* Affichage du menu mobile */
     .menu-hidden {
         width: 300px;
         height: 100%;
@@ -277,7 +278,6 @@ body {
         font-size: 1.3em;
     }
 
-    /* Logo centré */
     .logo-center {
         margin-right: 0px;
         margin-top: -1%;
@@ -293,11 +293,9 @@ body {
 
     .logo-center::after {
         margin-top: -60%;
-        /* La largeur du demi-cercle */
         width: 130px;
     }
 
-    /* Icônes à droite */
     .icons-right {
         position: absolute;
         right: 2%;
@@ -328,6 +326,8 @@ body {
 
     .icons-right {
         flex: 1;
+        height: 100px;
+        width: 100px;
         justify-content: flex-end;
         padding-right: 30px;
     }
@@ -339,6 +339,7 @@ body {
         top: 25%;
         transform: translateY(-50%);
         margin: 0;
+        z-index: 3000;
     }
 
     .logo-center img {
@@ -382,7 +383,7 @@ body {
         padding: 15px 20px;
         color: #444;
         text-decoration: none;
-        font-size: 1em; /* Reduced font size */
+        font-size: 1em;
     }
 
     .menu-hidden .dropdown {
@@ -407,7 +408,7 @@ body {
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
-        top: 100%; /* Positioning below the button */
+        top: 100%;
         left: 0;
     }
 
@@ -416,7 +417,7 @@ body {
         padding: 12px 16px;
         text-decoration: none;
         display: block;
-        font-size: 1em; /* Reduced font size */
+        font-size: 1em;
     }
 
     .menu-hidden .dropdown-content a:hover {
@@ -428,7 +429,7 @@ body {
     }
 
     #closeMenu {
-        display: none; 
+        display: none;
     }
 }
 
@@ -1307,20 +1308,25 @@ body {
 
 @media (min-width: 1024px) {
     .story-container {
-        max-width: 60%; 
+        max-width: 70%; 
         padding: 60px;
     }
 
     .story-content {
-        flex-direction: row; 
-        align-items: flex-start;
-        text-align: left;
+        flex-direction: column; /* Ensure vertical stacking */
+        align-items: center;
+        text-align: center; /* Center text for larger screens */
     }
 
     .story-image {
-        max-width: 400px; 
-        margin-right: 40px; 
-        margin-bottom: 0;
+        width: 80%; /* Set image width to 80% */
+        margin-right: 0; /* Remove margin */
+        margin-bottom: 20px; /* Ensure space below the image */
+    }
+
+    .story-text {
+        width: 80%; /* Ensure text width matches image width */
+        max-width: 800px; /* Limit the maximum width */
     }
 
     .story-text h2 {
@@ -1974,12 +1980,13 @@ body {
     .product-item {
         padding: 10px; 
         margin: 10px; 
-
+        z-index: 3000;
     }
 
     .product-image {
         width: 120px; 
         height: 120px; 
+        z-index: 3000;
     }
 
     .product-name {
@@ -2012,9 +2019,25 @@ body {
         cursor: pointer;
     }
 
+    .filter-form {
+        position: absolute;
+        top: 230px; /* Adjust to be under the navbar */
+        right: 50px;
+        display: flex;
+        align-items: center;
+        z-index: 3000; /* Higher than the menu-hidden */
+    }
+
+    .filter-form label {
+        margin-right: 10px;
+        font-size: 1em;
+    }
+
     .filter-form select {
-        max-width: 400px; 
-        margin-top: 10px;
+        font-size: 1em;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
     }
 
 }

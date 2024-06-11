@@ -1,11 +1,10 @@
 <head>
     @include('components.head')
     <style>
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 5000; /* Increased z-index to ensure it's on top */
             left: 0;
             top: 0;
             width: 100%;
@@ -25,6 +24,7 @@
             max-width: 500px;
             text-align: center;
             border-radius: 10px;
+            z-index: 5001; /* Slightly higher to ensure content is above the overlay */
         }
 
         .close {
