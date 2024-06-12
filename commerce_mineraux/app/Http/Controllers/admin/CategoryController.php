@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
         Category::create([
             'category_name' => $request->category_name,
-            'type' => 'other', // Assurez-vous de définir le type correct
+            'type' => 'other', 
         ]);
 
         return redirect()->route('admin.products.create')->with('success', 'Catégorie ajoutée avec succès.');

@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
+    // Peut-être pour plus tard, mode d'achat
     document.querySelectorAll('.buy-button').forEach(button => {
         button.addEventListener('click', function() {
             const productId = this.getAttribute('data-product-id');
@@ -105,24 +107,6 @@ $(document).ready(function(){
         $('#signupModal').modal('show');
     });
 });
-
-function showProductDetails(name, details, price, imageUrl) {
-    document.getElementById('modalName').textContent = name;
-    document.getElementById('modalDetails').textContent = details;
-    document.getElementById('modalPrice').textContent = 'Prix: ' + price + ' €';
-    document.getElementById('modalImage').src = imageUrl;
-    document.getElementById('productModal').style.display = 'block';
-}
-
-function closeModal() {
-    document.getElementById('productModal').style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target == document.getElementById('productModal')) {
-        closeModal();
-    }
-}
 
 function addToCart(productId) {
     fetch(`/cart/add/${productId}`, {

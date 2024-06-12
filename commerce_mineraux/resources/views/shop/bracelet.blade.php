@@ -92,7 +92,8 @@
             <div class="products-grid">
                 @forelse ($products as $product)
                     <div class="product-item">
-                        <img class="product-image" src="{{ $product->image_url }}" alt="{{ $product->name }}" onclick="showProductDetails('{{ $product->name }}', '{{ $product->details }}', '{{ $product->price }}', '{{ $product->image_url }}')">
+                        <img class="product-image" src="{{ $product->image_url }}" alt="{{ $product->name }}" 
+                        onclick="showProductDetails('{{ $product->name }}', '{{ $product->details }}', '{{ $product->price }}', '{{ $product->image_url }}')">
                         <h2 class="product-name">{{ $product->name }}</h2>
                         <p class="product-price">Prix: {{ $product->price }} €</p>
                         <p class="product-description">{{ $product->details }}</p>
