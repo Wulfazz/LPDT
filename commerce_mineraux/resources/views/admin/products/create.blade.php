@@ -82,7 +82,7 @@
                                     @method('PUT')
                                     <input type="text" name="category_name" value="{{ $category->category_name }}" class="category-input">
                             </td>
-                            <td data-label="Action" style="padding-right: 15px; padding-left: 400px;">
+                            <td data-label="Action" style="padding-right: 15px;">
                                 <div style="display: flex; align-items: center;">
                                         <button type="submit" class="btn-edit">Modifier</button>
                                 </form>
