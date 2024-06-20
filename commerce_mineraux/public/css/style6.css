@@ -15,6 +15,10 @@ body {
     overflow-x: hidden;
 }
 
+
+
+
+
 /* HEADER */
 .navbar {
     display: flex;
@@ -92,7 +96,7 @@ body {
     font-size: 30px;
     color: rgb(0, 0, 0);
     cursor: pointer;
-    z-index: 2100; /* Higher than the menu-hidden */
+    z-index: 2100;
 }
 
 /* Afficher la croix lorsque le menu est ouvert */
@@ -134,7 +138,6 @@ body {
     display: block;
 }
 
-/* Add styles for mobile and tablet */
 @media (max-width: 1024px) {
     .menu-container .dropdown .dropdown-content {
         position: relative;
@@ -154,6 +157,7 @@ body {
         display: block;
     }
 }
+
 
 /* Logo centre */
 .logo-center {
@@ -183,6 +187,7 @@ body {
     z-index: -1;
 }
 
+
 /* Icônes à droite */
 .icons-right {
     display: flex;
@@ -203,6 +208,7 @@ body {
     height: 20px;
     filter: invert(100%) saturate(2);
 }
+
 
 /* Menu déroulant */
 .dropbtn {
@@ -247,7 +253,6 @@ body {
     display: block;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
     .menu-hidden a {
         font-size: 1.2em;
@@ -431,8 +436,6 @@ body {
         display: none;
     }
 }
-
-
 
 
 
@@ -735,9 +738,7 @@ body {
 
     .catalog h2 {
         font-size: 2em;
-    }
-
-    
+    }    
 }
 
 
@@ -752,7 +753,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Hauteur de la fenêtre pour centrer verticalement */
+    height: 100vh;
 }
 
 .verifs, .payments {
@@ -1250,6 +1251,7 @@ body {
 
 
 
+
 /* STORY PAGE */
 
 .story-container {
@@ -1313,20 +1315,20 @@ body {
     }
 
     .story-content {
-        flex-direction: column; /* Ensure vertical stacking */
+        flex-direction: column; 
         align-items: center;
-        text-align: center; /* Center text for larger screens */
+        text-align: center; 
     }
 
     .story-image {
-        width: 80%; /* Set image width to 80% */
-        margin-right: 0; /* Remove margin */
-        margin-bottom: 20px; /* Ensure space below the image */
+        width: 80%; 
+        margin-right: 0; 
+        margin-bottom: 20px; 
     }
 
     .story-text {
-        width: 80%; /* Ensure text width matches image width */
-        max-width: 800px; /* Limit the maximum width */
+        width: 80%; 
+        max-width: 800px; 
     }
 
     .story-text h2 {
@@ -1795,19 +1797,18 @@ body {
 
 @media (min-width: 1024px) {
     .admin-products-container {
-        max-width: 70%; /* Adjusted width for desktop */
+        max-width: 70%; 
         padding: 60px;
     }
 
     .product-image {
-        width: 50px; /* Ajuster la taille des images pour les ordinateurs de bureau */
+        width: 50px; 
     }
 
     .admin-edit-product-container {
-        max-width: 70%; /* Adjusted width for desktop */
+        max-width: 70%; 
         padding: 60px;
     }
-
 }
 
 
@@ -1824,34 +1825,32 @@ body {
     color: #333;
 }
 
-/* Conteneur parent pour centrer le formulaire */
 .center-container {
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    height: 100vh; /* Hauteur de la page entière */
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
 }
 
-/* Conteneur parent pour centrer le formulaire */
 .center-container {
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    height: 100vh; /* Hauteur de la page entière */
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
 }
 
 .filter-form {
-    display: block; /* Changer de flex à block */
-    text-align: center; /* Centrer le texte des éléments enfants */
+    display: block;
+    text-align: center;
     margin-bottom: 20px;
 }
 
 .filter-form label, .filter-form select {
-    display: block; /* Assurer que chaque élément est un bloc */
-    margin-bottom: 10px; /* Ajouter un espace entre chaque élément */
+    display: block; 
+    margin-bottom: 10px; 
     font-size: 0.8em;
     color: #333;
-    width: 100%; /* S'assurer que les éléments prennent toute la largeur disponible */
+    width: 100%;
 }
 
 .filter-form select {
@@ -1861,8 +1860,8 @@ body {
     border-radius: 5px;
     background-color: #fff;
     color: #333;
-    max-width: 200px; /* Limiter la largeur maximale du select */
-    margin: 0 auto; /* Centrer horizontalement */
+    max-width: 200px; 
+    margin: 0 auto; 
 }
 
 .filter-form select option {
@@ -2021,11 +2020,11 @@ body {
 
     .filter-form {
         position: absolute;
-        top: 230px; /* Adjust to be under the navbar */
+        top: 230px; 
         right: 50px;
         display: flex;
         align-items: center;
-        z-index: 3000; /* Higher than the menu-hidden */
+        z-index: 3000; 
     }
 
     .filter-form label {
@@ -2039,5 +2038,4 @@ body {
         border: 1px solid #ddd;
         border-radius: 5px;
     }
-
 }
