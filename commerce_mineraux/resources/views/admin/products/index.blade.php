@@ -18,7 +18,7 @@
 
         <a href="{{ route('admin.products.create') }}" class="btn-submit">Ajout produit / Gérer catégories</a>
 
-        <!-- Filters -->
+        <!-- Filtres -->
         <form method="GET" action="{{ route('admin.products.index') }}" class="admin-form">
             <div class="form-group">
                 <label for="main_category_id">Filtrer par Catégorie Principale :</label>

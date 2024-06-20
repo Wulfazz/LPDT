@@ -23,7 +23,7 @@
                 <!-- Section catalogue -->
                 <section class="catalog">
                     <h2>NOTRE CATALOGUE DE MINERAUX</h2>
-                    <div class="cat-container"> <!-- Conteneur pour les éléments cat -->
+                    <div class="cat-container"> 
                         <div class="cat">
                             <img src="{{ asset('img/home/brute.jpg') }}" alt="Minéraux brutes">
                             <button><a href="{{ url('/shop/minerals') }}">Minéraux brutes</a></button>
